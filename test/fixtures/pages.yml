@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title_en: MyString
+  title_zh: MyString
+  content_en: MyString
+  content_zh: MyString
+  slug: MyString
+
+two:
+  title_en: MyString
+  title_zh: MyString
+  content_en: MyString
+  content_zh: MyString
+  slug: MyString

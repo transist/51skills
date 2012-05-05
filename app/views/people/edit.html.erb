@@ -1,0 +1,16 @@
+<div class='page-header'>
+  <h1>Edit Account</h1>
+</div>
+<%= form_for(@user) do |f|%>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br />
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br />
+  <%= f.label :mobile %>
+  <%= f.text_field :mobile %>
+  <br />
+
+  <%= f.submit "Update" %>
+<% end %>

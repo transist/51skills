@@ -1,0 +1,7 @@
+development:
+  api_key: '1285571619'
+  api_secret: '77b738b4b007a2d506e5869e1d59fd66'
+  
+production:
+  api_key: '1285571619'
+  api_secret: '77b738b4b007a2d506e5869e1d59fd66'

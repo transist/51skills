@@ -1,0 +1,17 @@
+<div class='page-header'>
+  <h1>Pages</h1>
+</div>
+<%= link_to 'New Page', new_page_path, :class => 'btn btn-small' %>
+<hr/>
+<% @pages.each do |page| %>
+<div class='row '>
+  <div class='span9 column'>
+    <p><%= link_to page.title(I18n.locale), page %> | <%= link_to 'Edit', editor_path(page.slug), :class => 'btn btn-mini'  %>
+    <%= link_to 'Delete', page, :class => 'btn btn-mini' , confirm: 'Are you sure?', method: :delete %></p>
+    
+  </div>
+</div>
+<% end %>
+</table>
+
+<br />
