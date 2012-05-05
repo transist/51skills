@@ -43,3 +43,14 @@ gem 'haml'
 gem 'hashie'
 gem 'bootstrap-sass', '~> 2.0.2'
 gem 'mercury-rails', git: 'git://github.com/ballantyne/mercury.git'
+gem 'capistrano'
+
+group :staging do
+  gem 'unicorn'
+  gem 'therubyracer'
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'therubyracer'
+end
