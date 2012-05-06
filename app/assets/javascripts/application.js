@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+//= require mercury
 //= require mercury/support/history
 //= require mercury/mercury
 

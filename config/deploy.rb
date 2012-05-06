@@ -22,23 +22,15 @@ task :production do
   set :deploy_to, "/home/#{user}/apps/#{application}/#{env}"
   set :branch, 'production'
   set :compile_assets_locally, true
-  # set :unicorn_binary, "/home/scott/.rvm/gems/ruby-1.9.2-p290@transist/bin/unicorn"
-  # set :unicorn_config, "/var/www/transist/current/config/unicorn.rb"
-  # set :unicorn_pid, "/var/www/transist/current/tmp/pids/unicorn.pid"
-  # set :java_home, "/usr/lib/jvm/java-6-openjdk"
 end
 
-task :beta do
+task :staging do
   set :env, 'staging'
   set :rails_env, 'staging'
   set :deploy_to, "/home/#{user}/apps/#{application}/#{env}"
-  set :branch, 'beta'
+  set :branch, 'staging'
   set :compile_assets_locally, false
-  # set :current_port, 9090
-  # set :unicorn_binary, "/home/scott/.rvm/gems/ruby-1.9.2-p290@transist/bin/unicorn"
-  # set :unicorn_config, "/var/www/beta.transi.st/current/config/unicorn.rb"
-  # set :unicorn_pid, "/var/www/beta.transi.st/current/tmp/pids/unicorn.pid"
-  # set :java_home, "/usr/lib/jvm/java-6-openjdk"
+
 end
 
 
