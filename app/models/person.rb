@@ -25,4 +25,8 @@ class Person < ActiveRecord::Base
   def admin?
     true
   end
+  
+  # def client
+  #   Weibo::
+  # end
 end

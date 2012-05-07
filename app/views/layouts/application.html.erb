@@ -12,13 +12,10 @@
       <div class='span3 column'>
         <%= link_to image_tag('logo.jpg', :width => 220, :height => 73), '/' %>
         <ul class='nav nav-pills nav-stacked sidenav'>
-          <li><%= link_to 'what is ted', '/what-is-ted' %></li>
-          <li><%= link_to 'what is tedx', '/what-is-tedxshanghai' %></li>
-          <li><%= link_to 'tedxshanghai 2012', '/tedxshanghai-2012' %></li>
+          <% Page.all.each do |p| %>
+          <li><%= link_to p.title(I18n.locale), p.slug %></li>
+          <% end %>
           <li><%= link_to 'i want to join', '/i-want-to-join' %></li>
-          <li><%= link_to 'our tedx friends', '/tedx-organizations-in-the-neighborhood' %></li>
-          <li><%= link_to 'our support system', '/team' %></li>
-          <li><%= link_to 'sponsors', '/the-sponsor' %></li>
           <% if current_user%>
           <li><%= link_to 'edit profile', edit_person_path(current_user) %></li>
           
