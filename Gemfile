@@ -5,7 +5,7 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+
 
 
 # Gems used only for assets and not required
@@ -40,18 +40,29 @@ gem 'weibo'
 gem 'omniauth'
 gem 'omniauth-weibo'
 gem 'awesome_nested_set'
+gem 'paperclip'
+gem 'aws-s3'
+gem 'aws-sdk'
 gem 'haml'
 gem 'hashie'
 gem 'bootstrap-sass', '~> 2.0.2'
 gem 'mercury-rails', git: 'git://github.com/ballantyne/mercury.git'
 gem 'capistrano'
 
+
+
+group :staging do
+  gem 'sqlite3'
+end
+
 group :staging do
   gem 'unicorn'
   gem 'therubyracer'
+  gem 'pg'
 end
 
 group :production do
   gem 'unicorn'
   gem 'therubyracer'
+  gem 'pg'
 end

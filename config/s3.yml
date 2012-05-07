@@ -1,0 +1,11 @@
+development:
+  bucket: tedxdev
+  access_key_id: AKIAI3U4IKINTMGT3CTQ
+  secret_access_key: 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
+  acl: public-read
+  
+production:
+  bucket: tedxshanghai
+  access_key_id: AKIAI3U4IKINTMGT3CTQ
+  secret_access_key: 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
+  acl: public-read
