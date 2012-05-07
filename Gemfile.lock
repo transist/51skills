@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ballantyne/mercury.git
-  revision: d46c8fb5833fa46a77cbc58fd57b6eeb0b13fc16
+  revision: cae2b0ef4613cdec87a8d6103e5fab727b489814
   specs:
     mercury-rails (0.3.1)
       coffee-script
