@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Mercury::Authentication
   protect_from_forgery
+  before_filter :accepted_languages
+  before_filter :set_language
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user?
@@ -45,5 +47,38 @@ class ApplicationController < ActionController::Base
     if !current_user
       redirect_to root_url, :alert => 'You need to sign in for access to this page.'
     end
+  end
+  
+  def accepted_languages
+    return [] if request.env["HTTP_ACCEPT_LANGUAGE"].nil?
+    accepted = request.env["HTTP_ACCEPT_LANGUAGE"].split(",")
+    accepted = accepted.map { |l| l.strip.split(";") }
+    accepted = accepted.map { |l|
+      if (l.size == 2)
+        [ l[0].split("-")[0].downcase, l[1].sub(/^q=/, "").to_f ]
+      else
+        [ l[0].split("-")[0].downcase, 1.0 ]
+      end
+    }
+    a = accepted.sort { |l1, l2| l1[1] <=> l2[1] }
+    if session[:locale] == nil || request.path == '/'
+      if a[0][0].include?('en') && 
+        session[:locale] = 'en'
+        I18n.locale = 'en'
+      else
+        session[:locale] = 'zh'
+        I18n.locale = 'zh'
+      end
+    end
+  end
+  
+  def set_language
+    if params[:locale]
+      session[:locale] = params[:locale]      
+    end
+    if session[:locale] == nil
+      session[:locale] = 'en'   
+    end
+    I18n.locale = session[:locale]
   end
 end

@@ -11,8 +11,8 @@ Tedx::Application.routes.draw do
   match '/login' => 'sessions#new', :as => :login
   match '/logout' => 'sessions#destroy', :as => :logout
   match '/auth/failure' => 'sessions#failure'
-  match '/zh' => 'home#zh'
-  match '/en' => 'home#en'
+  match '/zh' => 'home#zh', :locale => 'zh'
+  match '/en' => 'home#en', :locale => 'en'
   
   get '/:id' => "pages#show"
   put '/:id' => "pages#update"
