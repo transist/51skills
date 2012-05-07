@@ -51,7 +51,7 @@ gem 'capistrano'
 
 
 
-group :staging do
+group :development do
   gem 'sqlite3'
 end
 
