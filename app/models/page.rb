@@ -3,7 +3,11 @@ class Page < ActiveRecord::Base
   translation_for :content, :title
   before_save :create_slug
   acts_as_nested_set
-  
+  attr_writer :sidebar
+
+  def sidebar
+    @sidebar || true
+  end
   
   def create_slug
     self.slug = self.title_en.parameterize if self.slug == nil || self.slug == ''
