@@ -1,5 +1,5 @@
 <div class='row front-slides'>
-  <div id='slides' class='span12'>
+  <div id='slides' class='span12 column'>
   	<div id="slides_container" class='span12'>
   		<a class='slide' id='slide_1'><%= image_tag '01-copy.jpg', :class => ''%></a>
   		<a class='slide' id='slide_2'><%= image_tag '02-copy.jpg', :class => ''%></a>
@@ -10,7 +10,10 @@
   </div>
 </div>
 <div class='row' style='clear:left;'>
-  <div class='span12'>
+  <div class='span5 column front-logo'>
+    <%= link_to image_tag('logo.jpg'), '/' %>
+  </div>
+  <div class='span7'>
     <ul class='nav nav-pills sidenav front-nav'>
       <% Page.all(:order => 'id asc').each do |p| %>
       <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), (p.slug == "root" ? '/' : p.slug) %></li>
