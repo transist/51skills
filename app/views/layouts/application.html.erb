@@ -9,8 +9,13 @@
 <body>
   <div class='container'>
     <div class='row'>
+      <div class='span12 column'>
+        <%= link_to image_tag('logo.jpg'), '/' %>
+      </div>
+    </div>
+    <div class='row'>
       <div class='span3 column'>
-        <%= link_to image_tag('logo.jpg', :width => 220, :height => 73), '/' %>
+        
         <ul class='nav nav-pills nav-stacked sidenav'>
           <% Page.all(:order => 'id asc').each do |p| %>
           <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), p.slug %></li>
