@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
       end
     }
     a = accepted.sort { |l1, l2| l1[1] <=> l2[1] }
-    if session[:locale] == nil || request.path == '/'
+    if session[:locale] == nil
       if a[0][0].include?('en') && 
         session[:locale] = 'en'
         I18n.locale = 'en'
