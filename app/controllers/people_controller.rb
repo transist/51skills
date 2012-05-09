@@ -7,8 +7,10 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @page = create_standard_page
-    @user = Person.find(params[:id])
+    if current_user.id == params[:id] || current_user.admin?
+      @page = create_standard_page
+      @user = Person.find(params[:id])
+    end
   end
 
   def update

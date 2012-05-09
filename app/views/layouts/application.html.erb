@@ -22,7 +22,7 @@
         <ul class='nav nav-pills nav-stacked sidenav'>
           <% Page.all(:order => 'id asc').each do |p| %>
           <% if p.slug != "root" %>
-          <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), p.slug %></li>
+          <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), "/"+p.slug %></li>
           <% end %>
           <% end %>
           <li><%= link_to 'I Want to Join', '/i-want-to-join' %></li>
