@@ -74,12 +74,13 @@ class ApplicationController < ActionController::Base
   
   def set_language
     if params[:locale]
-      session[:locale] = params[:locale]      
+      session[:locale] = params[:locale]
     end
     if session[:locale] == nil
-      session[:locale] = 'en'   
+      session[:locale] = 'en' 
     end
     I18n.locale = session[:locale]
+    logger.info("::::::::::::::::::::::::::::#{I18n.locale}")
   end
   
   def create_standard_page
