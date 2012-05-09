@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+
 //= require bootstrap
 //= require mercury
+//= require masonry
 //= require mercury/support/history
 //= require mercury/mercury
-
 jQuery(top).trigger('initialize:frame');

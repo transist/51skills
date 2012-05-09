@@ -3,7 +3,7 @@
 <head>
   <title><%= (@page && @page.title(I18n.locale) ? @page.title(I18n.locale) + " | TedXShanghai" : "TedXShanghai")%></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", 'cycle' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -47,5 +47,6 @@
       </div>
     </div>
   </div>
+<%= yield :javascript %>
 </body>
 </html>
