@@ -6,7 +6,8 @@ class PeopleController < ApplicationController
     @users = Person.paginate(:page => params[:page])
   end
 
-    def edit
+  def edit
+    @page = create_standard_page
     @user = Person.find(params[:id])
   end
 
@@ -20,6 +21,8 @@ class PeopleController < ApplicationController
   end
 
   def show
-    @user = Person.find(params[:id])
+    if current_user.admin?
+      @user = Person.find(params[:id])
+    end
   end
 end
