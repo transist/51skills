@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120506070414) do
+ActiveRecord::Schema.define(:version => 20120509025801) do
 
   create_table "mercury_images", :force => true do |t|
     t.string   "image_file_name"
@@ -25,19 +25,20 @@ ActiveRecord::Schema.define(:version => 20120506070414) do
   create_table "pages", :force => true do |t|
     t.string   "title_en"
     t.string   "title_zh"
-    t.text     "content_en", :limit => 255
-    t.text     "content_zh", :limit => 255
+    t.text     "content_en",  :limit => 255
+    t.text     "content_zh",  :limit => 255
     t.string   "slug"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
-    t.boolean  "deleteable",                :default => true
-    t.boolean  "root",                      :default => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.boolean  "deleteable",                 :default => true
+    t.boolean  "root",                       :default => false
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
-    t.boolean  "published",                 :default => false
-    t.boolean  "nav",                       :default => false
+    t.boolean  "published",                  :default => false
+    t.boolean  "nav",                        :default => false
+    t.boolean  "include_nav",                :default => true
   end
 
   create_table "people", :force => true do |t|
