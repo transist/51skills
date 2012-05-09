@@ -1,3 +1,22 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.fullscreen_image{
+  position:fixed;
+  top:0;
+  left:0; 
+
+  /* Preserve aspet ratio */
+  min-width:100%;
+  min-height:100%;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline;
+}
+

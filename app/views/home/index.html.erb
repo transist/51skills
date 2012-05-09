@@ -1,5 +1,26 @@
-<h1>tedxshanghai</h1>
-<p>new site in progress</p>
+<div id='slides'>
+	<div id="slides_container">
+		<a class='slide' id='slide_1'><%= image_tag '01-copy.jpg', :class => ''%></a>
+		<a class='slide' id='slide_2'><%= image_tag '02-copy.jpg', :class => ''%></a>
+		<a class='slide' id='slide_3'><%= image_tag '03-copy.jpg', :class => ''%></a>
+		<a class='slide' id='slide_4'><%= image_tag '04-copy.jpg', :class => ''%></a>
+		<a class='slide' id='slide_5'><%= image_tag '05-copy.jpg', :class => ''%></a>
+	</div>
+</div>
 
 
-<%= puts @page.sidebar %>
+
+
+<%= content_for :javascript do %>
+	<script>
+	  $(function(){
+			$('#slides_container').cycle({ 
+			    fx:      'fade', 
+			    speedIn:  500, 
+			    speedOut: 1000, 
+			    sync:     800, 
+			    delay:   -5000 
+			});
+	  });
+	</script>
+<% end %>
