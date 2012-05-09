@@ -33,26 +33,30 @@ ul.sidenav li a:hover {
 /* slides */
 
 .slides_container {
-/*  height:415px;
+/*  height:662px;
   width:640px;*/
+  height:662px;
   overflow:hidden;
   position:relative;
 }
 .slides_container div {
-/*  height:415px;
+/*  height:662px;
   width:640px;*/
+  height:662px;
   display:block;
 }
 
 .slides_container div img {
-/*  height:415px;
+/*  
   width:640px;*/
+  height:662px;
   display:block;
 }
 
 #slides{
-  position:relative;
-/*  width:640px;*/
+  margin-top: 30px;
+  position: relative;
+  height:662px;
   margin-bottom:30px;
   -moz-box-shadow: 0 0 10px #333333;
   -webkit-box-shadow: 0 0 10px #333333;
