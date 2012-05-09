@@ -16,7 +16,9 @@
   <div class='span7'>
     <ul class='nav nav-pills sidenav front-nav'>
       <% Page.all(:order => 'id asc').each do |p| %>
+      <% if p.slug != "root" %>
       <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), (p.slug == "root" ? '/' : p.slug) %></li>
+      <% end %>
       <% end %>
       <li><%= link_to 'I Want to Join', '/i-want-to-join' %></li>
       <% if current_user%>
@@ -45,13 +47,7 @@
 <%= content_for :javascript do %>
 	<script>
 	  $(function(){
-			$('#slides_container').cycle({ 
-			    fx:      'fade', 
-			    speedIn:  500, 
-			    speedOut: 1000, 
-			    sync:     800, 
-			    delay:   -5000 
-			});
+			$('#slides_container').cycle({fx: 'fade', speedIn: 500, speedOut: 1000, sync: 800, delay: -5000});
 	  });
 	</script>
 <% end %>
