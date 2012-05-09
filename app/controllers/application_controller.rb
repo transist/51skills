@@ -81,4 +81,13 @@ class ApplicationController < ActionController::Base
     end
     I18n.locale = session[:locale]
   end
+  
+  def create_standard_page
+    @page = Hashie::Mash.new
+    @page.title = 'TedX Shanghai'
+    @page.manual = true
+    @page.header = true
+    @page.sidebar = true
+    @page
+  end
 end

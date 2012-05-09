@@ -18,6 +18,7 @@ class PagesController < ApplicationController
   # GET /pages.json
   def index
     @pages = Page.all
+    @page = create_standard_page
 
     respond_to do |format|
       format.html # index.html.erb
