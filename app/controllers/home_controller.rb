@@ -2,7 +2,8 @@ class HomeController < ApplicationController
   def index
     @page = Page.first(:conditions => {:root => true})
     logger.info(":::::::::::::::#{I18n.locale}")
-    #render '/pages/show'
+    # render '/pages/show'
+    @page.sidebar = false
   end
   
   def zh

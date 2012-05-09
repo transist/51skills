@@ -26,7 +26,14 @@ class Person < ActiveRecord::Base
     true
   end
   
-  # def client
-  #   Weibo::
-  # end
+  def client
+    oauth = Weibo::OAuth.new(Weibo::Config.api_key, Weibo::Config.api_secret)
+    oauth.authorize_from_access(self.token, self.secret)
+    Weibo::Base.new(oauth)
+  end
+  
+  def self.client
+    oauth = Weibo::OAuth.new(Weibo::Config.api_key, Weibo::Config.api_secret)
+    Weibo::Base.new(oauth)
+  end
 end
