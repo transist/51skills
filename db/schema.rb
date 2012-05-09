@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509025801) do
+ActiveRecord::Schema.define(:version => 20120509080122) do
 
   create_table "mercury_images", :force => true do |t|
     t.string   "image_file_name"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(:version => 20120509025801) do
     t.boolean  "published",                  :default => false
     t.boolean  "nav",                        :default => false
     t.boolean  "include_nav",                :default => true
+    t.boolean  "sidebar",                    :default => true
+    t.boolean  "header",                     :default => true
   end
 
   create_table "people", :force => true do |t|

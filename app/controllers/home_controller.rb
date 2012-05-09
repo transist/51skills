@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     logger.info(":::::::::::::::#{I18n.locale}")
     # render '/pages/show'
     @page.sidebar = false
+    logger.info(@page.sidebar)
   end
   
   def zh
