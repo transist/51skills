@@ -19,7 +19,7 @@
         
         <ul class='nav nav-pills nav-stacked sidenav'>
           <% Page.all(:order => 'id asc').each do |p| %>
-          <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), p.slug %></li>
+          <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), (p.slug == "root" ? '/' : p.slug) %></li>
           <% end %>
           <li><%= link_to 'i want to join', '/i-want-to-join' %></li>
           <% if current_user%>
