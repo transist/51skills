@@ -5,23 +5,23 @@ class Slide < ActiveRecord::Base
   has_attached_file :image, :url => "/system/:hash.:extension", :storage => :s3, 
                             :hash_data => ":class/:attachment/:id/:style",
                             :styles => lambda { |slide| presentation = slide.instance
-                                                        dimensions =  [presentation.width, 
-                                                        presentation.height].join("x") + "#" 
+                                                        dimensions =  [presentation.cropping_width, 
+                                                        presentation.cropping_height].join("x") + "#" 
                                                         { :original => dimensions, :thumb => '250x175#' 
                                                       }},
                             :bucket => YAML::load(File.open(Rails.root.join("config/s3.yml")))[Rails.env][:bucket], 
                             :s3_credentials => YAML::load(File.open(Rails.root.join("config/s3.yml"))), 
                             :hash_secret => "longSecretS asdas das tring"
-  def height
-    if self.height
+  def cropping_height
+    if self.height != nil
       self.height
     else
       500
     end
   end
   
-  def width
-    if self.width
+  def cropping_width
+    if self.width != nil
       self.width
     else
       730
