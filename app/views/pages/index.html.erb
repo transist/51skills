@@ -6,8 +6,12 @@
   <th colspan=2>Actions</th>
 <% @pages.each do |page| %>
   <tr>
-    <td colspan='8'><%= link_to page.title(I18n.locale), page %></td>
-    <td><%= link_to 'Editor', editor_path(page.slug), :class => 'btn btn-mini'  %> <%= link_to 'Edit', edit_page_path(page.slug), :class => 'btn btn-mini'  %> <%= link_to 'Delete', page, :class => 'btn btn-mini' , confirm: 'Are you sure?', method: :delete %></td>
+    <td colspan='8'><%= link_to page.title(I18n.locale), page %><%= (page.slug == 'root' ? ' (front page)' : '')%></td>
+    <td><%= link_to 'Editor', editor_path(page.slug), :class => 'btn btn-mini'  %> 
+        <%= link_to 'Edit', edit_page_path(page.slug), :class => 'btn btn-mini'  %> 
+        
+        <%= link_to 'Delete', page, :class => 'btn btn-mini' , confirm: 'Are you sure?', method: :delete %> 
+        </td>
   </tr>
 <% end %>
 </table>

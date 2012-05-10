@@ -56,6 +56,7 @@ class PagesController < ApplicationController
   # GET /pages/1/edit
   def edit
     @page = Page.find_by_slug(params[:id])
+    @page.sidebar = true
   end
 
   # POST /pages

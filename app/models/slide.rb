@@ -3,8 +3,8 @@ class Slide < ActiveRecord::Base
   belongs_to :presentation
   has_attached_file :image, :url => "/system/:hash.:extension", :storage => :s3, 
                             :styles => lambda { |slide| presentation = slide.presentation.instance 
-                                                        dimensions =  [presentation.width, 
-                                                        presentation.height].join("x") + ">" 
+                                                        dimensions =  [presentation.cropping_width, 
+                                                        presentation.cropping_height].join("x") + ">" 
                                               { :original => dimensions }},
                             :bucket => YAML::load(File.open(Rails.root.join("config/s3.yml")))[Rails.env][:bucket], 
                             :s3_credentials => YAML::load(File.open(Rails.root.join("config/s3.yml"))), 
