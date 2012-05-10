@@ -11,11 +11,15 @@ class SlidesController < ApplicationController
       Slide.create(:image => slide, :presentation_id => @page.slideshow.id, :height => @page.slideshow.height, :width => @page.slideshow.width)
     end
     
-    redirect_to edit_page_path(@page)
+    redirect_to edit_page_path(@page.slug)
   end
   
   def destroy
-    redirect_to edit_page_path(@page)
+    @slide = Slide.find(params[:id])
+    @page = @slide.presentation.page
+    @slide.destroy
+    
+    redirect_to edit_page_path(@page.slug)
   end
   
   def populate_parents

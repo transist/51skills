@@ -1,5 +1,6 @@
 class Presentation < ActiveRecord::Base
   attr_accessible :page_id, :height, :width
+  belongs_to :page
   has_many :slides
   
   def cropping_width

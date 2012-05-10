@@ -7,6 +7,7 @@ Tedx::Application.routes.draw do
       resources :slides
     end
   end
+  resources :slides
 
   root :to => "home#index"
   resources :people, :only => [ :show, :edit, :update ]

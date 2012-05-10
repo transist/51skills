@@ -6,7 +6,7 @@
   <h1>Edit <%= @page.title(I18n.locale)%> Slideshow</h1>
 </div>
 
-<%= render :partial => '/slides/form', :locals => {:objects => [@page, @page.slideshow, Slide.new]} %>
+<%= render :partial => '/slides/form', :locals => {:objects => [@page, @page.slideshow, Slide.new], :page => @page} %>
 
 <%= link_to 'Show', @page %> |
 <%= link_to 'Back', pages_path %>
