@@ -12,5 +12,20 @@ class Slide < ActiveRecord::Base
                             :bucket => YAML::load(File.open(Rails.root.join("config/s3.yml")))[Rails.env][:bucket], 
                             :s3_credentials => YAML::load(File.open(Rails.root.join("config/s3.yml"))), 
                             :hash_secret => "longSecretS asdas das tring"
+  def height
+    if self.presentation
+      self.presentation.cropping_height
+    else
+      500
+    end
+  end
+  
+  def width
+    if self.presentation
+      self.presentation.cropping_width
+    else
+      730
+    end
+  end
                             
 end

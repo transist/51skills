@@ -3,7 +3,7 @@ class Presentation < ActiveRecord::Base
   has_many :slides
   
   def cropping_width
-    self.width || 700
+    self.width || 730
   end
   
   def cropping_height
