@@ -4,11 +4,7 @@ class Slide < ActiveRecord::Base
   belongs_to :presentation
   has_attached_file :image, :url => "/system/:hash.:extension", :storage => :s3, 
                             :hash_data => ":class/:attachment/:id/:style",
-                            :styles => lambda { |slide| presentation = slide.instance
-                                                        dimensions =  [presentation.cropping_width, 
-                                                        presentation.cropping_height].join("x") + "#" 
-                                                        { :original => dimensions, :thumb => '250x175#' 
-                                                      }},
+                            :styles => { :original => '940x680#', :full => '730x500#', :pin => '250x250#', :thumb => '100x100#'},
                             :bucket => YAML::load(File.open(Rails.root.join("config/s3.yml")))[Rails.env][:bucket], 
                             :s3_credentials => YAML::load(File.open(Rails.root.join("config/s3.yml"))), 
                             :hash_secret => "longSecretS asdas das tring"
