@@ -19,3 +19,15 @@
 //= require mercury/support/history
 //= require mercury/mercury
 jQuery(top).trigger('initialize:frame');
+var photo_count = 0;
+
+$('a.upload_photo').live('click', function() {
+  photo_count = photo_count + 1;
+  var html = '<div class="clearfix upload"><label for="slide_'+photo_count+'"><img src="/assets/image_new.gif"/></label><div class="input"><input class="fileInput" name="slide[]" type="file"><a href="#" class="delete_upload">X</a<</div></div>';
+  
+  $("form#new_slide .actions").before(html);
+})
+
+$('a.delete_upload').live('click', function() {
+  $(this).parent().parent().remove();
+})

@@ -6,14 +6,19 @@ class SlidesController < ApplicationController
   end
   
   def create
+    logger.info(params[:slide])
+    params[:slide].each do |slide|
+      Slide.create(:image => slide, :presentation_id => @page.slideshow.id, :height => @page.slideshow.height, :width => @page.slideshow.width)
+    end
     
+    redirect_to edit_page_path(@page)
   end
   
   def destroy
-    
+    redirect_to edit_page_path(@page)
   end
   
   def populate_parents
-    @page = Page.find(params[:page_id])
+    @page = Page.find_by_slug(params[:page_id])
   end
 end

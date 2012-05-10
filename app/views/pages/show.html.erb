@@ -1,6 +1,6 @@
 <% if @page.slideshow %>
   <% if @page.slideshow && @page.slideshow.slides.size > 0 %>
-    <%= render :partial => 'slideshow', :locals => {:html_id => 'slides_container', :slideshow => @page.slideshow, :options => "{fx: 'fade', speedIn: 500, speedOut: 1000, sync: 800, delay: -5000}"} %>
+    <%= render :partial => 'slideshow', :locals => {:html_id => 'slides_container', :slideshow => @page.slideshow, :options => "{fx: 'fade', speedIn: 500, speedOut: 1000, sync: 800, delay: -5000}", :row_class => '', :grid_class => ''} %>
   <% end %>
 <% end %>
 
