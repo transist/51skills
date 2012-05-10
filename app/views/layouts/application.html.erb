@@ -36,7 +36,7 @@
           <li><%= link_to I18n.t('logout'), '/logout' %></li>
           <% end %>
           <% if current_user && current_user.admin? && @page && !@page.new_record? %>
-          <li><%= link_to "Edit", "/editor" + (request.path == '/' ? '/pages/root' : request.path), id: "edit_link", data: {save_url: (request.path == '/' ? '/pages/root' : mercury_update_page_path(@page))} %></li>
+          <li><%= link_to I18n.t('edit'), "/editor" + (request.path == '/' ? '/pages/root' : request.path), id: "edit_link", data: {save_url: (request.path == '/' ? '/pages/root' : mercury_update_page_path(@page))} %></li>
           <% end %>
         </ul>
       </div>
