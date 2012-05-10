@@ -1,0 +1,3 @@
+class InstagramApi
+  
+end
