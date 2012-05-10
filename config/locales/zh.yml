@@ -1,9 +1,9 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  i_want_to_join: "I Want to Join"
-  edit_profile: 'Edit Profile'
-  edit_pages: "Edit Pages"
-  login_with_weibo: "Login with Weibo" 
-  logout: "Logout"
+zh:
+  i_want_to_join: "我要参加"
+  edit_profile: '收改帐号'
+  edit_pages: "收改网页"
+  login_with_weibo: "用微薄来登入" 
+  logout: "推出"

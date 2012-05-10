@@ -19,11 +19,11 @@
           <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), "/"+p.slug %></li>
           <% end %>
           <% end %>
-          <li><%= link_to 'I Want to Join', '/i-want-to-join' %></li>
+          <li><%= link_to I18n.t('i_want_to_join'), '/i-want-to-join' %></li>
           <% if current_user%>
-          <li><%= link_to 'Edit Profile', edit_person_path(current_user) %></li>
+          <li><%= link_to I18n.t('edit_profile'), edit_person_path(current_user) %></li>
           
-          <li><%= link_to 'Edit Pages', '/pages' %></li>
+          <li><%= link_to I18n.t('edit_pages'), '/pages' %></li>
           <% end %>
           <% if I18n.locale == :en %>
           <li><%= link_to '中文', '/zh' %></li>
@@ -31,9 +31,9 @@
           <li><%= link_to 'English', '/en' %></li>
           <% end %>
           <% if session[:user_id] == nil%>
-          <li><%= link_to 'Login with Weibo', '/login' %></li>
+          <li><%= link_to I18n.t('login_with_weibo'), '/login' %></li>
           <% else %>
-          <li><%= link_to 'Logout', '/logout' %></li>
+          <li><%= link_to I18n.t('logout'), '/logout' %></li>
           <% end %>
           <% if current_user && current_user.admin? && @page && !@page.new_record? %>
           <li><%= link_to "Edit", "/editor" + (request.path == '/' ? '/pages/root' : request.path), id: "edit_link", data: {save_url: (request.path == '/' ? '/pages/root' : mercury_update_page_path(@page))} %></li>
