@@ -1,5 +1,5 @@
 class SlidesController < ApplicationController
-  before_filter :populate_parents
+  before_filter :populate_parents, :except => :destroy
   
   def index
     
