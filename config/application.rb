@@ -58,3 +58,6 @@ module Tedx
   end
 end
 require Rails.root + 'lib/meta_translate'
+FLICKR = Flickr.new('config/flickr.yml')
+#http://www.flickr.com/services/api/
+#http://www.flickr.com/services/api/flickr.photos.search.html
