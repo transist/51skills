@@ -4,6 +4,7 @@ class Page < ActiveRecord::Base
   before_save :create_slug
   acts_as_nested_set
   has_one :presentation
+  scope :front, where(:root => true)
 
   
   def create_slug

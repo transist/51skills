@@ -1,3 +1,10 @@
+if (typeof console == "undefined") {
+    window.console = {
+        log: function () {}
+    };
+}
+
+
 /*!
  * Mercury Editor is a CoffeeScript and jQuery based WYSIWYG editor.  Documentation and other useful information can be
  * found at https://github.com/jejacks0n/mercury

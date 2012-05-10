@@ -1,7 +1,7 @@
 <div class='row <%= row_class || "" %>'>
   <div id='slides' class='<%= grid_class || ""  %> column'>
   	<div id="<%= html_id %>" class='<%= grid_class || "" %>'>
-  	  <% slides.each do |slide| %>
+  	  <% slideshow.slides.each do |slide| %>
   		  <a class='slide' id='slide_<%= slide.id %>'><%= image_tag slide.image.url %></a>
   		<% end %>
   	</div>
