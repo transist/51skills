@@ -3,6 +3,9 @@ Tedx::Application.routes.draw do
   get 'pages' => "pages#index"
   resources :pages do
     member { post :mercury_update }
+    resources :presentations do
+      resources :slides
+    end
   end
 
   root :to => "home#index"

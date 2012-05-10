@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509080122) do
+ActiveRecord::Schema.define(:version => 20120510010233) do
 
   create_table "mercury_images", :force => true do |t|
     t.string   "image_file_name"
@@ -55,6 +55,23 @@ ActiveRecord::Schema.define(:version => 20120509080122) do
     t.string   "email"
     t.string   "mobile"
     t.string   "name"
+  end
+
+  create_table "presentations", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "slides", :force => true do |t|
+    t.integer  "presentation_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end

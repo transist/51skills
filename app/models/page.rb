@@ -3,6 +3,7 @@ class Page < ActiveRecord::Base
   translation_for :content, :title
   before_save :create_slug
   acts_as_nested_set
+  has_one :presentation
 
   
   def create_slug
@@ -11,5 +12,13 @@ class Page < ActiveRecord::Base
   
   def to_param
     self.slug
+  end
+  
+  def slideshow
+    if self.presentation
+      self.presentation
+    else
+      Presentation.create(:page_id => self.id)
+    end
   end
 end
