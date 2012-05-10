@@ -12,7 +12,7 @@
     <div class='row'>
       <% if @page && @page.sidebar %>
       <div class='span3 column'>
-        <%= link_to image_tag('logo.jpg', :width => 220), '/' %>
+        <%= link_to image_tag('logo.jpg', :width => 220, :height => 58), '/' %>
         <ul class='nav nav-pills nav-stacked sidenav'>
           <% Page.all(:order => 'id asc').each do |p| %>
           <% if p.slug != "root" %>
