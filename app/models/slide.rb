@@ -13,7 +13,7 @@ class Slide < ActiveRecord::Base
                             :s3_credentials => YAML::load(File.open(Rails.root.join("config/s3.yml"))), 
                             :hash_secret => "longSecretS asdas das tring"
   def height
-    if self.presentation
+    if self.height
       self.height
     else
       500
@@ -21,7 +21,7 @@ class Slide < ActiveRecord::Base
   end
   
   def width
-    if self.presentation
+    if self.width
       self.width
     else
       730
