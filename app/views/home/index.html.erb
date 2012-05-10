@@ -2,7 +2,7 @@
   <div id='slides' class='span12 column'>
   	<div id="slides_container" class='span12'>
   	  <% @page.slideshow.slides.each do |slide| %>
-  		  <a class='slide' id='slide_<%= slide.id %>'><%= link_to image_tag slide.image.url(:original), '/tedxshanghai-2012' %></a>
+  		  <a class='slide' id='slide_<%= slide.id %>'><%= link_to image_tag(slide.image.url(:original)), '/tedxshanghai-2012' %></a>
   		<% end %>
   	</div>
   </div>
