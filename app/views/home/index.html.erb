@@ -1,11 +1,9 @@
 <div class='row front-slides'>
   <div id='slides' class='span12 column'>
   	<div id="slides_container" class='span12'>
-  		<a class='slide' id='slide_1'><%= image_tag '01-copy.jpg', :class => ''%></a>
-  		<a class='slide' id='slide_2'><%= image_tag '02-copy.jpg', :class => ''%></a>
-  		<a class='slide' id='slide_3'><%= image_tag '03-copy.jpg', :class => ''%></a>
-  		<a class='slide' id='slide_4'><%= image_tag '04-copy.jpg', :class => ''%></a>
-  		<a class='slide' id='slide_5'><%= image_tag '05-copy.jpg', :class => ''%></a>
+  	  <% @page.slideshow.slides.each do |slide| %>
+  		  <a class='slide' id='slide_<%= slide.id %>'><%= image_tag slide.image.url(:original) %></a>
+  		<% end %>
   	</div>
   </div>
 </div>
