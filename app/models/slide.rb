@@ -14,7 +14,7 @@ class Slide < ActiveRecord::Base
                             :hash_secret => "longSecretS asdas das tring"
   def height
     if self.presentation
-      self.presentation.cropping_height
+      self.height
     else
       500
     end
@@ -22,7 +22,7 @@ class Slide < ActiveRecord::Base
   
   def width
     if self.presentation
-      self.presentation.cropping_width
+      self.width
     else
       730
     end
