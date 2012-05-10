@@ -1,14 +1,14 @@
-<div class='row' style='height:500px;'>
-  <div class='span9 column'>
-    <% if @page.slideshow %>
-      <% if @page.slideshow && @page.slideshow.slides.size > 0 %>
+<% if @page.slideshow %>
+  <% if @page.slideshow && @page.slideshow.slides.size > 0 %>
+    <div class='row' style='height:500px;'>
+      <div class='span9 column'>
         <%= render :partial => 'slideshow', :locals => {:html_id => 'slides_container', :slideshow => @page.slideshow, :options => "{fx: 'fade', speedIn: 500, speedOut: 1000, sync: 800, delay: -5000}", :row_class => '', :grid_class => ''} %>
-      <% end %>
-      <br />
-      <hr style='clear:left;'/>
-    <% end %>
+        <br />
+        <hr style='clear:left;'/>
+    </div>
   </div>
-</div>
+  <% end %>
+<% end %>
 <div class='row clearfix'>
   <div class='span9 column'>
     <div id="page_content_<%= I18n.locale %>" class="mercury-region" data-type="editable">
