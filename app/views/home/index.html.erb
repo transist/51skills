@@ -21,7 +21,6 @@
       <% end %>`
       <% if current_user%>
       <li><%= link_to I18n.t('edit_profile'), edit_person_path(current_user) %></li>
-
       <li><%= link_to I18n.t('edit_pages'), '/pages' %></li>
       <% end %>
       <% if I18n.locale == :en %>
