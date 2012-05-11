@@ -20,7 +20,7 @@ class PagesController < ApplicationController
   def index
     @pages = Page.nested_set.all(:order => 'lft asc')
     @page = create_standard_page
-
+    logger.info("::::::::::::::#{request.path}")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pages }
