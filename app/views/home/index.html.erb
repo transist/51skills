@@ -13,7 +13,7 @@
   </div>
   <div class='span7'>
     <ul class='nav nav-pills sidenav front-nav'>
-      <% Page.all(:order => 'id asc').each do |p| %>
+      <% Page.nested_set.all(:order => 'lft asc').each do |p| %>
       <% if p.slug != "root" %>
       <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), (p.slug == "root" ? '/' : p.slug) %></li>
       <% end %>
