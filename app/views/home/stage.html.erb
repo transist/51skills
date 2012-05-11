@@ -1,0 +1,19 @@
+<div class='row front-slides'>
+  <div id='slides' class='span12 column'>
+  	<div id="slides_container" class='span12'>
+  	  <% @page.slideshow.slides.each do |slide| %>
+  		  <a class='slide' id='slide_<%= slide.id %>' href='/tedxshanghai-2012'><%= image_tag(slide.image.url(:original)) %></a>
+  		<% end %>
+  	</div>
+  </div>
+</div>
+
+
+
+<%= content_for :javascript do %>
+	<script>
+	  $(function(){
+	    $('#slides_container').cycle({fx: 'fade', speedIn: 400, speedOut: 400, delay: -5000, slideExpr: 'a'});
+	  });
+	</script>
+<% end %>
