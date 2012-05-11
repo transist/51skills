@@ -21,4 +21,4 @@
     background-image: url("/assets/glyphicons-halflings.png");
   }
 </style>
-<%= sortable_tree @pages, :type => :sortable, :title => (I18n.locale == 'en' ? :title_en : :title_zh), :new_url => new_page_path, :path => 'pages/sortable/base', :max_levels => 5 %> 
+<%= sortable_tree @pages, :type => :sortable, :title => (I18n.locale == 'en' ? :title_en : :title_zh), :new_url => new_page_path, :path => 'pages/sortable/base', :max_levels => 3 %> 
