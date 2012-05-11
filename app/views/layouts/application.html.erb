@@ -19,9 +19,10 @@
           <% if p.slug != "root" %>
             <li>
               <%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), "/"+p.slug %>
-              <% if p.children.size != 0 && p.slug == @page.slug %>
                 <% p.children.each do |c| %>
+                <% if p.children.size != 0 && (p.slug == @page.slug || c.slug == @page.slug) %>
                 <li class='indent'><%= link_to (I18n.locale == 'en' ? c.title(I18n.locale).downcase : c.title(I18n.locale)), "/"+c.slug %></li>
+                <% end %>
                 <% end %>
               <% end %>
             </li>
