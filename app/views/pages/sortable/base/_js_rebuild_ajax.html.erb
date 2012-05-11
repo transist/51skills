@@ -8,7 +8,7 @@
           data:       { id: item_id, parent_id: parent_id, prev_id: prev_id, next_id: next_id, authenticity_token: AUTH_TOKEN },
 
           beforeSend: function(xhr){ $('.nested_set i.icon-move').hide() },
-          success:    function(data, status, xhr){ window.reload(true) },
+          success:    function(data, status, xhr){ window.reload() },
           error:      function(xhr, status, error){ alert(error) }
         });
       }
