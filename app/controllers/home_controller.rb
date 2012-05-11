@@ -7,6 +7,10 @@ class HomeController < ApplicationController
     logger.info(@page.sidebar)
   end
   
+  def stage
+    @page = Page.find_by_slug(params[:slug])
+  end
+  
   def zh
     I18n.locale = 'zh'
     session[:locale] = 'zh'
