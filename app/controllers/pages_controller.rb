@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  include TheSortableTreeController::Rebuild
   
   def mercury_update
     logger.info(params[:id])
@@ -17,7 +18,7 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
+    @pages = Page.nested_set.all(:order => 'lft asc')
     @page = create_standard_page
 
     respond_to do |format|

@@ -1,0 +1,3 @@
+= link_to 'Editor', editor_path(node.slug), :class => 'btn'
+= link_to 'Edit', edit_page_path(node.slug), :class => 'btn'
+= link_to 'Delete', node, :class => 'btn' , confirm: 'Are you sure?', method: :delete

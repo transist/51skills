@@ -1,10 +1,12 @@
 class Page < ActiveRecord::Base
+  include TheSortableTree::Scopes
   attr_accessible :content_en, :content_zh, :slug, :title_en, :title_zh, :root, :parent_id
   translation_for :content, :title
   before_save :create_slug
   acts_as_nested_set
   has_one :presentation
   scope :front, where(:root => true)
+  
 
   
   def create_slug

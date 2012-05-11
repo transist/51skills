@@ -6,6 +6,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+	gem 'jquery-ui-rails'
 end
 
 gem 'jquery-rails'
@@ -19,6 +20,7 @@ gem 'paperclip', :git => 'git://github.com/simsicon/paperclip.git'
 gem 'aws-s3'
 gem 'aws-sdk'
 gem 'haml'
+gem 'the_sortable_tree'
 gem 'hashie'
 gem 'bootstrap-sass', '~> 2.0.2'
 gem 'mercury-rails', git: 'git://github.com/ballantyne/mercury.git'

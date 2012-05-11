@@ -1,0 +1,7 @@
+- title     = node.title(I18n.locale)
+- handle    = content_tag :i, '', :class => "icon-move"
+- link      = link_to(title, node.slug, :title => title)
+- controls  = render(:partial  =>  "#{opts[:path]}/controls", :locals  =>  { :node => node, :opts => opts })
+- controls  = content_tag(:span, controls, :class => 'btn-group pull-right')
+- element   = handle + link + controls
+%div{ :class => "link#{' root' if root}" }= element

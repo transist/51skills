@@ -1,17 +1,24 @@
 
 <%= link_to 'New Page', new_page_path, :class => 'btn btn-small' %>
 <hr/>
-<table class='table table-bordered'>
-  <th colspan=8>Title</th>
-  <th colspan=2>Actions</th>
-<% @pages.each do |page| %>
-  <tr>
-    <td colspan='8'><%= link_to page.title(I18n.locale), page %><%= (page.slug == 'root' ? ' (front page)' : '')%></td>
-    <td><%= link_to 'Editor', editor_path(page.slug), :class => 'btn btn-mini'  %> 
-        <%= link_to 'Edit', edit_page_path(page.slug), :class => 'btn btn-mini'  %> 
-        
-        <%= link_to 'Delete', page, :class => 'btn btn-mini' , confirm: 'Are you sure?', method: :delete %> 
-        </td>
-  </tr>
-<% end %>
-</table>
+
+<%= javascript_include_tag 'jquery.ui.nestedSortable' %>
+<%= javascript_include_tag 'sortable/base' %>
+<%= stylesheet_link_tag    'sortable',      :media => :all %>
+<style>
+  .sortable .nested_set a {margin-right: 0; margin-left: 0; font-weight:100; width: 70px;display:inline;}
+  .icon-move {margin-right:10px; margin-top:2px}
+  
+  .sortable .nested_set .root a {
+    font-weight: 100;
+  }
+  
+  .handle {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    background-image: url("/assets/glyphicons-halflings.png");
+  }
+</style>
+<%= sortable_tree @pages, :type => :sortable, :title => (I18n.locale == 'en' ? :title_en : :title_zh), :new_url => new_page_path, :path => 'pages/sortable/base' %> 

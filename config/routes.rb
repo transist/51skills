@@ -6,6 +6,10 @@ Tedx::Application.routes.draw do
     resources :presentations do
       resources :slides
     end
+    collection do
+      get :manage
+      post :rebuild
+    end
   end
   resources :slides
 

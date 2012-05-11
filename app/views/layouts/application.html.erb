@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application", 'cycle' %>
   <%= csrf_meta_tags %>
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 </head>
 <body>
   <div class='container'>
@@ -14,7 +15,7 @@
       <div class='span3 column'>
         <%= link_to image_tag('logo.jpg', :width => 220, :height => 58), '/' %>
         <ul class='nav nav-pills nav-stacked sidenav'>
-          <% Page.all(:order => 'id asc').each do |p| %>
+          <% Page.all(:order => 'lft asc').each do |p| %>
           <% if p.slug != "root" %>
           <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), "/"+p.slug %></li>
           <% end %>
@@ -53,6 +54,7 @@
       <% end %>
     </div>
   </div>
+
 <%= yield :javascript %>
 </body>
 </html>
