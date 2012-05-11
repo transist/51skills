@@ -45,7 +45,7 @@
 <%= content_for :javascript do %>
 	<script>
 	  $(function(){ 
-	    $('#slides_container').cycle({fx: 'fade', speedIn: 400, speedOut: 400, sync: 200, delay: -5000});
+	    $('#slides_container').cycle({fx: 'fade', speedIn: 400, speedOut: 400, sync: 1000, delay: -5000, slideExpr: 'a'});
 	  });
 	</script>
 <% end %>
