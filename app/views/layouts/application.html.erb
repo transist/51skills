@@ -15,9 +15,16 @@
       <div class='span3 column'>
         <%= link_to image_tag('logo.jpg', :width => 220, :height => 58), '/' %>
         <ul class='nav nav-pills nav-stacked sidenav'>
-          <% Page.all(:order => 'lft asc').each do |p| %>
+          <% Page.all(:conditions => {:depth => 0}, :order => 'lft asc').each do |p| %>
           <% if p.slug != "root" %>
-          <li><%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), "/"+p.slug %></li>
+            <li>
+              <%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), "/"+p.slug %>
+              <% if p.children.size != 0 && p.slug == @page.slug %>
+                <% p.children.each do |c| %>
+                <li class='indent'><%= link_to (I18n.locale == 'en' ? c.title(I18n.locale).downcase : c.title(I18n.locale)), "/"+c.slug %></li>
+                <% end %>
+              <% end %>
+            </li>
           <% end %>
           <% end %>
           <% if current_user%>
