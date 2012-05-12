@@ -11,6 +11,7 @@ class Photo < ActiveRecord::Base
   resourcify
   
   translation_for :comment
+  has_and_belongs_to_many :panes
   
   def self.search_flickr(q='tedxshanghai')
     FlickrApi.search(:text => q).each do |photo|

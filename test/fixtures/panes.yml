@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  collage_id: 1
+  glueable_id: 1
+  glueable_type: MyString
+
+two:
+  collage_id: 1
+  glueable_id: 1
+  glueable_type: MyString

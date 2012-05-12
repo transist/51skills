@@ -7,6 +7,7 @@ class Page < ActiveRecord::Base
   has_one :presentation
   scope :front, where(:root => true)
   resourcify
+  
 
   
   def create_slug

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120512055601) do
+ActiveRecord::Schema.define(:version => 20120512080334) do
 
   create_table "collages", :force => true do |t|
     t.integer  "page_id"
@@ -49,6 +49,22 @@ ActiveRecord::Schema.define(:version => 20120512055601) do
     t.boolean  "include_nav",                :default => true
     t.boolean  "sidebar",                    :default => true
     t.boolean  "header",                     :default => true
+  end
+
+  create_table "panes", :force => true do |t|
+    t.integer  "collage_id"
+    t.integer  "glueable_id"
+    t.string   "glueable_type"
+    t.integer  "showable_id"
+    t.string   "showable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "box_size"
+  end
+
+  create_table "panes_photos", :force => true do |t|
+    t.integer "pane_id"
+    t.integer "photo_id"
   end
 
   create_table "people", :force => true do |t|
