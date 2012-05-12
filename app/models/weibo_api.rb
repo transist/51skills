@@ -5,6 +5,6 @@ class WeiboApi
   end
   
   def self.search(options)
-    client.status_search.(options)
+    client.status_search(options)
   end
 end

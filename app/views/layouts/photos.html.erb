@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= (@page && @page.title(I18n.locale) ? @page.title(I18n.locale) + " | TedXShanghai" : "TedXShanghai")%></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application", 'cycle' %>
+  <%= csrf_meta_tags %>
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+</head>
+<body>
+  <div class='container-fluid'>
+
+    <div class='row'>
+      <% if @page && @page.sidebar %>
+      <div class='span3 column'>
+        <%= link_to image_tag('logo.jpg', :width => 220, :height => 58), '/' %>
+        <ul class='nav nav-pills nav-stacked sidenav'>
+          <% Page.all(:conditions => {:depth => 1}, :order => 'lft asc').each do |p| %>
+          <% if p.slug != "root" %>
+            <li>
+              <%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), "/"+p.slug, :class => "#{(p.slug == @page.slug ? "current" : '')}" %>              
+              <% p.children.each do |c| %>
+                <% if (request.path == '/pages') || p.children.size != 0 && (p.slug == @page.slug || c.slug == @page.slug || c.siblings.collect {|s| s.id}.include?(@page.id))%>
+                  <li class='indent'><%= link_to (I18n.locale == 'en' ? c.title(I18n.locale).downcase : c.title(I18n.locale)), "/"+c.slug, :class => "#{(c.slug == @page.slug ? "current" : '')}" %></li>
+                <% end %>
+              <% end %>
+            </li>
+          <% end %>
+          <% end %>
+          <% if current_user%>
+          <li><%= link_to I18n.t('edit_profile'), edit_person_path(current_user) %></li>
+          <li><%= link_to I18n.t('edit_pages'), '/pages' %></li>
+          <% end %>
+          <% if I18n.locale == :en %>
+          <li><%= link_to '中文', '/zh' %></li>
+          <% else %>
+          <li><%= link_to 'English', '/en' %></li>
+          <% end %>
+          <% if session[:user_id] == nil%>
+          <li><%= link_to I18n.t('login_with_weibo'), '/login' %></li>
+          <% else %>
+          <li><%= link_to I18n.t('logout'), '/logout' %></li>
+          <% end %>
+          <% if current_user && current_user.admin? && @page && !@page.new_record? %>
+          <li><%= link_to I18n.t('edit'), "/editor" + (request.path == '/' ? '/pages/root' : request.path), id: "edit_link", data: {save_url: (request.path == '/' ? '/pages/root' : mercury_update_page_path(@page))} %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class='span9 column main'>
+        <% if notice %>
+        <div class="alert alert-success">
+          <button class="close" data-dismiss="alert">×</button>
+          <%= notice %>
+        </div>
+        <% end %>
+        <%= yield %>
+      </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
+    </div>
+  </div>
+
+<%= yield :javascript %>
+</body>
+</html>
