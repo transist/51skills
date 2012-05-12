@@ -6,7 +6,7 @@ class Page < ActiveRecord::Base
   acts_as_nested_set
   has_one :presentation
   scope :front, where(:root => true)
-  
+  resourcify
 
   
   def create_slug

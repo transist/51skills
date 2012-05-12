@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+	rolify
   attr_accessible :profile_attributes, :secret, :token, :uid, :username, :email, :mobile, :name
   
   def self.create_with_omniauth(auth)

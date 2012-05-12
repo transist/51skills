@@ -26,6 +26,8 @@ gem 'bootstrap-sass', '~> 2.0.2'
 gem 'mercury-rails', git: 'git://github.com/ballantyne/mercury.git'
 gem 'capistrano'
 gem 'flickr_fu'
+gem 'cancan'
+gem 'rolify'
 
 group :development do
   gem 'sqlite3'
