@@ -24,7 +24,7 @@ class Person < ActiveRecord::Base
   end
   
   def admin?
-    true
+    self.has_role? :admin
   end
   
   def client

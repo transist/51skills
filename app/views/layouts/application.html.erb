@@ -36,7 +36,7 @@
           <% else %>
           <li><%= link_to 'English', '/en' %></li>
           <% end %>
-          <% if session[:user_id] == nil%>
+          <% if session[:user_id] == nil %>
           <li><%= link_to I18n.t('login_with_weibo'), '/login' %></li>
           <% else %>
           <li><%= link_to I18n.t('logout'), '/logout' %></li>
