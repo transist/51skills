@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120512080334) do
+ActiveRecord::Schema.define(:version => 20120512080914) do
 
   create_table "collages", :force => true do |t|
     t.integer  "page_id"
@@ -60,6 +60,10 @@ ActiveRecord::Schema.define(:version => 20120512080334) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "box_size"
+    t.integer  "parent_id"
+    t.integer  "depth"
+    t.integer  "lft"
+    t.integer  "rgt"
   end
 
   create_table "panes_photos", :force => true do |t|
