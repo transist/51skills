@@ -1,4 +1,6 @@
 Tedx::Application.routes.draw do
+  get "photos" => "photos#index"
+
   Mercury::Engine.routes
   get 'pages' => "pages#index"
   resources :pages do

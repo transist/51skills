@@ -4,6 +4,8 @@ class Photo < ActiveRecord::Base
                             :hash_data => ":class/:attachment/:id/:style/:created_at",
                             :styles => { :original => '940x680#', :full => '730x500#', :pin => '300x300#', :thumb => '100x100#', :tiny => '50x50#'},
                             :bucket => YAML::load(File.open(Rails.root.join("config/s3.yml")))[Rails.env][:bucket], 
+                            :s3_host_alias => YAML::load(File.open(Rails.root.join("config/s3.yml")))[Rails.env][:s3_host_alias], 
+                            :url => ':s3_alias_url',
                             :s3_credentials => YAML::load(File.open(Rails.root.join("config/s3.yml"))), 
                             :hash_secret => "longSecretS asdas das tring"
   resourcify
