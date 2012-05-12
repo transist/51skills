@@ -31,7 +31,7 @@
       <% if session[:user_id] == nil%>
       <li class='clearfix'><%= link_to I18n.t('login_with_weibo'), '/login' %></li>
       <% else %>
-      <li><%= link_to I18n.t('logout'), '/logout' %></li>
+      <li class='clearfix'><%= link_to I18n.t('logout'), '/logout' %></li>
       <% end %>
       <% if current_user && current_user.admin? && @page && !@page.new_record? %>
       <li><%= link_to I18n.t('edit_pages'), '/pages' %></li>
