@@ -28,6 +28,7 @@ gem 'capistrano'
 gem 'flickr_fu'
 gem 'cancan'
 gem 'rolify'
+gem 'instagram'
 
 group :development do
   gem 'sqlite3'
