@@ -1,5 +1,10 @@
 class PhotosController < ApplicationController
   def index
-    @page = create_standard_page
+    @page = Page.find_by_slug('photos')
+    puts @page.inspect
+  end
+  
+  def destroy
+    
   end
 end
