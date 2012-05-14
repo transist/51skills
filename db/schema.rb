@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120512080914) do
+ActiveRecord::Schema.define(:version => 20120514065922) do
 
   create_table "collages", :force => true do |t|
     t.integer  "page_id"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20120512080914) do
     t.text     "comment_en"
     t.text     "comment_zh"
     t.string   "slug"
+    t.string   "download_url"
   end
 
   create_table "presentations", :force => true do |t|
