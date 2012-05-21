@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     # render '/pages/show'
     @page.sidebar = false
     logger.info(@page.sidebar)
+    render 'pages/show'
   end
   
   def stage
