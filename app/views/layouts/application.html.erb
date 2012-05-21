@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= (@page && @page.title(I18n.locale) ? @page.title(I18n.locale) + " | 51 skills" : "51 skills")%></title>
+  <title><%= (@page && @page.title(I18n.locale) ? @page.title(I18n.locale) + " | 51 skillz" : "51 skillz")%></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application", 'cycle' %>
   <%= csrf_meta_tags %>
@@ -13,7 +13,9 @@
     <div class='row'>
       <% if @page && @page.sidebar %>
       <div class='span3 column'>
-        <h1>51skills</h1>
+        <div class='page-header'>
+          <h1 class='light'><%= link_to '51skills', '/' %></h1>
+        </div>
         <ul class='nav nav-pills nav-stacked sidenav'>
           <% Page.all(:conditions => {:depth => 1}, :order => 'lft asc').each do |p| %>
           <% if p.slug != "root" %>
