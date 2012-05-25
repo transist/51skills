@@ -44,28 +44,23 @@ ActiveRecord::Schema.define(:version => 20120525020732) do
   create_table "pages", :force => true do |t|
     t.string   "title_en"
     t.string   "title_zh"
-    t.text     "content_en",  :limit => 255
-    t.text     "content_zh",  :limit => 255
+    t.text     "content_en"
+    t.text     "content_zh"
     t.string   "slug"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
-    t.boolean  "deleteable",                 :default => true
-    t.boolean  "root",                       :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "deleteable",  :default => true
+    t.boolean  "root",        :default => false
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
-    t.integer  "depth",                      :default => 1
-    t.boolean  "published",                  :default => false
-    t.boolean  "nav",                        :default => false
-    t.boolean  "include_nav",                :default => true
-    t.boolean  "sidebar",                    :default => true
-    t.boolean  "header",                     :default => true
-    t.boolean  "hidden",                     :default => true
-  end
-
-  create_table "panes_photos", :force => true do |t|
-    t.integer "pane_id"
-    t.integer "photo_id"
+    t.integer  "depth",       :default => 1
+    t.boolean  "published",   :default => false
+    t.boolean  "nav",         :default => false
+    t.boolean  "include_nav", :default => true
+    t.boolean  "sidebar",     :default => true
+    t.boolean  "header",      :default => true
+    t.boolean  "hidden",      :default => true
   end
 
   create_table "people", :force => true do |t|
@@ -88,6 +83,18 @@ ActiveRecord::Schema.define(:version => 20120525020732) do
   end
 
   add_index "people_roles", ["person_id", "role_id"], :name => "index_people_roles_on_person_id_and_role_id"
+
+  create_table "photos", :force => true do |t|
+    t.string   "image_content_type"
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.text     "comment_en"
+    t.text     "comment_zh"
+    t.string   "slug"
+    t.string   "download_url"
+  end
 
   create_table "presentations", :force => true do |t|
     t.integer  "page_id"
