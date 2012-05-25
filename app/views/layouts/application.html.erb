@@ -18,7 +18,7 @@
         </div>
         <ul class='nav nav-pills nav-stacked sidenav'>
           <% Page.all(:conditions => {:depth => 1}, :order => 'lft asc').each do |p| %>
-          <% if p.slug != "root" %>
+          <% if p.slug != "root" && p.hidden == false %>
             <li>
               <%= link_to (I18n.locale == 'en' ? p.title(I18n.locale).downcase : p.title(I18n.locale)), "/"+p.slug, :class => "#{(p.slug == @page.slug ? "current" : '')}" %>              
               <% p.children.each do |c| %>

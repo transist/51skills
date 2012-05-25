@@ -28,6 +28,7 @@ gem 'capistrano'
 gem 'flickr_fu'
 gem 'cancan'
 gem 'rolify'
+gem 'acts-as-taggable-on', '~> 2.2.2'
 
 group :development do
   gem 'sqlite3'

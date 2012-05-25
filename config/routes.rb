@@ -1,4 +1,16 @@
 Tedx::Application.routes.draw do
+  get "courses/index"
+
+  get "courses/new"
+
+  get "courses/edit"
+
+  get "courses/submit"
+  
+  resources :courses do 
+    member { get :submit }
+  end
+
   get "photos" => "photos#index"
   resources :photos
 
@@ -6,6 +18,7 @@ Tedx::Application.routes.draw do
   get 'pages' => "pages#index"
   resources :pages do
     member { post :mercury_update }
+    member { post :toggle_display }
     resources :presentations do
       resources :slides
     end

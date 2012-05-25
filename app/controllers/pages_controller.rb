@@ -15,6 +15,27 @@ class PagesController < ApplicationController
     render text: ""
   end
   
+  def toggle_display
+    @page = Page.find(params[:id])
+    
+    if @page.hidden
+      @page.hidden = false
+    else
+      @page.hidden = true
+    end
+    
+    
+    respond_to do |format|
+      if @page.save
+        format.html { redirect_to pages_path, notice: 'Page was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @page.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   # GET /pages
   # GET /pages.json
   def index
@@ -67,7 +88,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to pages_path, notice: 'Page was successfully created.' }
         format.json { render json: @page, status: :created, location: @page }
       else
         format.html { render action: "new" }

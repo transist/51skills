@@ -11,14 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514065922) do
+ActiveRecord::Schema.define(:version => 20120525020732) do
 
-  create_table "collages", :force => true do |t|
-    t.integer  "page_id"
-    t.string   "name"
-    t.text     "config"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "courses", :force => true do |t|
+    t.string   "name_en"
+    t.string   "name_zh"
+    t.string   "description_en"
+    t.string   "description_zh"
+    t.string   "summary_en"
+    t.string   "summary_zh"
+    t.string   "weibo"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "github"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_content_type"
+    t.string   "image_file_name"
+    t.string   "image_file_size"
   end
 
   create_table "mercury_images", :force => true do |t|
@@ -43,27 +54,13 @@ ActiveRecord::Schema.define(:version => 20120514065922) do
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
-    t.integer  "depth"
+    t.integer  "depth",                      :default => 1
     t.boolean  "published",                  :default => false
     t.boolean  "nav",                        :default => false
     t.boolean  "include_nav",                :default => true
     t.boolean  "sidebar",                    :default => true
     t.boolean  "header",                     :default => true
-  end
-
-  create_table "panes", :force => true do |t|
-    t.integer  "collage_id"
-    t.integer  "glueable_id"
-    t.string   "glueable_type"
-    t.integer  "showable_id"
-    t.string   "showable_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "box_size"
-    t.integer  "parent_id"
-    t.integer  "depth"
-    t.integer  "lft"
-    t.integer  "rgt"
+    t.boolean  "hidden",                     :default => true
   end
 
   create_table "panes_photos", :force => true do |t|
@@ -92,18 +89,6 @@ ActiveRecord::Schema.define(:version => 20120514065922) do
 
   add_index "people_roles", ["person_id", "role_id"], :name => "index_people_roles_on_person_id_and_role_id"
 
-  create_table "photos", :force => true do |t|
-    t.string   "image_content_type"
-    t.string   "image_file_name"
-    t.integer  "image_file_size"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.text     "comment_en"
-    t.text     "comment_zh"
-    t.string   "slug"
-    t.string   "download_url"
-  end
-
   create_table "presentations", :force => true do |t|
     t.integer  "page_id"
     t.integer  "width"
@@ -130,6 +115,23 @@ ActiveRecord::Schema.define(:version => 20120514065922) do
     t.integer  "image_file_size"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
 end

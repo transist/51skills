@@ -1,3 +1,8 @@
+-if node.hidden
+  
+  = link_to 'Show', '#', :class => 'btn toggle_display', :id => 'page_'+ node.id.to_s
+-else
+  = link_to 'Hide', '#', :class => 'btn toggle_display', :id => 'page_'+ node.id.to_s
 = link_to 'Editor', editor_path(node.slug), :class => 'btn'
 = link_to 'Edit Meta', edit_page_path(node.slug), :class => 'btn'
 = link_to 'Delete', node, :class => 'btn' , confirm: 'Are you sure?', method: :delete

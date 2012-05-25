@@ -1,0 +1,43 @@
+<%= form_for @course, :html => {:class => 'new_slide', :multipart => true } do |f| %>
+
+  <%= f.label :name_en%>
+  <%= f.text_field :name_en %>
+  
+  <%= f.label :name_zh %>
+  <%= f.text_field :name_zh %>
+  
+  <%= f.label :summary_en %>
+  <%= f.text_field :summary_en %>
+  
+  <%= f.label :summary_zh %>
+  <%= f.text_field :summary_zh %>
+  
+  <%= f.label :description_en %>
+  <%= f.text_area :description_en, :rows => 10, :class => 'span8' %>
+  
+  <%= f.label :description_zh %>
+  <%= f.text_area :description_zh, :rows => 10, :class => 'span8' %>
+  
+  <%= f.label :weibo %>
+  <%= f.text_field :weibo %>
+
+  <%= f.label :twitter %>
+  <%= f.text_field :twitter %>
+  
+  <%= f.label :facebook %>
+  <%= f.text_field :facebook %>
+  
+  <%= f.label :github %>
+  <%= f.text_field :github %>
+  
+  <%= f.label :linkedin %>
+  <%= f.text_field :linkedin %>
+  
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+
+  <div class='actions'>
+    <hr/>
+    <%= submit_tag (@course.new_record? ? I18n.t('create') : I18n.t('save')), :class => 'btn primary' %><span class='loading'><%= image_tag('loading-data.gif', :style => 'display:none;') %></span>
+  </div>
+<% end %>

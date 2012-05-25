@@ -32,3 +32,13 @@ $('a.upload_photo').live('click', function() {
 $('a.delete_upload').live('click', function() {
   $(this).parent().parent().remove();
 })
+
+$('a.toggle_display').live('click', function(){
+  var id = $(this).attr('id');
+  // alert(id)
+  id = id.replace('page_', '');
+  $.post('/pages/'+id+"/toggle_display", function() {
+     window.location = '/pages';
+  });
+  return false;
+})
