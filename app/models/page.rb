@@ -10,7 +10,7 @@ class Page < ActiveRecord::Base
   resourcify
   
   def make_child_of_root
-    Page.front.first.children << self
+    Page.front.first.children << self unless Page.count == 1
   end
 
   
