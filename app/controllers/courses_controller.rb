@@ -7,6 +7,27 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
   end
+  
+  def search
+    session[:query] = params[:search][:q]
+    session[:query_params] = params[:search][:q].split(' ').join("+")
+    @page  = Page.find_by_slug('search')
+    redirect_to '/search/' + session[:query_params]
+  end
+  
+  def results
+    if session[:query_params] == params[:q]
+      @courses = Course.search(session[:query])
+    else
+      @courses = Course.search(session[:q].split('+').join(' '))
+    end
+    session[:query] = nil
+    session[:query_params] = nil
+    logger.info(@courses.inspect)
+
+    @page  = Page.find_by_slug('search')
+    render 'courses/search'
+  end
 
   def edit
     @course = Course.find(params[:id])

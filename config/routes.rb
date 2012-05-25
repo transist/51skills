@@ -1,12 +1,6 @@
 Tedx::Application.routes.draw do
-  get "courses/index"
-
-  get "courses/new"
-
-  get "courses/edit"
-
-  get "courses/submit"
-  
+  post '/search' => 'courses#search'
+  get '/search/:q' => 'courses#results'
   resources :courses do 
     member { get :submit }
   end
