@@ -49,7 +49,7 @@
         </ul>
         <div class='span3 column'>
           <%= form_for :search, :url => '/search', :html => {:class => 'form-search'} do |f| %>
-            <%= f.text_field :q, :class => 'search-query span2' %>
+            <%= f.text_field :q, :class => 'search-query span2', :placeholder => I18n.t('search') %>
           <% end %>
         <%= yield :sidebar %>
         </div>
