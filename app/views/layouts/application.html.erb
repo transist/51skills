@@ -47,6 +47,7 @@
           <li><%= link_to I18n.t('edit'), "/editor" + (request.path == '/' ? '/pages/root' : request.path), id: "edit_link", data: {save_url: (request.path == '/' ? '/pages/root' : mercury_update_page_path(@page))} %></li>
           <% end %>
         </ul>
+        <%= yield :sidebar %>
       </div>
       <div class='span9 column main'>
         <% if notice %>

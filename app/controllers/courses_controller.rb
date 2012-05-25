@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   def index
     @courses = Course.all
+    @page  = Page.find_by_slug('courses')
   end
 
   def new
