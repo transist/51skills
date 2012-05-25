@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
     if session[:query_params] == params[:q]
       @courses = Course.search(session[:query])
     else
-      @courses = Course.search(session[:q].split('+').join(' '))
+      @courses = Course.search(params[:q].split('+').join(' '))
     end
     session[:query] = nil
     session[:query_params] = nil

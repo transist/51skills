@@ -7,4 +7,5 @@ class Course < ActiveRecord::Base
                             :bucket => YAML::load(File.open(Rails.root.join("config/s3.yml")))[Rails.env][:bucket], 
                             :s3_credentials => YAML::load(File.open(Rails.root.join("config/s3.yml"))), 
                             :hash_secret => "longSecretS asdas das tring"
+  translation_for :name, :summary, :description
 end
