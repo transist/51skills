@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
     session[:query] = params[:search][:q]
     session[:query_params] = params[:search][:q].split(' ').join("+")
     @page  = Page.find_by_slug('search')
-    redirect_to '/search/' + session[:query_params]
+    redirect_to '/search/' + URI.escape(session[:query_params])
   end
   
   def results
