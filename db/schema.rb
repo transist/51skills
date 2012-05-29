@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529071641) do
+ActiveRecord::Schema.define(:version => 20120529110430) do
 
   create_table "categories", :force => true do |t|
     t.string   "name_en"
@@ -37,10 +37,9 @@ ActiveRecord::Schema.define(:version => 20120529071641) do
     t.string   "image_content_type"
     t.string   "image_file_name"
     t.string   "image_file_size"
-    t.text     "searchable_summary_en"
     t.text     "searchable_summary_zh"
-    t.text     "searchable_description_en"
     t.text     "searchable_description_zh"
+    t.text     "searchable_name_zh"
   end
 
   create_table "mercury_images", :force => true do |t|

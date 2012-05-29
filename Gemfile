@@ -32,6 +32,8 @@ gem 'cancan'
 gem 'rolify'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'texticle', '~> 2.0', :require => 'texticle/rails'
+gem 'rest-client'
+gem '189seg'
 
 group :development do
   gem 'pg'

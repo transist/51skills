@@ -23,7 +23,6 @@ class CoursesController < ApplicationController
     end
     session[:query] = nil
     session[:query_params] = nil
-    logger.info(@courses.inspect)
 
     @page  = Page.find_by_slug('search')
     render 'courses/search'

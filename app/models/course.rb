@@ -11,9 +11,13 @@ class Course < ActiveRecord::Base
   before_save :update_searchable
   
   def update_searchable
-    self.searchable_summary_en = self.summary_en.split(' ').join(' ') unless self.summary_en == nil
-    self.searchable_summary_zh = self.summary_zh.split('').join(' ') unless self.summary_zh == nil
-    self.searchable_description_en = self.description_en.split(' ').join(' ') unless self.description_en == nil
-    self.searchable_description_zh = self.description_zh.split('').join(' ') unless self.description_zh == nil
+    self.searchable_summary_zh = Course.segment(self.summary_zh) unless self.summary_zh == nil
+    self.searchable_description_zh = Course.segment(self.description_zh) unless self.description_zh == nil
+    self.searchable_name_zh = Course.segment(self.name_zh) unless self.name_zh == nil
+  end
+  
+  def self.segment(phrase)
+    client = CnTelecomeSeg::Base.new(SEG_AP_ID, SEG_KEY, SEG_PRODUCT_ID)
+    client.segment(phrase)['returnParams']['Msg'].split(/:/).join(' ')
   end
 end
