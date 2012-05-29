@@ -11,9 +11,9 @@ class Course < ActiveRecord::Base
   before_save :update_searchable
   
   def update_searchable
-    self.searchable_summary_en = self.summary_en.split(' ').join(' ')
-    self.searchable_summary_zh = self.summary_zh.split('').join(' ')
-    self.searchable_description_en = self.description_en.split(' ').join(' ')
-    self.searchable_description_zh = self.description_zh.split('').join(' ')
+    self.searchable_summary_en = self.summary_en.split(' ').join(' ') unless self.summary_en == nil
+    self.searchable_summary_zh = self.summary_zh.split('').join(' ') unless self.summary_zh == nil
+    self.searchable_description_en = self.description_en.split(' ').join(' ') unless self.description_en == nil
+    self.searchable_description_zh = self.description_zh.split('').join(' ') unless self.description_zh == nil
   end
 end
