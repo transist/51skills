@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
   end
   
   def create
-    @course = Course.find(params[:id])
+    @course = Course.create(params[:course])
     redirect_to :back
   end
   

@@ -34,7 +34,7 @@ gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'texticle', '~> 2.0', :require => 'texticle/rails'
 
 group :development do
-  gem 'sqlite3'
+  gem 'pg'
 end
 
 group :staging do

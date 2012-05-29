@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525085812) do
+ActiveRecord::Schema.define(:version => 20120529071641) do
 
   create_table "categories", :force => true do |t|
     t.string   "name_en"
@@ -23,20 +23,24 @@ ActiveRecord::Schema.define(:version => 20120525085812) do
   create_table "courses", :force => true do |t|
     t.string   "name_en"
     t.string   "name_zh"
-    t.string   "description_en"
-    t.string   "description_zh"
-    t.string   "summary_en"
-    t.string   "summary_zh"
+    t.text     "description_en"
+    t.text     "description_zh"
+    t.text     "summary_en"
+    t.text     "summary_zh"
     t.string   "weibo"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "linkedin"
     t.string   "github"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "image_content_type"
     t.string   "image_file_name"
     t.string   "image_file_size"
+    t.text     "searchable_summary_en"
+    t.text     "searchable_summary_zh"
+    t.text     "searchable_description_en"
+    t.text     "searchable_description_zh"
   end
 
   create_table "mercury_images", :force => true do |t|
