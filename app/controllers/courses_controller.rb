@@ -64,6 +64,12 @@ class CoursesController < ApplicationController
     
   end
   
+  def watch
+    @course = Course.find params[:course_id]
+    @course.watchers << current_user
+    redirect_to :back
+  end
+  
   protected
     def collection
       Course.paginate(:page => params[:page], :per_page => 12)

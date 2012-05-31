@@ -2,6 +2,9 @@ class Person < ActiveRecord::Base
 	rolify
   attr_accessible :profile_attributes, :secret, :token, :uid, :username, :email, :mobile, :name
   
+  has_many :watches
+  has_many :watching_courses, :through => :watches, :source => :course
+  
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']

@@ -11,6 +11,8 @@ class Course < ActiveRecord::Base
   before_save :update_searchable
   
   belongs_to :category
+  has_many :watches
+  has_many :watchers, :through => :watches, :source => :person
   
   def update_searchable
     self.searchable_summary_zh = Course.segment(self.summary_zh) unless self.summary_zh == nil
