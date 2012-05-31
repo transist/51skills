@@ -1,7 +1,12 @@
 class CoursesController < ApplicationController
-  def index
-    @courses = Course.all
+  before_filter :yield_page
+  
+  def yield_page
     @page  = Page.find_by_slug('courses')
+  end
+  
+  def index
+    @courses = collection
   end
 
   def new
@@ -36,19 +41,33 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
   
-  def update
-    @course = Course.find(params[:id])
-    redirect_to :back
+  def update    
+    @course = Course.find params[:id]
+    @course.update_attributes(params[:course])
+    @course = @course.save_category(params[:sub_category])
+    redirect_to course_path(@course.id)
   end
   
   def create
     @course = Course.create(params[:course])
-    redirect_to :back
+    @course = @course.save_category(params[:sub_category])
+    redirect_to courses_path
   end
   
   def destroy
     @course = Course.find(params[:id])
     @course.destroy
-    redirect_to :back
+    redirect_to courses_path
   end
+  
+  def show
+    
+  end
+  
+  protected
+    def collection
+      Course.paginate(:page => params[:page], :per_page => 12)
+    end
+  
+
 end

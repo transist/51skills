@@ -5,7 +5,9 @@ en:
   i_want_to_join: "I Want to Join"
   edit_profile: 'Edit Profile'
   edit_pages: "Edit Pages"
+  edit_categories: "Edit Categories"
   login_with_weibo: "Login with Weibo" 
   logout: "Logout"
   edit: 'Edit'
   search: 'Search'
+  new: 'New'

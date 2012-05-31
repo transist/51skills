@@ -4,6 +4,13 @@ Tedx::Application.routes.draw do
   resources :courses do 
     member { get :submit }
   end
+  resources :categories do
+    collection do
+      get :manage
+      post :rebuild
+    end
+    get 'sub_categories'
+  end
 
   get "photos" => "photos#index"
   resources :photos
@@ -22,6 +29,7 @@ Tedx::Application.routes.draw do
     end
   end
   resources :slides
+
   # match '/tedxshanghai-2012' => 'home#stage', :slug => 'tedxshanghai-2012'
   root :to => "home#index"
   resources :people, :only => [ :show, :edit, :update ]

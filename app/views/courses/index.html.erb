@@ -1,3 +1,19 @@
-<% @courses.each do |course|%>
-  <%= course.name_zh%>
-<% end%>
+<%= link_to(I18n.t('new'), new_course_path, :class => 'btn') if current_user_admin?%>
+
+<div class='courses'>
+  <% @courses.each do |course|%>
+    <div class='course'>
+      <h6 class='name'><%= course.name(I18n.locale)%></h6>
+      <% if course.category%>
+        <span class="label "><%= course.category.parent.name(I18n.locale)%></span>
+        <span class="label label-info"><%= course.category.name(I18n.locale)%></span>
+      <% end%>
+      <p class='summary'><%= course.summary(I18n.locale)%></p>
+      <%= link_to(I18n.t('edit'), edit_course_path(course.id), :class => 'btn btn-mini') if current_user_admin?%>
+    </div>
+  <% end%>
+</div>
+
+<%= will_paginate @courses %>
+
+

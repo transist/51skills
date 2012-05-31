@@ -10,6 +10,8 @@ class Course < ActiveRecord::Base
   translation_for :name, :summary, :description
   before_save :update_searchable
   
+  belongs_to :category
+  
   def update_searchable
     self.searchable_summary_zh = Course.segment(self.summary_zh) unless self.summary_zh == nil
     self.searchable_description_zh = Course.segment(self.description_zh) unless self.description_zh == nil
@@ -20,4 +22,11 @@ class Course < ActiveRecord::Base
     client = CnTelecomeSeg::Base.new(SEG_AP_ID, SEG_KEY, SEG_PRODUCT_ID)
     client.segment(phrase)['returnParams']['Msg'].split(/:/).join(' ')
   end
+  
+  def save_category(category_id)
+    self.category = Category.find(category_id)
+    self.save
+    self
+  end
+  
 end

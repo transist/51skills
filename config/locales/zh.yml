@@ -5,7 +5,9 @@ zh:
   i_want_to_join: "我要参加"
   edit_profile: '修改帐号'
   edit_pages: "修改网页"
+  edit_categories: "编辑分类"
   login_with_weibo: "用微博来登入" 
   logout: "登出"
   edit: "修改"
   search: '搜索'
+  new: '新建'

@@ -5,18 +5,35 @@
   
   <%= f.label :name_zh %>
   <%= f.text_field :name_zh %>
-  
+ 
   <%= f.label :summary_en %>
-  <%= f.text_field :summary_en %>
+  <%= f.text_area :summary_en, :rows => 10, :class => 'span8'  %>
   
   <%= f.label :summary_zh %>
-  <%= f.text_field :summary_zh %>
+  <%= f.text_area :summary_zh, :rows => 10, :class => 'span8'  %>
   
   <%= f.label :description_en %>
   <%= f.text_area :description_en, :rows => 10, :class => 'span8' %>
   
   <%= f.label :description_zh %>
   <%= f.text_area :description_zh, :rows => 10, :class => 'span8' %>
+  
+  <label for="category">Category</label>
+  <div class="controls">
+    <select id="main_category_select" placeholder="Main Category" name="main_category" class="main-category">
+      <option value=""></option>
+      <% Category.main_categories.collect do |category| %>
+        <% if @course.category && @course.category.parent.id == category.id %>
+          <option value='<%= category.id%>' selected='selected'><%= category.name(I18n.locale)%></option>
+        <% else%>
+          <option value='<%= category.id%>'><%= category.name(I18n.locale)%></option>
+        <% end%>
+      <% end%>
+    </select>
+    
+    <select data-placeholder="Sub Category" class="sub-category" name="sub_category">
+    </select>
+  </div>
   
   <%= f.label :weibo %>
   <%= f.text_field :weibo %>
@@ -41,3 +58,9 @@
     <%= submit_tag (@course.new_record? ? I18n.t('create') : I18n.t('save')), :class => 'btn primary' %><span class='loading'><%= image_tag('loading-data.gif', :style => 'display:none;') %></span>
   </div>
 <% end %>
+
+<script>
+  if($('#main_category_select option:selected').attr('value')){
+    load_sub_categories($('#main_category_select option:selected').attr('value'));
+  };
+</script>

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :correct_user?
   helper_method :is_editing?
+  helper_method :current_user_admin?
   layout :layout_with_mercury
 
 
@@ -30,6 +31,10 @@ class ApplicationController < ActionController::Base
     rescue 
       nil
     end
+  end
+  
+  def current_user_admin?
+    current_user && current_user.admin?
   end
 
   def user_signed_in?
@@ -80,14 +85,14 @@ class ApplicationController < ActionController::Base
       session[:locale] = 'en' 
     end
     I18n.locale = session[:locale]
-    logger.info("::::::::::::::::::::::::::::#{I18n.locale}")
   end
   
   def create_standard_page
     @page = Hashie::Mash.new
-    @page.title = 'TedX Shanghai'
+    @page.title = '51skillz'
     @page.header = true
     @page.sidebar = true
     @page
   end
+  
 end

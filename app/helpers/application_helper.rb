@@ -2,4 +2,17 @@ module ApplicationHelper
   def editor_path(path)
     "/editor/#{path}"
   end
+  
+  def chosen_single_select(choices, options={})
+    helper_options = {:class => 'chzn-select chosen_single_select', :tabindex => '7'}
+    helper_options.merge(options) do |key, oldval, newval|
+      newval = oldval + ' ' + newval
+      helper_options.merge!({key => newval})
+    end
+    select("category", "category_id", choices, { :include_blank => true }, helper_options)
+  end
+  
+  def current_category?(category)
+    @category && (category.id == @category.id)
+  end
 end

@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  *= require 'bootstrap'
+ *= require 'chosen'
 */
 
 
@@ -113,4 +114,8 @@ i.icon-move {
 
 .hidden_page {
   opacity:0.4;
+}
+
+.chosen_single_select {
+  width: 350px;
 }

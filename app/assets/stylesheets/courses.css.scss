@@ -1,3 +1,20 @@
 // Place all the styles related to the courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.courses .course .summary{
+  font-size : 11px;
+}
+
+.category .main_category {
+  margin-bottom :10px;
+  margin-top :10px;
+}
+
+.category .sub_category {
+  margin-bottom :10px;
+}
+
+.course{
+  margin-bottom: 10px;
+}

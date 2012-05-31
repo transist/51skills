@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application", 'cycle' %>
   <%= csrf_meta_tags %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <%= javascript_tag "var locale = '#{I18n.locale}';" %>
 </head>
 <body>
   <div class='container'>
@@ -44,14 +45,28 @@
           <% end %>
           <% if current_user && current_user.admin? && @page && !@page.new_record? %>
           <li><%= link_to I18n.t('edit_pages'), '/pages' %></li>
+          <li><%= link_to I18n.t('edit_categories'), '/categories' %></li>
           <li><%= link_to I18n.t('edit'), "/editor" + (request.path == '/' ? '/pages/root' : request.path), id: "edit_link", data: {save_url: (request.path == '/' ? '/pages/root' : mercury_update_page_path(@page))} %></li>
+          
           <% end %>
         </ul>
-        <div class='span3 column'>
+        <div class='search'>
           <%= form_for :search, :url => '/search', :html => {:class => 'form-search'} do |f| %>
             <%= f.text_field :q, :class => 'search-query span2', :placeholder => I18n.t('search') %>
           <% end %>
         <%= yield :sidebar %>
+        </div>
+        <div class='category_filter'>
+          <ul class='nav nav-pills nav-stacked sidenav'>
+            <% Category.main_categories.each do |category| %>
+              <li><%= link_to category.name(I18n.locale), category_path(category.id), :class => (current_category?(category) ? 'current' : '') %></li>
+              <% if current_category?(category) || (@category.sub_category? && @category.parent == (category.parent || category))%>
+                <% category.children.each do |child| %>
+                  <li class='indent'><%= link_to child.name(I18n.locale), category_path(child.id), :class => (current_category?(child) ? 'current' : '') %></li>
+                <% end %>
+              <% end%>
+            <% end%>
+          </ul>
         </div>
       </div>
       <div class='span9 column main'>

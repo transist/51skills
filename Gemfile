@@ -34,6 +34,9 @@ gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'texticle', '~> 2.0', :require => 'texticle/rails'
 gem 'rest-client'
 gem '189seg'
+gem 'tinymce-rails'
+gem 'has_scope'
+gem 'will_paginate', '~> 3.0'
 
 group :development do
   gem 'pg'

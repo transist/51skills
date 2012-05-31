@@ -1,0 +1,23 @@
+<%= link_to 'New Category', new_category_path, :class => 'btn btn-small' %>
+<hr/>
+
+<%= javascript_include_tag 'jquery.ui.nestedSortable' %>
+<%= javascript_include_tag 'sortable/base' %>
+<%= stylesheet_link_tag    'sortable',      :media => :all %>
+<style>
+  .sortable .nested_set a {margin-right: 0; margin-left: 0; font-weight:100; width: 70px;display:inline;}
+  .icon-move {margin-right:10px; margin-top:2px}
+  
+  .sortable .nested_set .root a {
+    font-weight: 100;
+  }
+  
+  .handle {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    background-image: url("/assets/glyphicons-halflings.png");
+  }
+</style>
+<%= sortable_tree @categories, :type => :sortable, :title => (I18n.locale == 'en' ? :title_en : :title_zh), :new_url => new_category_path, :path => 'categories/sortable/base', :max_levels => 3 %>
