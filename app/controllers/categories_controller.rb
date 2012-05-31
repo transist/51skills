@@ -47,9 +47,9 @@ class CategoriesController < ApplicationController
       @category.children.each do |child|
         all_courses = all_courses | child.courses
       end
-      @courses = all_courses.paginate(:page => params[:page], :per_page => 1)
+      @courses = all_courses.paginate(:page => params[:page], :per_page => 12)
     else
-      @courses = @category.courses.paginate(:page => params[:page], :per_page => 1)
+      @courses = @category.courses.paginate(:page => params[:page], :per_page => 12)
     end
     render 'courses/index'
   end
