@@ -17,7 +17,7 @@ module ApplicationHelper
   end
   
   def watch_btn(course)
-    watch = current_user.watching_courses.include?(course) ? 'Watch' : 'Unwatch'
+    watch = (current_user && current_user.watching_courses.include?(course)) || !current_user ? 'Watch' : 'Unwatch'
     link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch}</span>".html_safe, course_watch_path(course.id), :class => 'btn', :method => 'post'
   end
 end

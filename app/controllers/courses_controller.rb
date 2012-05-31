@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :yield_page
+  before_filter :authenticate_user!, :except => ['index', 'show', 'search', 'results']
   
   def yield_page
     @page  = Page.find_by_slug('courses')
@@ -66,7 +67,12 @@ class CoursesController < ApplicationController
   
   def watch
     @course = Course.find params[:course_id]
-    @course.watchers << current_user
+    if current_user.watching_courses.include?(@course)
+      watch = Watch.find_by_course_id_and_person_id(@course.id, current_user.id)
+      watch.destroy
+    else
+      @course.watchers << current_user
+    end
     redirect_to :back
   end
   
