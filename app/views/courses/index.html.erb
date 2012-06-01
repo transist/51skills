@@ -4,6 +4,7 @@
   <% @courses.each do |course|%>
     <div class='course'>
       <h6 class='name'><%= link_to(course.name(I18n.locale), course_path(course.id))%></h6>
+      by <%= course.owner.name%>
       <% if course.category%>
         <span class="label label-main-category"><%= course.category.parent.name(I18n.locale)%></span>
         <span class="label label-sub-category"><%= course.category.name(I18n.locale)%></span>
@@ -17,5 +18,3 @@
 </div>
 
 <%= will_paginate @courses %>
-
-

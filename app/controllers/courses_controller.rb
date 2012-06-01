@@ -52,6 +52,8 @@ class CoursesController < ApplicationController
   def create
     @course = Course.create(params[:course])
     @course = @course.save_category(params[:sub_category])
+    @course.owner = current_user
+    @course.save
     redirect_to courses_path
   end
   

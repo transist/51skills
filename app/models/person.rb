@@ -5,6 +5,8 @@ class Person < ActiveRecord::Base
   has_many :watches
   has_many :watching_courses, :through => :watches, :source => :course
   
+  has_many :own_courses, :class_name => 'Course', :foreign_key => "owner_id"
+  
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']

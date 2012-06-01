@@ -11,7 +11,8 @@ class Course < ActiveRecord::Base
   before_save :update_searchable
   
   belongs_to :category
-  has_many :watches
+  belongs_to :owner, :class_name => "Person", :foreign_key => "owner_id"
+  has_many :watches, :dependent => :destroy
   has_many :watchers, :through => :watches, :source => :person
   
   def update_searchable

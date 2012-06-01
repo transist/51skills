@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120531101422) do
+ActiveRecord::Schema.define(:version => 20120601080209) do
 
   create_table "categories", :force => true do |t|
     t.string   "name_en"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20120531101422) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
+  end
+
+  create_table "course_sessions", :force => true do |t|
+    t.datetime "session_datetime"
+    t.decimal  "duration"
+    t.string   "duration_type"
+    t.text     "location"
+    t.text     "descrption"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "courses", :force => true do |t|
@@ -46,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20120531101422) do
     t.text     "searchable_name_zh"
     t.string   "difficulty"
     t.integer  "category_id"
+    t.integer  "owner_id"
   end
 
   create_table "mercury_images", :force => true do |t|
