@@ -18,6 +18,14 @@ module ApplicationHelper
   
   def watch_btn(course)
     watch = (current_user && current_user.watching_courses.include?(course)) || !current_user ? 'Watch' : 'Unwatch'
-    link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch}</span>".html_safe, course_watch_path(course.id), :class => 'btn', :method => 'post'
+    link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch}</span>".html_safe, course_watch_path(course.id), :class => 'btn watch_btn', :method => 'post'
+  end
+  
+  def watchers_badge(course)
+    count = course.watchers.count
+    notice = count > 1 ? "#{count} people are watching this course." : (count == 1 ? "#{count} person is watching this course." : "")
+    content_tag :span, :class => "badge badge-watchers" do
+      notice
+    end unless notice.empty?
   end
 end

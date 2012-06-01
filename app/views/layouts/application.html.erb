@@ -57,12 +57,12 @@
         <%= yield :sidebar %>
         </div>
         <div class='category_filter'>
-          <ul class='nav nav-pills nav-stacked sidenav'>
+          <ul class='nav nav-pills nav-stacked sidenav categories'>
             <% Category.main_categories.each do |category| %>
-              <li><%= link_to category.name(I18n.locale), category_path(category.id), :class => (current_category?(category) ? 'current' : '') %></li>
+              <li class='category'><%= link_to category.name(I18n.locale), category_path(category.id), :class => (current_category?(category) ? 'current' : '') %></li>
               <% if current_category?(category) || (@category && @category.sub_category? && @category.parent == (category.parent || category))%>
                 <% category.children.each do |child| %>
-                  <li class='indent'><%= link_to child.name(I18n.locale), category_path(child.id), :class => (current_category?(child) ? 'current' : '') %></li>
+                  <li class='category indent'><%= link_to child.name(I18n.locale), category_path(child.id), :class => (current_category?(child) ? 'current' : '') %></li>
                 <% end %>
               <% end%>
             <% end%>

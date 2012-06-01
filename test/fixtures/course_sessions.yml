@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  session_datetime: 2012-06-01 14:36:26
+  duration: 9.99
+  duration_type: MyString
+  location: MyText
+  descrption: MyText
+
+two:
+  session_datetime: 2012-06-01 14:36:26
+  duration: 9.99
+  duration_type: MyString
+  location: MyText
+  descrption: MyText

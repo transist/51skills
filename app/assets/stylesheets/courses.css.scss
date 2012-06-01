@@ -16,10 +16,25 @@
 }
 
 .course{
-  margin-bottom: 10px;
+  margin-bottom: 50px;
+  padding: 15px;
+  border-top: #EEE 1px solid;
+}
+
+.course .summary {
+  margin-top: 15px;
 }
 
 .courses .course .watch {
-  margin-left: 5px;
+  margin-left: 4px;
   font-weight: bold;
+  font-size: 10px;
+}
+
+.icon-eye-open {
+  margin-top: 3px;
+}
+
+.watch_btn {
+  margin-right: 10px;
 }

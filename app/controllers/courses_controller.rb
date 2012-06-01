@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_filter :yield_page
+  before_filter :yield_page, :except => ['show']
   before_filter :authenticate_user!, :except => ['index', 'show', 'search', 'results']
   
   def yield_page
