@@ -7,6 +7,7 @@ class Person < ActiveRecord::Base
   
   has_many :own_courses, :class_name => 'Course', :foreign_key => "owner_id"
   validates :email, :presence => {:message => "Your email is used to save your greeting."}, :unless => :skip_email_validation
+  validates :email, :uniqueness => true
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :unless => :skip_email_validation
   validates :name, :presence => {:message => "Your name is used to save your greeting."}
 
