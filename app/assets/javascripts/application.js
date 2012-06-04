@@ -15,6 +15,7 @@
 //= require jquery_ujs
 
 //= require bootstrap
+//= require bootstrap-modal
 //= require mercury
 //= require masonry
 //= require mercury/support/history

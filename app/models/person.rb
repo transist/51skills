@@ -6,22 +6,54 @@ class Person < ActiveRecord::Base
   has_many :watching_courses, :through => :watches, :source => :course
   
   has_many :own_courses, :class_name => 'Course', :foreign_key => "owner_id"
-  
+  validates :email, :presence => {:message => "Your email is used to save your greeting."}, :unless => :skip_email_validation
+  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :unless => :skip_email_validation
+  validates :name, :presence => {:message => "Your name is used to save your greeting."}
+
   def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth['provider']
-      user.uid = auth['uid']
-      if auth['info']
-         user.name = auth['info']['name'] || ""
-         user.email = auth['info']['email'] || ""
-         user.mobile = ""
-         user.username = auth['extra']['raw_info']['screen_name'] || ""
-         user.token = auth['extra']['access_token'].token
-         user.secret = auth['extra']['access_token'].secret
-         user.uid = auth['extra']['raw_info']['id']
-         user.profile_attributes = auth['extra'].to_json
-      end
+    person = create! do |user|
+      user.instance_create_with_omniauth(auth)
     end
+    person.disable_skip_email_validation
+    person
+  end
+  
+  def instance_create_with_omniauth(auth)
+    logger.info "*" * 80
+    logger.info auth.to_yaml
+    enable_skip_email_validation
+    self.provider = auth['provider']
+    self.uid = auth['uid']
+    case auth['provider']
+    when 'weibo'
+      self.name = auth['info']['name'] || ""
+      self.email = auth['info']['email'] || ""
+      self.mobile = ""
+      self.username = auth['extra']['raw_info']['screen_name'] || ""
+      self.token = auth['extra']['access_token'].token
+      self.secret = auth['extra']['access_token'].secret
+      self.uid = auth['extra']['raw_info']['id']
+      self.profile_attributes = auth['extra'].to_json
+    when 'twitter'
+      self.name = auth['info']['name'] || ""
+      self.email = ""
+      self.mobile = ""
+      self.username = auth['info']['nickname'] || ""
+      self.token = auth['credentials'].token
+      self.secret = auth['credentials'].secret
+      self.uid = auth['uid']
+      self.profile_attributes = auth['extra'].to_json
+    when 'facebook'
+      self.name = auth['info']['nickname']
+      self.email = auth['info']['email']
+      self.mobile = ""
+      self.username = auth['info']['name']
+      self.token = auth['credentials'].token
+      self.secret = ""
+      self.uid = auth['uid']
+      self.profile_attributes = auth['extra'].to_json
+    end
+    self
   end
   
   def profile
@@ -37,4 +69,19 @@ class Person < ActiveRecord::Base
     oauth.authorize_from_access(self.token, self.secret)
     Weibo::Base.new(oauth)
   end
+  
+  def disable_skip_email_validation
+    @skip_email_validation = false
+  end
+  
+  private
+  def skip_email_validation
+    @skip_email_validation
+  end
+  
+  def enable_skip_email_validation
+    @skip_email_validation = true
+  end
+  
+  
 end

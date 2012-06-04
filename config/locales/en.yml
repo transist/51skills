@@ -7,7 +7,14 @@ en:
   edit_pages: "Edit Pages"
   edit_categories: "Edit Categories"
   login_with_weibo: "Login with Weibo" 
+  login_with_twitter: "Login with Twitter"
+  login_with_facebook: "Login with Facebook"
+  weibo: "weibo"
+  twitter: "twitter"
+  facebook: "Facebook"
+  signed_in_with: 'Signed in With'
   logout: "Logout"
   edit: 'Edit'
   search: 'Search'
   new: 'New'
+  delete: 'Delete'

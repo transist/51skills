@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_filter :yield_page, :except => ['show']
   before_filter :authenticate_user!, :except => ['index', 'show', 'search', 'results']
+  before_filter :email_address_complete!, :only => ['watch']
   
   def yield_page
     @page  = Page.find_by_slug('courses')
@@ -45,13 +46,11 @@ class CoursesController < ApplicationController
   def update    
     @course = Course.find params[:id]
     @course.update_attributes(params[:course])
-    @course = @course.save_category(params[:sub_category])
-    redirect_to course_path(@course.id)
+    redirect_to @course
   end
   
   def create
     @course = Course.create(params[:course])
-    @course = @course.save_category(params[:sub_category])
     @course.owner = current_user
     @course.save
     redirect_to courses_path

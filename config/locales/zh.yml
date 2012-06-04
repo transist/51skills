@@ -7,7 +7,14 @@ zh:
   edit_pages: "修改网页"
   edit_categories: "编辑分类"
   login_with_weibo: "用微博来登入" 
+  login_with_twitter: "用推特来登入"
+  login_with_facebook: "用Facebook来登入"
+  weibo: "微博"
+  twitter: "推特"
+  facebook: "Facebook"
+  signed_in_with: '利用登陆的账号来自'
   logout: "登出"
   edit: "修改"
   search: '搜索'
   new: '新建'
+  delete: '删除'

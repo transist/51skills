@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  attr_accessible :description_en, :description_zh, :facebook, :github, :linkedin, :name_en, :name_zh, :summary_en, :summary_zh, :twitter, :weibo, :image
+  attr_accessible :description_en, :description_zh, :facebook, :github, :linkedin, :name_en, :name_zh, :summary_en, :summary_zh, :twitter, :weibo, :image, :category_id
   acts_as_taggable
   has_attached_file :image, :url => "/system/:hash/:style.:extension", :storage => :s3, 
                             :hash_data => ":class/:attachment/:id/",
@@ -15,6 +15,8 @@ class Course < ActiveRecord::Base
   has_many :watches, :dependent => :destroy
   has_many :watchers, :through => :watches, :source => :person
   
+  validates_associated :category
+  
   def update_searchable
     self.searchable_summary_zh = Course.segment(self.summary_zh) unless self.summary_zh == nil
     self.searchable_description_zh = Course.segment(self.description_zh) unless self.description_zh == nil
@@ -22,8 +24,10 @@ class Course < ActiveRecord::Base
   end
   
   def self.segment(phrase)
-    client = CnTelecomeSeg::Base.new(SEG_AP_ID, SEG_KEY, SEG_PRODUCT_ID)
-    client.segment(phrase)['returnParams']['Msg'].split(/:/).join(' ')
+    if phrase.blank?
+      client = CnTelecomeSeg::Base.new(SEG_AP_ID, SEG_KEY, SEG_PRODUCT_ID)
+      client.segment(phrase)['returnParams']['Msg'].split(/:/).join(' ')
+    end
   end
   
   def save_category(category_id)

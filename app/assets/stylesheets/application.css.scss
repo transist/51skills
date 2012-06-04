@@ -24,8 +24,9 @@ a:hover {
 }
 
 ul.sidenav li a {
-  color:black;
+  color: black;
 }
+
 
 ul.sidenav li a:hover {
   color:red;
@@ -128,3 +129,26 @@ i.icon-move {
   font-size: 11px;
   color: #727272;
 }
+
+.social_oauth{
+  float: left;
+  clear: left;
+}
+
+.social_oauth .social_botton{
+  float: left;
+}
+
+.social_oauth .social_site{
+  float: left;
+  margin-top: 5px;
+}
+
+.social_oauth .social_botton a{
+  background-color: white;
+}
+
+.social_oauth .social_site a{
+  background-color: white;
+}
+

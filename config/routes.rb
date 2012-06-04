@@ -36,7 +36,7 @@ Tedx::Application.routes.draw do
   root :to => "courses#index"
   resources :people, :only => [ :show, :edit, :update ]
   match '/auth/:provider/callback' => 'sessions#create'
-  match '/login' => 'sessions#new', :as => :login
+  match '/login/:provider' => 'sessions#new', :as => :login
   match '/logout' => 'sessions#destroy', :as => :logout
   match '/auth/failure' => 'sessions#failure'
   match '/zh' => 'home#zh', :locale => 'zh'

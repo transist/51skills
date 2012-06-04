@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :correct_user?
   helper_method :is_editing?
   helper_method :current_user_admin?
+  helper_method :email_address_complete?
   layout :layout_with_mercury
 
 
@@ -23,6 +24,16 @@ class ApplicationController < ActionController::Base
 
   def is_editing?
     cookies[:editing] == 'true' && can_edit?
+  end
+  
+  def email_address_complete?
+    !current_user || (current_user && !current_user.email.blank?)
+  end
+  
+  def email_address_complete!
+    unless email_address_complete?
+      redirect_to(edit_person_path(current_user.id), :alert => 'Please fill in email before watching') 
+    end
   end
 
   def current_user

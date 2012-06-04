@@ -1,12 +1,13 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to '/auth/weibo'
+    redirect_to "/auth/#{params[:provider]}"
   end
 
   def create
     auth = request.env["omniauth.auth"]
-    user = Person.where(:provider => 'weibo', 
+    provider = params[:provider]
+    user = Person.where(:provider => provider, 
                         :uid => auth['extra']['raw_info']['id'].to_s).first || Person.create_with_omniauth(auth)
     session[:user_id] = user.id
     if !user.email || user.email == ''
