@@ -1,0 +1,132 @@
+<ul class="nav nav-tabs">
+  <li><%= link_to 'Edit Course', edit_course_path(@course.id)%></li>
+  <li class="active"><%= link_to 'Edit Sessions', course_course_sessions_path(@course.id)%></li>
+</ul>
+
+<div class='new_course_session'>
+  <h3>New Course Session Content</h3>
+  <%= form_for :course_session, :url => course_course_sessions_path(@course.id), :html => {:class => 'new_course_session', :multipart => true } do |f| %>
+    <%= f.label :title_en %>
+    <%= f.text_field :title_en %>
+
+    <%= f.label :title_zh %>
+    <%= f.text_field :title_zh %>
+
+    <%= f.label :session_datetime %>
+    <%= f.datetime_select :session_datetime %>
+
+    <%= f.label :duration %>
+    <%= f.text_field :duration %>
+    <%= f.select :duration_type, "<option>hours</option><option>mins</option>".html_safe %>
+    
+    <%= f.label :description_en %>
+    <div id="wysihtml5-toolbar-en" style="display: none;">
+        <a data-wysihtml5-command="bold" title="CTRL+B">bold</a> |
+        <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
+        <a data-wysihtml5-command="createLink">link</a> |
+        <a data-wysihtml5-command="insertImage">image</a> |
+        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">h1</a> |
+        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">h2</a> |
+        <a data-wysihtml5-command="insertLineBreak">break</a> |
+        <a data-wysihtml5-command="insertUnorderedList">list</a> |
+        <a data-wysihtml5-command="insertOrderedList">ordered list</a> |
+        <a data-wysihtml5-action="change_view">html</a>
+
+        <div data-wysihtml5-dialog="createLink" style="display: none;">
+          <label>
+            Link:
+            <input data-wysihtml5-dialog-field="href" value="http://">
+          </label>
+          <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+        </div>
+
+        <div data-wysihtml5-dialog="insertImage" style="display: none;">
+          <label>
+            Image:
+            <input data-wysihtml5-dialog-field="src" value="http://">
+          </label>
+          <label>
+            Align:
+            <select data-wysihtml5-dialog-field="className">
+              <option value="">default</option>
+              <option value="wysiwyg-float-left">left</option>
+              <option value="wysiwyg-float-right">right</option>
+            </select>
+          </label>
+          <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+        </div>
+
+      </div>
+    <%= f.text_area :description_en, :rows => 20, :class => 'span8', :id => 'wysihtml5-textarea-en' %>
+    
+  
+    <%= f.label :description_zh %>
+    <div id="wysihtml5-toolbar-zh" style="display: none;">
+        <a data-wysihtml5-command="bold" title="CTRL+B">bold</a> |
+        <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
+        <a data-wysihtml5-command="createLink">link</a> |
+        <a data-wysihtml5-command="insertImage">image</a> |
+        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">h1</a> |
+        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">h2</a> |
+        <a data-wysihtml5-command="insertLineBreak">break</a> |
+        <a data-wysihtml5-command="insertUnorderedList">list</a> |
+        <a data-wysihtml5-command="insertOrderedList">ordered list</a> |
+        <a data-wysihtml5-action="change_view">html</a>
+
+        <div data-wysihtml5-dialog="createLink" style="display: none;">
+          <label>
+            Link:
+            <input data-wysihtml5-dialog-field="href" value="http://">
+          </label>
+          <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+        </div>
+
+        <div data-wysihtml5-dialog="insertImage" style="display: none;">
+          <label>
+            Image:
+            <input data-wysihtml5-dialog-field="src" value="http://">
+          </label>
+          <label>
+            Align:
+            <select data-wysihtml5-dialog-field="className">
+              <option value="">default</option>
+              <option value="wysiwyg-float-left">left</option>
+              <option value="wysiwyg-float-right">right</option>
+            </select>
+          </label>
+          <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+        </div>
+
+      </div>
+    <%= f.text_area :description_zh, :rows => 20, :class => 'span8', :id => 'wysihtml5-textarea-zh' %>
+  
+    <div class='actions'>
+      <hr/>
+      <%= submit_tag (@course_session.new_record? ? I18n.t('create') : I18n.t('save')), :class => 'btn primary' %><span class='loading'><%= image_tag('loading-data.gif', :style => 'display:none;') %></span>
+    </div>
+  <% end%>
+</div>
+
+<div class='course_sessions'>
+  <h3>Course Sessions</h3>
+  <% @course_sessions.each do |session|%>
+    <div class='course_session'>
+      <h4 class='course_field'><%= "#{session.title_zh}  #{session.title_en}" %></h4>
+      <div class='course_field'><%= session.session_datetime %></div>
+      <div class='course_field description_zh'><%= raw session.description_zh %></div>
+      <div class='course_field description_en'><%= raw session.description_en %></div>
+    </div>
+  <% end%>
+</div>
+
+<script>
+var editor_zh = new wysihtml5.Editor("wysihtml5-textarea-zh", { // id of textarea element
+  toolbar:      "wysihtml5-toolbar-zh", // id of toolbar element
+  parserRules:  wysihtml5ParserRules // defined in parser rules set 
+});
+
+var editor_en = new wysihtml5.Editor("wysihtml5-textarea-en", { // id of textarea element
+  toolbar:      "wysihtml5-toolbar-en", // id of toolbar element
+  parserRules:  wysihtml5ParserRules // defined in parser rules set 
+});
+</script>

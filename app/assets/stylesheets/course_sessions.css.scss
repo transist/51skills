@@ -1,0 +1,28 @@
+// Place all the styles related to the course_sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.course_sessions{
+  margin-top: 100px;
+  padding-top: 20px;
+  box-shadow: inset 0 1px 0 #CCC;
+}
+
+.course_sessions .course_session{
+  margin-top: 20px;
+  padding-left:20px;
+}
+
+.course_sessions .course_session .description_zh{
+  padding-left:40px;
+}
+
+.course_sessions .course_session .description_en{
+  padding-left:40px;
+}
+
+.course_sessions .course_session .course_field{
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: #EEE 1px solid;
+}

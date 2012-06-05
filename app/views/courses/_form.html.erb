@@ -51,8 +51,16 @@
   <%= f.text_field :linkedin %>
   
   <%= f.label :image %>
+  <div class='uploaded_images'>
+    <%= image_tag @course.image.url %>
+    <%= image_tag @course.image.url(:thumb) %>
+    <%= image_tag @course.image.url(:tiny) %>
+  </div>
+  
+  
   <%= f.file_field :image %>
-
+  
+  
   <div class='actions'>
     <hr/>
     <%= submit_tag (@course.new_record? ? I18n.t('create') : I18n.t('save')), :class => 'btn primary' %><span class='loading'><%= image_tag('loading-data.gif', :style => 'display:none;') %></span>

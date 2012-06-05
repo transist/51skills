@@ -15,6 +15,8 @@ class Course < ActiveRecord::Base
   has_many :watches, :dependent => :destroy
   has_many :watchers, :through => :watches, :source => :person
   
+  has_many :course_sessions
+  
   validates_associated :category
   
   def update_searchable
@@ -24,7 +26,7 @@ class Course < ActiveRecord::Base
   end
   
   def self.segment(phrase)
-    if phrase.blank?
+    unless phrase.blank?
       client = CnTelecomeSeg::Base.new(SEG_AP_ID, SEG_KEY, SEG_PRODUCT_ID)
       client.segment(phrase)['returnParams']['Msg'].split(/:/).join(' ')
     end

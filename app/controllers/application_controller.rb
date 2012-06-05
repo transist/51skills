@@ -47,6 +47,12 @@ class ApplicationController < ActionController::Base
   def current_user_admin?
     current_user && current_user.admin?
   end
+  
+  def current_user_admin!
+    unless current_user_admin?
+      redirect_to root_url, :alert => 'Only Admin can Access.'
+    end
+  end
 
   def user_signed_in?
     return true if current_user

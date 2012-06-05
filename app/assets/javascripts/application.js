@@ -21,6 +21,8 @@
 //= require mercury/support/history
 //= require mercury/mercury
 //= require underscore
+//= require wysihtml5
+//= require advanced
 jQuery(top).trigger('initialize:frame');
 var photo_count = 0;
 

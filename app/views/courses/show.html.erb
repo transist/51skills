@@ -1,0 +1,54 @@
+<div class='course_page'>
+  <div class='course row'>
+    <div class='span4'>
+      <div class='image row'>
+        <%= image_tag @course.image.url %>
+      </div>
+      <div class='watch_box'>
+        <div class='watchers row'>
+          <% @course.watchers.limit(5).each do |watcher|%>
+            <%= link_to watcher.name, person_path(watcher.id)%>
+          <% end%>
+          are watching this course.
+        </div>
+        <div class='watch_btn'>
+          <%= watch_btn(@course)%>
+        </div>
+      </div>
+      <div class='actions'>
+        <%= course_admin_action(@course) %>
+      </div>
+    </div>
+    <div class='span7'>
+      <div class='name span3'>
+        <h1><%= @course.name(I18n.locale)%></h1>
+      </div>
+      <div class='categories span3'>
+        <% if @course.category%>
+          <span class="label label-main-category"><%= @course.category.parent.name(I18n.locale)%></span>
+          <span class="label label-sub-category"><%= @course.category.name(I18n.locale)%></span>
+        <% end%>
+      </div>
+      <div class='social_links span3'>
+        <%= link_to(image_tag('social/twitter_32.png'), @course.twitter, :target => '_blank') unless @course.twitter.blank? %>
+        <%= link_to(image_tag('social/linkedin_32.gif'), @course.linkedin, :target => '_blank'  ) unless @course.linkedin.blank? %>
+        <%= link_to(image_tag('social/tsina_32.png'), @course.weibo, :target => '_blank'  ) unless @course.weibo.blank? %>
+        <%= link_to(image_tag('social/facebook_32.png'), @course.facebook, :target => '_blank'  ) unless @course.facebook.blank? %>
+        <%= link_to(image_tag('social/github_32.png'), @course.github, :target => '_blank'  ) unless @course.github.blank? %>
+      </div>
+      <div class='description span7'>
+        <h2>About this Course</h2>
+        <%= @course.description(I18n.locale)%>
+      </div>
+      <div class='summary span7'>
+        <h2>Summmay</h2>
+        <%= @course.summary(I18n.locale)%>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  
+</div>
+

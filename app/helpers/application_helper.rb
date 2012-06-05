@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module ApplicationHelper
   def editor_path(path)
     "/editor/#{path}"
@@ -27,5 +28,13 @@ module ApplicationHelper
     content_tag :span, :class => "badge badge-watchers" do
       notice
     end unless notice.empty?
+  end
+  
+  def zh_or_en_link
+    if I18n.locale == :en
+      link_to '中文', '/zh'
+    else
+      link_to 'English', '/en'
+    end
   end
 end

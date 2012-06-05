@@ -1,10 +1,12 @@
 Tedx::Application.routes.draw do
+  get "course_sessions/index"
+
   post '/search' => 'courses#search'
   get '/search/:q' => 'courses#results'
   resources :courses do 
     member { get :submit }
-    
     post :watch
+    resources :course_sessions
   end
   resources :categories do
     collection do
