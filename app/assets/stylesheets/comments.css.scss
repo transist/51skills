@@ -1,0 +1,49 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.course_comments {
+  float: left;
+}
+
+.course_comments .comment_box{
+  float: left;
+  margin-left: 30px;
+  margin-top: -15px;
+}
+
+.course_comments .comment_icon{
+  float: left;
+  margin-left: 15px;
+}
+
+.course_comments .comment_btn{
+  float: left;
+}
+
+.course_comments .comment_count{
+  float: left;
+  clear: left;
+  font-size: 10px;
+}
+
+.course_comments .comments{
+  float: left;
+  clear: left;
+  margin-top: 30px;
+}
+
+.course_comments .comments .comment{
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+}
+
+.course_comments .comments .comment .user_name{
+}
+
+.course_comments .comments .comment .user_name, 
+.course_comments .comments .comment .time_ago{
+  font-family: Verdana;
+  font-size: 7pt;
+  color: #828282;
+}

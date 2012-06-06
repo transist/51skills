@@ -37,4 +37,8 @@ module ApplicationHelper
       link_to 'English', '/en'
     end
   end
+  
+  def notice_and_alert
+    
+  end
 end

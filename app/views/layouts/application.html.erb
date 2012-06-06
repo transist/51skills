@@ -112,6 +112,27 @@
           <div class='courses span2'><h6><%= link_to 'teach', '#' %></h6></div>
           <div class='courses span2'><h6><%= zh_or_en_link %></h6></div>
           <div class='span2 pull-right'><%= link_to current_user.name, edit_person_path(current_user.id) if current_user %></div>
+          <% if session[:user_id] == nil %>
+          <ul class='unstyled pull-right' >
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">sign in with...<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class='social_oauth'>
+                <span class='social_botton'><%= link_to image_tag('social/weibo_24.png'), login_path(:weibo) %></span>
+                <span class='social_site'><%= link_to I18n.t('weibo'), login_path(:weibo)%></span>
+              </li>
+              <li class='social_oauth'>
+                <span class='social_botton'><%= link_to image_tag('social/twitter_24.png'), login_path(:twitter) %></span>
+                <span class='social_site'><%= link_to I18n.t('twitter'), login_path(:twitter)%></span>
+              </li>
+              <li class='social_oauth'>
+                <span class='social_botton'><%= link_to image_tag('social/facebook_24.png'), login_path(:facebook) %></span>
+                <span class='social_site'><%= link_to I18n.t('facebook'), login_path(:facebook)%></span>
+              </li>
+            </ul>
+          </li>
+          </ul>
+          <% end%>
         </div>
         <%= yield %>
       <% end %>

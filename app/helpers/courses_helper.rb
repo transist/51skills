@@ -3,7 +3,7 @@ module CoursesHelper
     content_tag('div', :class => 'course_admin_actions') do
       edit_course_helper(course) + 
       delte_course_helper(course)
-    end  
+    end if current_user_admin?
   end
   
   def edit_course_helper(course)

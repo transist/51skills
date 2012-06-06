@@ -39,7 +39,7 @@ gem '189seg'
 gem 'tinymce-rails'
 gem 'has_scope'
 gem 'will_paginate', '~> 3.0'
-
+gem 'acts_as_commentable_with_threading'
 group :development do
   gem 'pg'
 end

@@ -31,6 +31,8 @@ class ApplicationController < ActionController::Base
   end
   
   def email_address_complete!
+    puts "*" * 80
+    puts email_address_complete?
     unless email_address_complete?
       redirect_to(edit_person_path(current_user.id), :alert => 'Please fill in email before watching') 
     end
@@ -67,7 +69,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     if !current_user
-      redirect_to root_url, :alert => 'You need to sign in for access to this page.'
+      redirect_to :back, :alert => 'You are needed to sign in to take this action.'
     end
   end
   

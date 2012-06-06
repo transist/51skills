@@ -50,6 +50,8 @@
 
 .course_page .course .image{
   margin-left: -10px;
+  width: 300px;
+  height: 300px;
 }
 
 .course_page .course .name{
@@ -78,17 +80,20 @@
 }
 
 .course_page .course .watch_box .watchers{
-  margin-left: -8px;
+  margin-left: -10px;
   margin-top: 10px;
 }
 
 .course_page .course .watch_box .watch_btn{
-  margin-left: -3px;
+  margin-left: -5px;
   margin-top: 10px;
 }
 
+.course_page .course .actions{
+  margin-left: -10px;
+}
+
 .course_page .course .actions .course_admin_actions{
-  margin-left: -6px;
   margin-top: 10px;
 }
 

@@ -7,6 +7,7 @@ Tedx::Application.routes.draw do
     member { get :submit }
     post :watch
     resources :course_sessions
+    resources :comments, :only => ['create', 'destroy']
   end
   resources :categories do
     collection do

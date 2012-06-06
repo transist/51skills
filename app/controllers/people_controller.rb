@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :correct_user?
+  before_filter :authenticate_user!, :except => ['show']
+  before_filter :correct_user?, :except => ['show']
   before_filter :yield_page, :only => ['index', 'edit', 'update', 'show']
   
   def yield_page
@@ -12,9 +12,7 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    if current_user.id == params[:id] || current_user.admin?
-      @user = Person.find(params[:id])
-    end  
+    @user = Person.find(params[:id])
   end
 
   def update
@@ -27,8 +25,6 @@ class PeopleController < ApplicationController
   end
 
   def show
-    if current_user.admin?
-      @user = Person.find(params[:id])
-    end
+    @user = Person.find(params[:id])
   end
 end
