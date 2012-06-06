@@ -20,10 +20,10 @@
       </div>
     </div>
     <div class='span7'>
-      <div class='name span3'>
-        <h1><%= @course.name(I18n.locale)%></h1>
+      <div class='name'>
+        <h1 class='light'><%= @course.name(I18n.locale)%></h1>
       </div>
-      <div class='categories span3'>
+      <div class='categories'>
         <% if @course.category%>
           <span class="label label-main-category"><%= @course.category.parent.name(I18n.locale)%></span>
           <span class="label label-sub-category"><%= @course.category.name(I18n.locale)%></span>
@@ -36,13 +36,14 @@
         <%= link_to(image_tag('social/facebook_32.png'), @course.facebook, :target => '_blank'  ) unless @course.facebook.blank? %>
         <%= link_to(image_tag('social/github_32.png'), @course.github, :target => '_blank'  ) unless @course.github.blank? %>
       </div>
-      <div class='description span7'>
-        <h2>About this Course</h2>
-        <%= @course.description(I18n.locale)%>
+      <div class='description span7 light'>
+        <h2 class='light'>About this Course</h2>
+        <div class='light'><%= raw @course.description(I18n.locale)%></div>
+        
       </div>
       <div class='summary span7'>
-        <h2>Summmay</h2>
-        <%= @course.summary(I18n.locale)%>
+        <h2 class='light'>Summmay</h2>
+        <div class='light'><%= raw @course.summary(I18n.locale)%></div>
       </div>
       
     </div>
