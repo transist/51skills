@@ -9,7 +9,7 @@
           <% @course.watchers.limit(5).each do |watcher|%>
             <%= link_to watcher.name, person_path(watcher.id)%>
           <% end%>
-          <%= @course.watchers.count > 1 ? "are watching this course." : (@course.watchers.count == 1 ? "is watching this course." : "")%>
+          <%= @course.watchers.count > 1 ? I18n.t('are_watching_this_course'): (@course.watchers.count == 1 ? I18n.t('is_watching_this_course') : "")%>
         </div>
         <div class='watch_btn'>
           <%= watch_btn(@course)%>
@@ -37,12 +37,12 @@
         <%= link_to(image_tag('social/github_32.png'), @course.github, :target => '_blank'  ) unless @course.github.blank? %>
       </div>
       <div class='description span7 light'>
-        <h2 class='light'>About this Course</h2>
+        <h2 class='light'><%= I18n.t('about_this_course')%></h2>
         <div class='light'><%= raw @course.description(I18n.locale)%></div>
         
       </div>
       <div class='summary span7'>
-        <h2 class='light'>Summmay</h2>
+        <h2 class='light'><%= I18n.t('summary')%></h2>
         <div class='light'><%= raw @course.summary(I18n.locale)%></div>
       </div>
       
@@ -84,7 +84,7 @@
 
         </div>
         <%= f.text_area :body, :rows => 5, :class => 'span10', :id => 'wysihtml5-textarea'%>
-        <%= submit_tag ('comment'), :class => 'btn btn-mini comment_btn' %>
+        <%= submit_tag (I18n.t('comment')), :class => 'btn btn-mini comment_btn' %>
       <% end%>
     </div>
   </div>

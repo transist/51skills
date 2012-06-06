@@ -18,6 +18,18 @@ zh:
   search: '搜索'
   new: '新建'
   delete: '删除'
+  watch: '关注'
+  people_are_watching_this_course: '个人关注这个课程。'
+  person_is_watching_this_course: '个人关注这个课程。'
+  are_watching_this_course: '在关注这个课程。'
+  is_watching_this_course: '在关注这个课程。'
+  sign_in_with: '登入'
+  learn: '学习'
+  teach: '教授'
+  about_this_course: '关于本课程'
+  summary: '总结'
+  comments: '条评论'
+  comment: '评论'
   
   datetime:
     distance_in_words:

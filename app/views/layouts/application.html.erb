@@ -15,7 +15,7 @@
       <% if @page && @page.sidebar %>
       <div class='span3 column'>
         <div class='page-header'>
-          <h1 class='light'><%= link_to '51skills', '/' %></h1>
+          <%= link_to image_tag('51skills_logo.png'), '/' %>
         </div>
         <ul class='nav nav-pills nav-stacked sidenav'>
           <% Page.all(:conditions => {:depth => 1}, :order => 'lft asc').each do |p| %>
@@ -39,7 +39,7 @@
           <% if session[:user_id] == nil %>
           
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">sign in with...<b class="caret"></b></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= I18n.t('sign_in_with')%><b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li class='social_oauth'>
                 <span class='social_botton'><%= link_to image_tag('social/weibo_24.png'), login_path(:weibo) %></span>
@@ -87,12 +87,7 @@
       </div>
       <div class='span9 column main'>
         <%= notice_helper %>
-        <% if alert %>
-        <div class="alert">
-          <button class="close" data-dismiss="alert">×</button>
-          <%= alert %>
-        </div>
-        <% end %>
+        <%= alert_helper %>
         <% unless email_address_complete?%>
           <div class="alert">
             <%= link_to 'Be Updated, Please Complete Your Email Address.', edit_person_path(current_user.id) %>
@@ -102,16 +97,17 @@
       </div>
       <% else %>
         <%= notice_helper %>
+        <%= alert_helper %>
         <div class='header row'>
-          <div class='site_name span3'><h1 class='light'><%= link_to "51skillz", root_path %></h1></div>
-          <div class='courses span2'><h6><%= link_to 'learn', courses_path %></h6></div>
-          <div class='courses span2'><h6><%= link_to 'teach', '#' %></h6></div>
+          <div class='site_name span3'><h1 class='light'><%= link_to "<span class='logo_51'>51</span><span class='logo_skills'>skills</span>".html_safe, root_path %></h1></div>
+          <div class='courses span2'><h6><%= link_to I18n.t('learn'), courses_path %></h6></div>
+          <div class='courses span2'><h6><%= link_to I18n.t('teach'), '#' %></h6></div>
           <div class='courses span2'><h6><%= zh_or_en_link %></h6></div>
           
           <% if session[:user_id] == nil %>
             <ul class='unstyled pull-right' >
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">sign in with...<b class="caret"></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= I18n.t('sign_in_with')%><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class='social_oauth'>
                   <span class='social_botton'><%= link_to image_tag('social/weibo_24.png'), login_path(:weibo) %></span>

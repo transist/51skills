@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
   
   def create_standard_page
     @page = Hashie::Mash.new
-    @page.title = '51skillz'
+    @page.title = '51skills'
     @page.header = true
     @page.sidebar = true
     @page
