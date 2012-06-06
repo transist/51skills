@@ -38,7 +38,16 @@ module ApplicationHelper
     end
   end
   
-  def notice_and_alert
-    
+  def notice_helper
+    if notice
+      content_tag :div, :class => 'alert alert-success' do 
+        s = content_tag 'button', :class => 'close', :data => {:dismiss => 'alert'} do
+          "x"
+        end
+        s = s + notice
+        s
+      end
+    end
   end
+  
 end

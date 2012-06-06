@@ -86,12 +86,7 @@
         </div>
       </div>
       <div class='span9 column main'>
-        <% if notice %>
-        <div class="alert alert-success">
-          <button class="close" data-dismiss="alert">×</button>
-          <%= notice %>
-        </div>
-        <% end %>
+        <%= notice_helper %>
         <% if alert %>
         <div class="alert">
           <button class="close" data-dismiss="alert">×</button>
@@ -106,39 +101,58 @@
         <%= yield %>
       </div>
       <% else %>
+        <%= notice_helper %>
         <div class='header row'>
           <div class='site_name span3'><h1 class='light'><%= link_to "51skillz", root_path %></h1></div>
           <div class='courses span2'><h6><%= link_to 'learn', courses_path %></h6></div>
           <div class='courses span2'><h6><%= link_to 'teach', '#' %></h6></div>
           <div class='courses span2'><h6><%= zh_or_en_link %></h6></div>
-          <div class='span2 pull-right'><%= link_to current_user.name, edit_person_path(current_user.id) if current_user %></div>
+          
           <% if session[:user_id] == nil %>
-          <ul class='unstyled pull-right' >
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">sign in with...<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class='social_oauth'>
-                <span class='social_botton'><%= link_to image_tag('social/weibo_24.png'), login_path(:weibo) %></span>
-                <span class='social_site'><%= link_to I18n.t('weibo'), login_path(:weibo)%></span>
-              </li>
-              <li class='social_oauth'>
-                <span class='social_botton'><%= link_to image_tag('social/twitter_24.png'), login_path(:twitter) %></span>
-                <span class='social_site'><%= link_to I18n.t('twitter'), login_path(:twitter)%></span>
-              </li>
-              <li class='social_oauth'>
-                <span class='social_botton'><%= link_to image_tag('social/facebook_24.png'), login_path(:facebook) %></span>
-                <span class='social_site'><%= link_to I18n.t('facebook'), login_path(:facebook)%></span>
-              </li>
+            <ul class='unstyled pull-right' >
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">sign in with...<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class='social_oauth'>
+                  <span class='social_botton'><%= link_to image_tag('social/weibo_24.png'), login_path(:weibo) %></span>
+                  <span class='social_site'><%= link_to I18n.t('weibo'), login_path(:weibo)%></span>
+                </li>
+                <li class='social_oauth'>
+                  <span class='social_botton'><%= link_to image_tag('social/twitter_24.png'), login_path(:twitter) %></span>
+                  <span class='social_site'><%= link_to I18n.t('twitter'), login_path(:twitter)%></span>
+                </li>
+                <li class='social_oauth'>
+                  <span class='social_botton'><%= link_to image_tag('social/facebook_24.png'), login_path(:facebook) %></span>
+                  <span class='social_site'><%= link_to I18n.t('facebook'), login_path(:facebook)%></span>
+                </li>
+              </ul>
+            </li>
             </ul>
-          </li>
-          </ul>
+          <% else%>
+            <ul class='unstyled pull-right' >
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name%><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li ><%= link_to 'Profile', edit_person_path(current_user.id)%></li>
+                <li ><%= link_to(I18n.t('logout'), '/logout') %></li>
+              </ul>
+            </li>
+            </ul>
           <% end%>
         </div>
         <%= yield %>
       <% end %>
     </div>
+    
+    <footer class='footer'>
+      <div class='transist'>
+        <span>©2012 <strong>Transist</strong> Inc. All rights reserved.</span>
+      </div>
+    </footer>
   </div>
 
 <%= yield :javascript %>
+
 </body>
+
 </html>

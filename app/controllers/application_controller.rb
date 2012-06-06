@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
 
 
   private
-
   def layout_with_mercury
     !params[:mercury_frame] && is_editing? ? 'mercury' : 'application'
   end

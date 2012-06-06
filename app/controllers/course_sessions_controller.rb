@@ -1,5 +1,8 @@
 class CourseSessionsController < ApplicationController
   before_filter :find_course, :only => ['index', 'create']
+  before_filter :authenticate_user!
+  before_filter :correct_user?
+  
   def index
     @page  = Page.find_by_slug('courses')
     @course_sessions = @course.course_sessions

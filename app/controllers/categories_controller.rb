@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   include TheSortableTreeController::Rebuild
   before_filter :yield_page
+  before_filter :current_user_admin!
   
   def yield_page
     @page = create_standard_page

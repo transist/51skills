@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   include TheSortableTreeController::Rebuild
+  before_filter :current_user_admin!
   
   def mercury_update
     logger.info(params[:id])
