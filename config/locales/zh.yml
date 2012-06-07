@@ -31,6 +31,7 @@ zh:
   summary: '总结'
   comments: '条评论'
   comment: '评论'
+  save: '保存'
   
   datetime:
     distance_in_words:

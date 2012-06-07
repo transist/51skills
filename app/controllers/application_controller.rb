@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_admin?
   helper_method :email_address_complete?
   layout :layout_with_mercury
+  skip_before_filter :verify_authenticity_token
 
 
   private
