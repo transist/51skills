@@ -7,16 +7,28 @@
   <%= f.text_field :name_zh %>
  
   <%= f.label :summary_en %>
-  <%= f.text_area :summary_en, :rows => 10, :class => 'span8'  %>
+  <div id="wysihtml5-toolbar-summary-en" style="display: none;">
+    <%= render :partial => 'editor_advanced_btns' %>
+  </div>
+  <%= f.text_area :summary_en, :rows => 10, :class => 'span8', :id => 'wysihtml5-textarea-summary-en'%>
   
   <%= f.label :summary_zh %>
-  <%= f.text_area :summary_zh, :rows => 10, :class => 'span8'  %>
+  <div id="wysihtml5-toolbar-summary-zh" style="display: none;">
+    <%= render :partial => 'editor_advanced_btns' %>
+  </div>
+  <%= f.text_area :summary_zh, :rows => 10, :class => 'span8', :id => 'wysihtml5-textarea-summary-zh'  %>
   
   <%= f.label :description_en %>
-  <%= f.text_area :description_en, :rows => 10, :class => 'span8' %>
+  <div id="wysihtml5-toolbar-description-en" style="display: none;">
+    <%= render :partial => 'editor_advanced_btns' %>
+  </div>
+  <%= f.text_area :description_en, :rows => 10, :class => 'span8', :id => 'wysihtml5-textarea-description-en' %>
   
   <%= f.label :description_zh %>
-  <%= f.text_area :description_zh, :rows => 10, :class => 'span8' %>
+  <div id="wysihtml5-toolbar-description-zh" style="display: none;">
+    <%= render :partial => 'editor_advanced_btns' %>
+  </div>
+  <%= f.text_area :description_zh, :rows => 10, :class => 'span8', :id => 'wysihtml5-textarea-description-zh' %>
   
   <label for="category">Category</label>
   <div class="controls">
@@ -68,7 +80,28 @@
 <% end %>
 
 <script>
+
   if($('#main_category_select option:selected').attr('value')){
     load_sub_categories($('#main_category_select option:selected').attr('value'));
   };
+  
+  var editor1 = new wysihtml5.Editor("wysihtml5-textarea-summary-en", { // id of textarea element
+    toolbar:      "wysihtml5-toolbar-summary-en", // id of toolbar element
+    parserRules:  wysihtml5ParserRules // defined in parser rules set 
+  });
+  
+  var editor2 = new wysihtml5.Editor("wysihtml5-textarea-summary-zh", { // id of textarea element
+    toolbar:      "wysihtml5-toolbar-summary-zh", // id of toolbar element
+    parserRules:  wysihtml5ParserRules // defined in parser rules set 
+  });
+  
+  var editor3 = new wysihtml5.Editor("wysihtml5-textarea-description-en", { // id of textarea element
+    toolbar:      "wysihtml5-toolbar-description-en", // id of toolbar element
+    parserRules:  wysihtml5ParserRules // defined in parser rules set 
+  });
+  
+  var editor4 = new wysihtml5.Editor("wysihtml5-textarea-description-zh", { // id of textarea element
+    toolbar:      "wysihtml5-toolbar-description-zh", // id of toolbar element
+    parserRules:  wysihtml5ParserRules // defined in parser rules set 
+  });
 </script>

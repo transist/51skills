@@ -58,30 +58,6 @@
     <div class='comment_box'>
       <%= form_for :comment, :url => course_comments_path(@course.id), :html => {:class => 'new_course_comment', :multipart => true } do |f| %>
         <div id="wysihtml5-toolbar" style="display: none;">
-          <div data-wysihtml5-dialog="createLink" style="display: none;">
-            <label>
-              Link:
-              <input data-wysihtml5-dialog-field="href" value="http://">
-            </label>
-            <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
-          </div>
-
-          <div data-wysihtml5-dialog="insertImage" style="display: none;">
-            <label>
-              Image:
-              <input data-wysihtml5-dialog-field="src" value="http://">
-            </label>
-            <label>
-              Align:
-              <select data-wysihtml5-dialog-field="className">
-                <option value="">default</option>
-                <option value="wysiwyg-float-left">left</option>
-                <option value="wysiwyg-float-right">right</option>
-              </select>
-            </label>
-            <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
-          </div>
-
         </div>
         <%= f.text_area :body, :rows => 5, :class => 'span10', :id => 'wysihtml5-textarea'%>
         <%= submit_tag (I18n.t('comment')), :class => 'btn btn-mini comment_btn' %>
