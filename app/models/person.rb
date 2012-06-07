@@ -15,15 +15,11 @@ class Person < ActiveRecord::Base
     person = create! do |user|
       user.instance_create_with_omniauth(auth)
     end
-    logger.info "*" * 80 + "successfully created person, going to disable_skip_email_validation"
     person.disable_skip_email_validation
-    logger.info "*" * 80 + "successfully disable_skip_email_validation"
     person
   end
   
   def instance_create_with_omniauth(auth)
-    logger.info "*" * 80 + "auth"
-    logger.info auth.to_yaml
     enable_skip_email_validation
     self.provider = auth['provider']
     self.uid = auth['uid']
@@ -56,8 +52,6 @@ class Person < ActiveRecord::Base
       self.uid = auth['uid']
       self.profile_attributes = auth['extra'].to_json
     end
-    logger.info "*" * 80 + "finish create instance"
-    logger.info self.inspect
     self
   end
   
