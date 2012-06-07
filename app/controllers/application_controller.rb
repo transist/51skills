@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Mercury::Authentication
-  protect_from_forgery
+  
   before_filter :accepted_languages
   before_filter :set_language
   helper_method :current_user
