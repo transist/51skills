@@ -39,7 +39,7 @@ Tedx::Application.routes.draw do
   root :to => "courses#index"
   resources :people, :only => [ :show, :edit, :update ]
   
-  match '/auth/facebook/callback' => 'sessions#create_with_facebook'
+  #match '/auth/facebook/callback' => 'sessions#create_with_facebook'
   match '/auth/:provider/callback' => 'sessions#create'
   match '/login/:provider' => 'sessions#new', :as => :login
   match '/logout' => 'sessions#destroy', :as => :logout
