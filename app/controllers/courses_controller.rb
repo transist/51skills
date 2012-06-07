@@ -24,16 +24,15 @@ class CoursesController < ApplicationController
   end
   
   def results
+    
     if session[:query_params] == params[:q]
-      @courses = Course.search(session[:query])
+      @courses = Course.search(session[:query]).paginate(:page => params[:page], :per_page => 12)
     else
-      @courses = Course.search(params[:q].split('+').join(' '))
+      @courses = Course.search(params[:q].split('+').join(' ')).paginate(:page => params[:page], :per_page => 12)
     end
     session[:query] = nil
     session[:query_params] = nil
-
-    @page  = Page.find_by_slug('search')
-    render 'courses/search'
+    render 'courses/index'
   end
 
   def edit
