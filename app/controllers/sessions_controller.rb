@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
   
   def create_with_facebook
     logger.info "*" * 80 + "create with facebook"
-    oauth_access_token = Koala::Facebook::OAuth.new("http://" + request.host_with_port + '/auth/facebook/callback').get_access_token(params[:code]) if params[:code]
+    oauth_access_token = Koala::Facebook::OAuth.new(:callback => "http://" + request.host_with_port + '/auth/facebook/callback').get_access_token(params[:code]) if params[:code]
     logger.info oauth_access_token
     profile = Koala::Facebook::API.new(oauth_access_token).profile
     logger.info params
