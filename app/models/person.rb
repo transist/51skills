@@ -57,7 +57,7 @@ class Person < ActiveRecord::Base
       self.profile_attributes = auth['extra'].to_json
     end
     logger.info "*" * 80 + "finish create instance"
-    logger.info self
+    logger.info self.inspect
     self
   end
   

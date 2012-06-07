@@ -9,9 +9,6 @@ class SessionsController < ApplicationController
     provider = params[:provider]
     user = Person.where(:provider => provider, 
                         :uid => auth['extra']['raw_info']['id'].to_s).first || Person.create_with_omniauth(auth)
-    
-    logger.info "*" * 80 + "hello user"
-    logger.info user.inspect
     session[:user_id] = user.id
     if !user.email || user.email == ''
       redirect_to edit_person_path(user), :alert => "Please enter your email address."
