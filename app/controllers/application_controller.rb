@@ -30,8 +30,6 @@ class ApplicationController < ActionController::Base
   end
   
   def email_address_complete!
-    puts "*" * 80
-    puts email_address_complete?
     unless email_address_complete?
       redirect_to(edit_person_path(current_user.id), :alert => 'Please fill in email before watching') 
     end
