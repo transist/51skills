@@ -15,8 +15,9 @@ class Person < ActiveRecord::Base
     person = create! do |user|
       user.instance_create_with_omniauth(auth)
     end
+    logger.info "*" * 80 + "successfully created person, going to disable_skip_email_validation"
     person.disable_skip_email_validation
-    logger.info "*" * 80 + "successfully created person"
+    logger.info "*" * 80 + "successfully disable_skip_email_validation"
     person
   end
   
@@ -75,6 +76,7 @@ class Person < ActiveRecord::Base
   end
   
   def disable_skip_email_validation
+    logger.info "*" * 80 + "I am in the disable_skip_email_validation"
     @skip_email_validation = false
   end
   
