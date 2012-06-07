@@ -41,9 +41,17 @@ $('a.toggle_display').live('click', function(){
   var id = $(this).attr('id');
   // alert(id)
   id = id.replace('page_', '');
-  $.post('/pages/'+id+"/toggle_display", function() {
-     window.location = '/pages';
-  });
+  
+  $.ajax({
+    type: 'post',
+    headers: {
+      'X-CSRF-Token': AUTH_TOKEN
+    },
+    complete: function(request){
+      window.location = '/pages';
+    },
+    url: '/pages/'+id+ '/toggle_display'
+  })
   return false;
 })
 
