@@ -15,7 +15,8 @@
       <% if @page && @page.sidebar %>
       <div class='span3 column'>
         <div class='page-header'>
-          <%= link_to image_tag('51skills_logo.png'), '/' %>
+          <%= link_to "<span class='logo_51'>51</span><span class='logo_skills'>skills</span>".html_safe, '/' %>
+          <span class='beta'>beta</span>
         </div>
         <ul class='nav nav-pills nav-stacked sidenav'>
           <% Page.all(:conditions => {:depth => 1}, :order => 'lft asc').each do |p| %>
@@ -99,7 +100,10 @@
         <%= notice_helper %>
         <%= alert_helper %>
         <div class='header row'>
-          <div class='site_name span3'><h1 class='light'><%= link_to "<span class='logo_51'>51</span><span class='logo_skills'>skills</span>".html_safe, root_path %></h1></div>
+          <div class='site_name span3'>
+            <span class='light'><%= link_to "<span class='logo_51'>51</span><span class='logo_skills'>skills</span>".html_safe, root_path %></span>
+            <span class='beta'>beta</span>
+          </div>
           <div class='courses span2'><h6><%= link_to I18n.t('learn'), courses_path %></h6></div>
           <div class='courses span2'><h6><%= link_to I18n.t('teach'), '#' %></h6></div>
           <div class='courses span2'><h6><%= zh_or_en_link %></h6></div>
@@ -129,7 +133,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name%><b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li ><%= link_to 'Profile', edit_person_path(current_user.id)%></li>
+                <li ><%= link_to I18n.t('edit_profile'), edit_person_path(current_user.id)%></li>
                 <li ><%= link_to(I18n.t('logout'), '/logout') %></li>
               </ul>
             </li>
