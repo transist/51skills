@@ -23,6 +23,7 @@
 //= require underscore
 //= require wysihtml5
 //= require advanced
+//= require_tree .
 jQuery(top).trigger('initialize:frame');
 var photo_count = 0;
 
@@ -75,5 +76,13 @@ var load_sub_categories = function(_category_id){
     });
     $('.sub-category').append(html);
   });
-}
+};
+
+$('.btn .watch').live('hover', function(){
+  if(!_c_u_id){
+    $(this).parent().toggleClass('disabled');
+    $(this).attr('original-title', 'Please sign in first.')
+  }
+});
+
 

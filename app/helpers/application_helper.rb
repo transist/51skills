@@ -21,6 +21,7 @@ module ApplicationHelper
     watch = I18n.t('watch')
     unwatch = I18n.t('unwatch')
     watch_or_unwatch = current_user ? (current_user.watching_courses.include?(course) ? unwatch : watch) : watch
+    
     link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch_or_unwatch}</span>".html_safe, course_watch_path(course.id), :class => 'btn btn-mini watch_btn', :method => 'post'
   end
   

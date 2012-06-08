@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   include TheSortableTreeController::Rebuild
-  before_filter :current_user_admin!, :except => ['toggle_display']
+  before_filter :current_user_admin!, :except => ['toggle_display', 'show']
   
   def mercury_update
     logger.info(params[:id])
