@@ -12,10 +12,6 @@ class Person < ActiveRecord::Base
   validates :name, :presence => {:message => "Your name is used to save your greeting."}
 
   def self.create_with_omniauth(auth)
-    if auth['info'] && !auth['info']['email'].blank? && unique_email(auth['info']['email'])
-      redirect_to root_url, :alert => 'The Email Address is Already in Used, Maybe you should sign in with your another account.' 
-      return
-    end
     person = create! do |user|
       user.instance_create_with_omniauth(auth)
     end
