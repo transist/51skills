@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @page = Page.first(:conditions => {:root => true})
+    @page = Page.find_by_slug('home') || Page.first(:conditions => {:root => true})
     render '/pages/show'
   end
   

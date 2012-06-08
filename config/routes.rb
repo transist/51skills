@@ -36,7 +36,7 @@ Tedx::Application.routes.draw do
   resources :slides
 
   # match '/tedxshanghai-2012' => 'home#stage', :slug => 'tedxshanghai-2012'
-  root :to => "courses#index"
+  root :to => 'home#index'
   resources :people, :only => [ :show, :edit, :update ]
   
   match '/auth/:provider/callback' => 'sessions#create'

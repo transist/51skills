@@ -13,7 +13,7 @@ class Person < ActiveRecord::Base
 
   def self.create_with_omniauth(auth)
     if auth['info'] && !auth['info']['email'].blank? && unique_email(auth['info']['email'])
-      redirect_to root_path, :alert => 'The Email Address is Already in Used, Maybe you should sign in with your another account.' 
+      redirect_to root_url, :alert => 'The Email Address is Already in Used, Maybe you should sign in with your another account.' 
       return
     end
     person = create! do |user|
