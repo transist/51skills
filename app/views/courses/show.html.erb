@@ -6,9 +6,7 @@
       </div>
       <div class='watch_box'>
         <div class='watchers row'>
-          <% @course.watchers.limit(5).each do |watcher|%>
-            <%= link_to watcher.name, person_path(watcher.id)%>
-          <% end%>
+          <%= watchers_name_helper%>
           <%= @course.watchers.count > 1 ? I18n.t('are_watching_this_course'): (@course.watchers.count == 1 ? I18n.t('is_watching_this_course') : "")%>
         </div>
         <div class='watch_btn'>

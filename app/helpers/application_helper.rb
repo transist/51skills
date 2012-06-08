@@ -65,4 +65,10 @@ module ApplicationHelper
     end
   end
   
+  def watchers_name_helper
+    names = []
+    @course.watchers.limit(5).each {|watcher| names << watcher.name}
+    names.join(", ")
+  end
+  
 end
