@@ -3,5 +3,5 @@ development:
   api_secret: '77b738b4b007a2d506e5869e1d59fd66'
   
 production:
-  api_key: '1285571619'
-  api_secret: '77b738b4b007a2d506e5869e1d59fd66'
+  api_key: '2427272840'
+  api_secret: 'e79e3fb3de51a3f5f00130c6b511a629'
