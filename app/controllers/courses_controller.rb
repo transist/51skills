@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :yield_page, :except => ['show']
   before_filter :authenticate_user!, :except => ['index', 'show', 'search', 'results']
-  before_filter :email_address_complete!, :only => ['watch']
   before_filter :current_user_admin!, :only => ['new', 'create', 'edit', 'update', 'delete', 'destroy']
   
   def yield_page

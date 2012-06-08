@@ -32,3 +32,14 @@ en:
   comments: 'comments'
   comment: 'comment'
   save: 'Save'
+  
+  notice:
+    sign_in: 'You have successfully signed in!'
+    sign_out: 'You have successfully signed out!'
+  alert:
+    email_required: 'Please enter your email address for verification!'
+    email_used: 'The Email Address is Already in Used, You might need signed in with your another account!'
+    email_completed: 'You need to enter your email address to take this action!'
+    admin_only: 'Only Admin can Access.'
+    access_denied: 'Access Denied.'
+    sign_in_required: 'You need to sign in to take this action.'

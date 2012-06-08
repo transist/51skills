@@ -89,11 +89,7 @@
       <div class='span9 column main'>
         <%= notice_helper %>
         <%= alert_helper %>
-        <% unless email_address_complete?%>
-          <div class="alert">
-            <%= link_to 'Be Updated, Please Complete Your Email Address.', edit_person_path(current_user.id) %>
-          </div>
-        <% end%>
+
         <%= yield %>
       </div>
       <% else %>

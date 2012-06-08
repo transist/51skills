@@ -2,13 +2,14 @@ class PeopleController < ApplicationController
   before_filter :authenticate_user!, :except => ['show']
   before_filter :correct_user?, :except => ['show']
   before_filter :yield_page, :only => ['index', 'edit', 'update', 'show']
+  skip_before_filter :email_address_complete!, :only => [:edit, :update]
   
   def yield_page
     @page = create_standard_page
   end
 
   def index
-    @users = Person.paginate(:page => params[:page])
+    #@users = Person.paginate(:page => params[:page])
   end
 
   def edit

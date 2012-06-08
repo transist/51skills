@@ -54,7 +54,7 @@ module ApplicationHelper
   
   def alert_helper
     if alert
-      content_tag :div, :class => 'alert' do 
+      content_tag :div, :class => 'alert alert-error' do 
         s = content_tag 'button', :class => 'close', :data => {:dismiss => 'alert'} do
           "x"
         end

@@ -33,6 +33,17 @@ zh:
   comment: '评论'
   save: '保存'
   
+  notice:
+    sign_in: '您已经成功的登入！'
+    sign_out: '您已经成功的登出！'
+  alert:
+    email_required: '请输入您的email地址，以验证您的身份。'
+    email_used: '该email地址已经被使用了，可能需要您使用其他已经签入过的账号登陆！'
+    email_completed: '您需要输入您的email地址来完成此步操作！'
+    admin_only: '需要管理员权限.'
+    access_denied: '拒绝访问、'
+    sign_in_required: '请先登入再进行此操作。'
+  
   datetime:
     distance_in_words:
       about_x_hours:

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :accepted_languages
   before_filter :set_language
+  before_filter :email_address_complete!
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user?
@@ -10,7 +11,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_admin?
   helper_method :email_address_complete?
   layout :layout_with_mercury
-
+  
 
   private
   def layout_with_mercury
@@ -30,8 +31,9 @@ class ApplicationController < ActionController::Base
   end
   
   def email_address_complete!
+    logger.info('*' * 80)
     unless email_address_complete?
-      redirect_to(edit_person_path(current_user.id), :alert => 'Please fill in email before watching') 
+      redirect_to(edit_person_path(current_user.id), :alert => I18n.t('alert.email_completed')) 
     end
   end
 
@@ -49,7 +51,7 @@ class ApplicationController < ActionController::Base
   
   def current_user_admin!
     unless current_user_admin?
-      redirect_to root_url, :alert => 'Only Admin can Access.'
+      redirect_to root_url, :alert => I18n.t('alert.admin_only')
     end
   end
 
@@ -60,13 +62,13 @@ class ApplicationController < ActionController::Base
   def correct_user?
     @user = Person.find(params[:id])
     unless current_user == @user
-      redirect_to root_url, :alert => "Access denied."
+      redirect_to root_url, :alert => I18n.t('alert.access_denied')
     end
   end
 
   def authenticate_user!
     if !current_user
-      redirect_to :back, :alert => 'You are needed to sign in to take this action.'
+      redirect_to :back, :alert => I18n.t('alert.sign_in_required')
     end
   end
   

@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :email_address_complete!
   
   def create
     @course = Course.find(params[:course_id])
