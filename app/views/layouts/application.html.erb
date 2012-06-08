@@ -141,6 +141,7 @@
     </div>
     
     <footer class='footer'>
+      <div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
       <div class='transist'>
         <span>©2012 <strong>Transist</strong> Inc. All rights reserved.</span>
       </div>
@@ -150,5 +151,14 @@
 <%= yield :javascript %>
 
 </body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_CN/all.js#xfbml=1&appId=218359138285597";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 </html>

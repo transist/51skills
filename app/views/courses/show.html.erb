@@ -4,7 +4,7 @@
       <div class='image row'>
         <%= image_tag @course.image.url() %>
       </div>
-      <div class='watch_box'>
+      <div class='watch_box row'>
         <div class='watchers row'>
           <%= watchers_name_helper%>
           <%= @course.watchers.count > 1 ? I18n.t('are_watching_this_course'): (@course.watchers.count == 1 ? I18n.t('is_watching_this_course') : "")%>
@@ -13,9 +13,10 @@
           <%= watch_btn(@course)%>
         </div>
       </div>
-      <div class='actions'>
+      <div class='actions row'>
         <%= course_admin_action(@course) %>
       </div>
+      <div class="fb-like row" data-send="true" data-width="450" data-show-faces="true"></div>
     </div>
     <div class='span7'>
       <div class='name'>
@@ -70,7 +71,6 @@
   </ul>
 
 </div>
-
 
 <script>
 var editor = new wysihtml5.Editor("wysihtml5-textarea", { // id of textarea element
