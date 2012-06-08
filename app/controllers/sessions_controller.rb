@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to :back, :notice => 'Signed out!'
+    redirect_to root_path, :notice => 'Signed out!'
   end
 
   def failure

@@ -32,7 +32,7 @@ class Person < ActiveRecord::Base
       self.name = auth['info']['name'] || ""
       self.email = auth['info']['email'] || ""
       self.mobile = ""
-      self.usernam e = auth['extra']['raw_info']['screen_name'] || ""
+      self.username = auth['extra']['raw_info']['screen_name'] || ""
       self.token = auth['extra']['access_token'].token
       self.secret = auth['extra']['access_token'].secret
       self.uid = auth['extra']['raw_info']['id']
@@ -60,7 +60,7 @@ class Person < ActiveRecord::Base
   end
   
   def self.unique_email(email)
-    Person.find_by_email(email).count > 0
+    Person.find_by_email(email).nil?
   end
   
   def profile
