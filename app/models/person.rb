@@ -7,11 +7,15 @@ class Person < ActiveRecord::Base
   
   has_many :own_courses, :class_name => 'Course', :foreign_key => "owner_id"
   validates :email, :presence => {:message => "Your email is used to save your greeting."}, :unless => :skip_email_validation
-  validates :email, :uniqueness => true
+  validates :email, :uniqueness => true, :unless => :skip_email_validation
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :unless => :skip_email_validation
   validates :name, :presence => {:message => "Your name is used to save your greeting."}
 
   def self.create_with_omniauth(auth)
+    if auth['info'] && !auth['info']['email'].blank? && unique_email(auth['info']['email'])
+      redirect_to root_path, :alert => 'The Email Address is Already in Used, Maybe you should sign in with your another account.' 
+      return
+    end
     person = create! do |user|
       user.instance_create_with_omniauth(auth)
     end
@@ -28,7 +32,7 @@ class Person < ActiveRecord::Base
       self.name = auth['info']['name'] || ""
       self.email = auth['info']['email'] || ""
       self.mobile = ""
-      self.username = auth['extra']['raw_info']['screen_name'] || ""
+      self.usernam e = auth['extra']['raw_info']['screen_name'] || ""
       self.token = auth['extra']['access_token'].token
       self.secret = auth['extra']['access_token'].secret
       self.uid = auth['extra']['raw_info']['id']
@@ -53,6 +57,10 @@ class Person < ActiveRecord::Base
       self.profile_attributes = auth['extra'].to_json
     end
     self
+  end
+  
+  def self.unique_email(email)
+    Person.find_by_email(email).count > 0
   end
   
   def profile
