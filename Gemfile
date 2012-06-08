@@ -41,6 +41,8 @@ gem 'has_scope'
 gem 'will_paginate', '~> 3.0'
 gem 'acts_as_commentable_with_threading'
 
+gem "rspec-rails", :group => [:test, :development]
+
 group :development do
   gem 'pg'
 end
@@ -49,6 +51,12 @@ group :staging do
   gem 'unicorn'
   gem 'therubyracer'
   gem 'pg'
+end
+
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
 end
 
 group :production do

@@ -160,7 +160,15 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_CN/all.js#xfbml=1&appId=218359138285597";
+  lang = ''
+  if(locale){
+    if(locale == 'zh'){
+      lang = 'zh_CN'
+    }else{
+      lang = 'en_US'
+    }
+  }
+  js.src = "//connect.facebook.net/" + lang + "/all.js#xfbml=1&appId=218359138285597";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
