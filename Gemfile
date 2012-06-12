@@ -40,6 +40,7 @@ gem 'tinymce-rails'
 gem 'has_scope'
 gem 'will_paginate', '~> 3.0'
 gem 'acts_as_commentable_with_threading'
+gem 'spine-rails'
 
 gem "rspec-rails", :group => [:test, :development]
 

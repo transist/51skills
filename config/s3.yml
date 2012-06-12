@@ -5,6 +5,13 @@ development:
   acl: public-read
   s3_host_alias: 'tedxdev.s3.amazonaws.com'
   
+test:
+  bucket: 51skills_test
+  access_key_id: AKIAI3U4IKINTMGT3CTQ
+  secret_access_key: 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
+  acl: public-read
+  s3_host_alias: 'tedxdev.s3.amazonaws.com'
+  
 production:
   bucket: tedxshanghai
   access_key_id: AKIAI3U4IKINTMGT3CTQ

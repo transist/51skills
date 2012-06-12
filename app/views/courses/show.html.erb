@@ -54,7 +54,7 @@
       <%= form_for :comment, :url => course_comments_path(@course.id), :html => {:class => 'new_course_comment', :multipart => true } do |f| %>
         <div id="wysihtml5-toolbar" style="display: none;">
         </div>
-        <%= f.text_area :body, :rows => 5, :class => 'span10', :id => 'wysihtml5-textarea'%>
+        <%= f.text_area :body, :rows => 5, :class => 'span10', :id => 'wysihtml5-textarea', :style => 'visibility:hidden;'%>
         <%= submit_tag (I18n.t('comment')), :class => 'btn btn-mini comment_btn' %>
       <% end%>
     </div>
@@ -77,4 +77,5 @@ var editor = new wysihtml5.Editor("wysihtml5-textarea", { // id of textarea elem
   toolbar:      "wysihtml5-toolbar", // id of toolbar element
   parserRules:  wysihtml5ParserRules // defined in parser rules set 
 });
+
 </script>

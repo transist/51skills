@@ -23,7 +23,8 @@
 //= require underscore
 //= require wysihtml5
 //= require advanced
-//= require_tree .
+//= require app
+
 jQuery(top).trigger('initialize:frame');
 var photo_count = 0;
 
@@ -84,5 +85,6 @@ $('.btn .watch').live('hover', function(){
     $(this).attr('original-title', 'Please sign in first.')
   }
 });
+
 
 

@@ -9,9 +9,18 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  *= require 'bootstrap'
  *= require 'chosen'
+ *= require 'categories'
+ *= require 'comments'
+ *= require 'course_sessions'
+ *= require 'courses'
+ *= require 'mercury_overrides'
+ *= require 'tipsy'
+ *= require 'sessions'
+ *= require 'scaffolds'
+ *= require 'people'
+ *= require 'pages'
 */
 
 
