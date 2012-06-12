@@ -501,11 +501,11 @@ a:hover {
 a.button {
   white-space: nowrap;
   cursor: pointer;
-  background-color: #CE4402;
+  background-color: #AEAEAE;
   width: 200px;
   text-align: center;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 15px;
+  color: #3F3F3F;
   
   padding-top: 10px;
   padding-bottom: 10px;
@@ -532,7 +532,7 @@ a.button {
 
 .footer .transist{
   font-size: 10px;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 html{
@@ -540,7 +540,7 @@ html{
 }
 
 .facet{
-  background-color: #FC797D;
+  background-color: #FA6400;
   width: 500px;
   height: 500px;
   border-radius: 10px;
@@ -568,15 +568,38 @@ html{
   -moz-box-shadow: inset 2px 2px 2px #C9C9C9;
   -webkit-box-shadow: inset 2px 2px 2px #C9C9C9;
   box-shadow: inset 2px 2px 2px #C9C9C9;
-  margin-left: 35%;
+  width: 300px;
+  height: 50px;
+  font-size: 40px;
 }
 
 .subscript{
   text-align: center;
 }
 
+.step.subscript .name, .step.subscript .email{
+  float: left;
+  clear: left;
+  margin-bottom: 10px;
+}
+
 .subscript_form{
   margin-top: 200px;
+  width: 100%;
+  height: 200px;
+}
+
+.subscript_form .commit{
+  width: 200px;
+  float: left;
+}
+
+.subscript_form button{
+  width: 140px;
+  height: 60px;
+  margin-left: 20px;
+  margin-top: 5px;
+  float: left;
 }
 
 .big{
@@ -584,6 +607,7 @@ html{
   margin: 0;
   padding: 0;
   font-weight: bold;
+
 }
 
 .light{
@@ -596,17 +620,18 @@ html{
   font-size: 30px;
   margin: 0px;
   padding: 0;
-  color: #666;
 }
 
-.step p{
+.step.facet p{
   margin-top: 20px;
   margin-left: 20px;
   line-height: 60px;
+  color: #34FCFF;  
 }
 
 #credentials-text{
   margin-top: 80px;
+  color: #34FCFF;
 }
 
 #credentials-text-1{
@@ -619,4 +644,43 @@ html{
 
 #credentials-text-3{
   font-size: 56px;
+}
+
+#we-believe-text{
+  text-transform: uppercase;
+}
+
+#hands-on-text{
+  width: 760px;
+  line-height: 80px;
+  text-transform: uppercase;
+}
+
+#hands-on-text-1{
+  font-size: 37px;
+}
+
+#hands-on-text-2{
+  font-size: 35px;
+}
+
+#hands-on-text-3{
+  font-size: 106px;
+}
+
+#fast-track-text{
+  text-transform: uppercase;
+}
+
+#only-for-important-text{
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 40px;
+  -webkit-margin-end: 40px;
+  text-align: justify;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  
 }
