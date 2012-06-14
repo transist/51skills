@@ -72,6 +72,7 @@ class CoursesController < ApplicationController
       watch.destroy
     else
       @course.watchers << current_user
+      #TODO notice waht to do
     end
     redirect_to :back
   end

@@ -1,0 +1,23 @@
+<h1>Email Templates</h1>
+
+<table>
+  <tr>
+    <th>Template Name</th>
+   
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @email_templates.each do |email_template| %>
+  <tr>
+    <td><%= link_to email_template.name, email_template %></td>
+    <td><%= link_to 'Edit', edit_email_template_path(email_template), :class => 'btn' %></td>
+    <td><%= link_to 'Destroy', email_template, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-danger btn-small' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Email template', new_email_template_path %>

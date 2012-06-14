@@ -5,6 +5,7 @@ zh:
   i_want_to_join: "我要参加"
   edit_profile: '修改帐号'
   edit_pages: "修改网页"
+  edit_email_templates: "编辑邮件模板"
   edit_categories: "编辑分类"
   login_with_weibo: "用微博来登入" 
   login_with_twitter: "用推特来登入"
@@ -43,6 +44,7 @@ zh:
     admin_only: '需要管理员权限.'
     access_denied: '拒绝访问、'
     sign_in_required: '请先登入再进行此操作。'
+    email_address_format_validation: "您输入的Email地址有误，请重输入"
   landing:
     fallback_message: "您正在使用的浏览器<b>不支持</b>51skills所要求的特性，所以你只能看到一个简单版本的演示。</p><p>为了获得最佳的体验效果，请使用最新版本的<b>Chrome</b>，<b>Safari</b> 或者 <b>Firefox</b> 浏览器。"
     hint: "请使用空格键或者方向键来导航。"

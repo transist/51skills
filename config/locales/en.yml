@@ -6,6 +6,7 @@ en:
   edit_profile: 'Edit Profile'
   edit_pages: "Edit Pages"
   edit_categories: "Edit Categories"
+  edit_email_templates: "Edit Email Template"
   login_with_weibo: "Login with Weibo" 
   login_with_twitter: "Login with Twitter"
   login_with_facebook: "Login with Facebook"
@@ -59,3 +60,4 @@ en:
     admin_only: 'Only Admin can Access.'
     access_denied: 'Access Denied.'
     sign_in_required: 'You need to sign in to take this action.'
+    email_address_format_validation: "The Email Address you typed in is invalidated. Please try again."

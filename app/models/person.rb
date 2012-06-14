@@ -74,7 +74,6 @@ class Person < ActiveRecord::Base
   end
   
   def disable_skip_email_validation
-    logger.info "*" * 80 + "I am in the disable_skip_email_validation"
     @skip_email_validation = false
   end
   

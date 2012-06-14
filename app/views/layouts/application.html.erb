@@ -61,8 +61,9 @@
           <li><%= link_to I18n.t('logout'), '/logout' %></li>
           <% end %>
           <% if current_user && current_user.admin? && @page && !@page.new_record? %>
-          <li><%= link_to I18n.t('edit_pages'), '/pages' %></li>
-          <li><%= link_to I18n.t('edit_categories'), '/categories' %></li>
+          <li><%= link_to I18n.t('edit_pages'), pages_path %></li>
+          <li><%= link_to I18n.t('edit_categories'), categories_path %></li>
+          <li><%= link_to I18n.t('edit_email_templates'), email_templates_path %></li>
           <li><%= link_to I18n.t('edit'), "/editor" + (request.path == '/' ? '/pages/root' : request.path), id: "edit_link", data: {save_url: (request.path == '/' ? '/pages/root' : mercury_update_page_path(@page))} %></li>
           
           <% end %>

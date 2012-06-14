@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   layout 'landing'
+  before_filter :email_address_format_validation, :only => ['subscribe']
+  before_filter :email_address_uniqueness_validation, :only => ['subscribe']
+  
   def index
     #@page = Page.find_by_slug('home') || Page.first(:conditions => {:root => true})
     #render '/pages/show'
@@ -8,6 +11,7 @@ class HomeController < ApplicationController
       return
     else
       cookies[:first_time_visit] = {:value => Time.now.to_s, :expires => 1.year.from_now }
+      redirect_to '/landing'
     end
   end
   
@@ -16,11 +20,10 @@ class HomeController < ApplicationController
   end
   
   def subscribe
-    logger.info params
-    
-    email = Email.build("", "", "", "")
-    Resque.enqueue(Email, email)
-
+    logger.info("*" * 80 + "going to subscribe!!")
+    to_address = params[:email].to_s
+    email = Email.build("Successfully Subscribed!", to_address, "subscribe_newsletter", {})
+    Resque.enqueue(Email, email.id) if email.save
     redirect_to courses_path
   end
   
@@ -38,5 +41,20 @@ class HomeController < ApplicationController
     I18n.locale = 'en'
     session[:locale] = 'en'
     redirect_to :back
+  end
+  
+  protected
+  def email_address_format_validation
+    to_address = params[:email].to_s
+    if !(/^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i.match(to_address))
+      redirect_to('/landing', :notice => I18n.t('alert.email_address_format_validation'))
+    end
+  end
+  
+  def email_address_uniqueness_validation
+    to_address = params[:email].to_s
+    if Email.where(:to_address => to_address).count > 0
+      redirect_to courses_path
+    end
   end
 end

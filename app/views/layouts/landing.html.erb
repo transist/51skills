@@ -68,7 +68,7 @@
        <p class='ital'><%= I18n.t('landing.subscribe')%></p>
        <form action="/subscribe" class="subscript_form" id="new_person" method="post">
          <div class='email'>
-           <input id="email" placeholder="email" name="email" size="30" type="text" />
+           <input id="email" placeholder="email" type="email" name="email" size="30" />
          </div>
          <div class='commit'>
            <button type="submit"><%= I18n.t('landing.subscribe_word') %></button>
@@ -80,8 +80,8 @@
   
   <div class="hint">
       <p><%= I18n.t('landing.hint') %></p>
+      <%= alert_helper %>
   </div>  
-  
   
 
   <%= javascript_include_tag 'impress'%>

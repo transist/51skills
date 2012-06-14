@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120606060516) do
+ActiveRecord::Schema.define(:version => 20120614095627) do
 
   create_table "categories", :force => true do |t|
     t.string   "name_en"
@@ -81,6 +81,22 @@ ActiveRecord::Schema.define(:version => 20120606060516) do
     t.integer  "owner_id"
   end
 
+  create_table "email_templates", :force => true do |t|
+    t.string   "name"
+    t.text     "html"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "emails", :force => true do |t|
+    t.text     "subject"
+    t.string   "to_address"
+    t.string   "template_name"
+    t.text     "info"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "mercury_images", :force => true do |t|
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -110,6 +126,11 @@ ActiveRecord::Schema.define(:version => 20120606060516) do
     t.boolean  "sidebar",     :default => true
     t.boolean  "header",      :default => true
     t.boolean  "hidden",      :default => true
+  end
+
+  create_table "panes_photos", :force => true do |t|
+    t.integer "pane_id"
+    t.integer "photo_id"
   end
 
   create_table "people", :force => true do |t|

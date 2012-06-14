@@ -1,4 +1,6 @@
 Tedx::Application.routes.draw do
+  resources :email_templates
+
   get "course_sessions/index"
 
   post '/search' => 'courses#search'
