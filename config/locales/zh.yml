@@ -43,7 +43,22 @@ zh:
     admin_only: '需要管理员权限.'
     access_denied: '拒绝访问、'
     sign_in_required: '请先登入再进行此操作。'
-  
+  landing:
+    fallback_message: "您正在使用的浏览器<b>不支持</b>51skills所要求的特性，所以你只能看到一个简单版本的演示。</p><p>为了获得最佳的体验效果，请使用最新版本的<b>Chrome</b>，<b>Safari</b> 或者 <b>Firefox</b> 浏览器。"
+    hint: "请使用空格键或者方向键来导航。"
+    go_to_the_website: "前往网站"
+    slides:
+      slide_1: "<p><span class='light zh'>想拥有自己的<br></span><span class='big zh'>Web<br>创业<br></span><span class='light zh'>但是不知道该怎么做吗？</span></p>"
+      slide_2: "<p><span class='light  zh-medium'>我们提供一系列的课程，包括：<br></span><span class='light zh-ital zh-big'>编程，设计<br>和创业</span><span class='light zh-medium'><br>让你向有充分经验的人学习。</span></p>"
+      slide_3: "<p><span class='light zh-medium'>需要提高自己的<br>技能<br>来争取</span><span class='zh-big'>升职</span><span class='light zh-small'><br>或者<br></span><span class='light zh-medium'>一份更好的</span><span class='zh-big'>工作</span>？</p>"
+      slide_4: "<p><span class='light zh-medium'>我们提供<br>当前的最新科技<br>和商业方案，<br>来帮助你占据</span><br><span class='italic zh-big'>领先的位置</span></p>" 
+      slide_5: "<div id='credentials-text'><span class='light zh-medium'>并且加强你的<br></span><span class='light zh-big'>资历<br></span><span class='light zh-medium'>以获得招聘者的认可</span></div>"
+      slide_6: "<p id='we-believe-text'><span>我们认为<br></span><span class='big'>学习</span><span>和</span><span class='big'>实践</span><span>其实是同一件事</span></p>"
+      slide_7: "<p id='hands-on-text'><span id='hands-on-text-1'>我们基于应用的课程所提供的<br> </span><span id='hands-on-text-2'>实际的培训和问题解答贯穿你<br> </span><span id='hands-on-text-3'>学习的每一步</span></p>"
+      slide_8: "<p id='fast-track-text'>通过结合</span><span class='big'>最好的<br></span><span>线上和线下方案<br></span><span>我们</span><span class='big'>加速</span><span>你的学习过程</p>"
+      slide_9: "<p id='only-for-important-text'>让你届时只学习最重要的东西</p>"
+    subscribe: "订阅以获得51skills提供的最新信息"
+    subscribe_word: "订阅"
   datetime:
     distance_in_words:
       about_x_hours:

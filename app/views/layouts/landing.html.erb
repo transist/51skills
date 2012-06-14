@@ -13,32 +13,74 @@
 <body class="impress-not-supported">
   
   <div class='footer'>
-    <%= link_to 'go to the website', courses_path, :class => 'button' %>
+    <%= link_to I18n.t('landing.go_to_the_website'), courses_path, :class => 'button' %>
 
     <div class='transist '>
       <span>©2012 <strong>Transist</strong> Inc. All rights reserved.</span>
+      <span class='language'><%= zh_or_en_link%></span>
     </div>
+    
+
   </div>
   
   <div class="fallback-message">
-      <p>Your browser <b>doesn't support the features required</b> by 51skills, so you are presented with a simplified version of this presentation.</p>
-      <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+      <p><%= I18n.t('landing.fallback_message').html_safe%></p>
   </div>
   
-  <% if params[:landing].to_s == '1' %>
-    <%= render 'landing1' %>
-  <% else %>
-    <%= render 'landing2' %>
-  <% end%>
+  <div id="impress">
+    <div id="want-to-create-your-own-web-startup-but-dont-know-how" class="step facet" data-x="3500" data-y="0" data-z="2000" data-scale="6">
+      <%= I18n.t('landing.slides.slide_1').html_safe%>     
+    </div>
+
+     <div id="we-offer" class="step facet" data-x="4500" data-y="0" data-z="1000" data-scale="6" data-rotate-y="90">
+       <%= I18n.t('landing.slides.slide_2').html_safe%>     
+     </div>
+
+     <div id="need-raise-or-better-job" class="step facet" data-x="3500" data-y="0" data-z="0" data-rotate-y="180" data-scale="6">
+       <%= I18n.t('landing.slides.slide_3').html_safe%>     
+     </div>
+
+     <div id="current-tech" class="step facet" data-x="2500" data-y="0" data-z="1000" data-rotate-y="270" data-scale="6">
+       <%= I18n.t('landing.slides.slide_4').html_safe%>
+     </div>
+
+    <div id="boost" class="step facet" data-x="3500" data-y="1000" data-z='1000' data-rotate-x='90' data-rotate-y='180' data-rotate-z="90"  data-scale="6">
+      <%= I18n.t('landing.slides.slide_5').html_safe%>
+    </div>
+
+     <div id="we-believe" class="step" data-x="20000" data-y="-1000" data-z="-3000"  data-scale="7">
+      <%= I18n.t('landing.slides.slide_6').html_safe%>
+     </div>
+
+     <div id="hands-on" class="step" data-x="17000" data-y="2000" data-z="0" data-scale="6">
+      <%= I18n.t('landing.slides.slide_7').html_safe%>
+     </div>
+
+     <div id="fast-track" class="step" data-x="14000" data-y="5000" data-z="3000" data-scale="4">
+      <%= I18n.t('landing.slides.slide_8').html_safe%>
+     </div>
+
+     <div id="only-for-important" class="step" data-x="13000" data-y="5500" data-z="-5000" data-rotate='18' data-scale="1">
+      <%= I18n.t('landing.slides.slide_9').html_safe%>
+     </div>
+
+     <div id='subscript' class='step subscript' data-x="50000" data-y='0' data-scale="6">
+       <p class='ital'><%= I18n.t('landing.subscribe')%></p>
+       <form action="/subscribe" class="subscript_form" id="new_person" method="post">
+         <div class='email'>
+           <input id="email" placeholder="email" name="email" size="30" type="text" />
+         </div>
+         <div class='commit'>
+           <button type="submit"><%= I18n.t('landing.subscribe_word') %></button>
+         </div> 
+       </form>
+     </div>  
+
+   </div>
   
   <div class="hint">
-      <p>Use a spacebar or arrow keys to navigate</p>
-  </div>
-  <script>
-  if ("ontouchstart" in document.documentElement) { 
-      document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
-  }
-  </script>
+      <p><%= I18n.t('landing.hint') %></p>
+  </div>  
   
   
 

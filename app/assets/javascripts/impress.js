@@ -728,7 +728,6 @@
             // check if event target (or any of its parents is a link)
 
             var target = event.target;
-            console.log(target);
             while ( (target.tagName !== "A") &&
                     (target !== document.documentElement) ) {
                 target = target.parentNode;
