@@ -54,6 +54,7 @@ en:
     sign_in: 'You have successfully signed in!'
     sign_out: 'You have successfully signed out!'
     check_your_inbox: "Please check your inbox for verification email."
+    thanks_confirmation: "Thanks for your confirmation!"
   alert:
     email_required: 'Please enter your email address for verification!'
     email_used: 'The Email Address is Already in Used, You might need signed in with your another account!'

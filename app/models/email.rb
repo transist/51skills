@@ -1,15 +1,22 @@
 # encoding: UTF-8
 class Email < ActiveRecord::Base
-  attr_accessible :info, :subject, :template_name, :to_address
+  attr_accessible :info, :subject, :template_name, :to_address, :code
 
   @queue = :send
   
-  def self.build(subject, to_address, template_name, info)
+  def self.build(subject, to_address, template_name, info, gen)
     email = Email.new
     email.subject = subject
-    email.to_address = to_address
+    email.to_address = to_address.downcase
     email.template_name = template_name
-    email.info = info.to_s
+    if gen  
+      email.code = (gen ? gen_uuid : nil)
+      url_hash = {:url => "http://51skills.com/subscribe_confirm?code=#{email.code}"}
+      email.info = info.merge(url_hash).to_s
+    else
+      email.info = info.to_s
+    end
+    
     email
   end
   
@@ -22,11 +29,11 @@ class Email < ActiveRecord::Base
   end
   
   def send_me
-    template_html_hash = EmailTemplate.get_html_hash(template_name)
-    html = Premailer.new(Document.new(File.read(Rails.root.to_s+"/app/views/email_templates/_template.html.erb")).interpolate(template_html_hash), {:with_html_string => true}).to_inline_css
-    
-    text = Document.new(File.read(Rails.root.to_s+"/app/views/emails/templates/#{template_name}.text.erb")).interpolate(hash_info)
-    #html = Premailer.new(Document.new(File.read(Rails.root.to_s+"/app/views/emails/templates/#{template_name}.html.erb")).interpolate(hash_info), {:with_html_string => true}).to_inline_css
+    template_hash = EmailTemplate.get_html_hash(template_name)
+    template_html = Document.new(File.read(Rails.root.to_s+"/app/views/email_templates/_template.html.erb")).interpolate(template_hash)
+    template_text = Document.new(File.read(Rails.root.to_s+"/app/views/email_templates/_template.text.erb")).interpolate(template_hash)
+    html = Premailer.new(Document.new(template_html).interpolate(hash_info), {:with_html_string => true}).to_inline_css
+    text = Document.new(template_text).interpolate(hash_info)
     params = {
      "ToAddress"=> to_address, 
      "FromName"=> '51skills', 
@@ -54,5 +61,9 @@ class Email < ActiveRecord::Base
   
   def hash_info
     eval info
+  end
+  
+  def self.gen_uuid
+    UUID.new.generate
   end
 end

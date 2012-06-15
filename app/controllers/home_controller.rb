@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   layout 'landing'
   before_filter :email_address_format_validation, :only => ['subscribe']
-  before_filter :email_address_uniqueness_validation, :only => ['subscribe']
+  #before_filter :email_address_uniqueness_validation, :only => ['subscribe']
   
   def index
     #@page = Page.find_by_slug('home') || Page.first(:conditions => {:root => true})
@@ -21,9 +21,20 @@ class HomeController < ApplicationController
   
   def subscribe
     to_address = params[:email].to_s
-    email = Email.build("Successfully Subscribed!", to_address, "subscribe_newsletter", {})
-    Resque.enqueue(Email, email.id) if email.save
+    #email = Email.build("Almost Done", to_address, "subscribe_newsletter", {:name => 'simsicon'}, true)
+    #Resque.enqueue(Email, email.id) if email.save
+    #email.save
+    MC_API.list_subscribe({:id => '3de230d695', :email_address => to_address, :merge_vars => {:GROUPINGS => [{:id => '7085'}]}})
     redirect_to '/landing#/subscript', :notice => I18n.t('notice.check_your_inbox')
+  end
+  
+  def subscribe_confirm
+    code = params[:code].to_s
+    email = Email.find_by_code(code)
+    if email
+      MC_API.list_subscribe({:id => '3de230d695', :email_address => email.to_address, :merge_vars => {:GROUPINGS => [{:id => '7085'}]}})
+    end
+    redirect_to '/landing#/subscript', :notice => I18n.t('notice.thanks_confirmation')
   end
   
   def stage
@@ -56,7 +67,7 @@ class HomeController < ApplicationController
   end
   
   def email_address_uniqueness_validation
-    to_address = params[:email].to_s
+    to_address = params[:email].to_s.downcase
     if Email.where(:to_address => to_address).count > 0
       redirect_to '/landing#/subscript', :notice => I18n.t('alert.email_already_in_used')
     end

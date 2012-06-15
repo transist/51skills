@@ -46,6 +46,8 @@ gem 'emailyak', :git => 'git://github.com/ballantyne/emailyak.git'
 gem 'premailer'
 gem 'resque'
 gem 'hirefire'
+gem 'gibbon'
+gem 'uuid'
 
 gem "rspec-rails", :group => [:test, :development]
 

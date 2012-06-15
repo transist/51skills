@@ -41,6 +41,7 @@ Tedx::Application.routes.draw do
   root :to => 'home#index'
   match '/landing' => 'home#landing'
   post '/subscribe' => 'home#subscribe'
+  get '/subscribe_confirm' => 'home#subscribe_confirm'
   
   resources :people, :only => [ :show, :edit, :update ]
   
