@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def index
     #@page = Page.find_by_slug('home') || Page.first(:conditions => {:root => true})
     #render '/pages/show'
-    if cookies[:first_time_visit]
+    if cookies[:first_time_visit] && false
       redirect_to courses_path
       return
     else
@@ -20,11 +20,10 @@ class HomeController < ApplicationController
   end
   
   def subscribe
-    logger.info("*" * 80 + "going to subscribe!!")
     to_address = params[:email].to_s
     email = Email.build("Successfully Subscribed!", to_address, "subscribe_newsletter", {})
     Resque.enqueue(Email, email.id) if email.save
-    redirect_to courses_path
+    redirect_to '/landing#/subscript', :notice => I18n.t('notice.check_your_inbox')
   end
   
   def stage
@@ -44,17 +43,22 @@ class HomeController < ApplicationController
   end
   
   protected
+  
   def email_address_format_validation
     to_address = params[:email].to_s
+    if to_address.empty?
+      redirect_to('/landing#/subscript', :notice => I18n.t('alert.email_address_format_validation'))
+    end
+    
     if !(/^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i.match(to_address))
-      redirect_to('/landing', :notice => I18n.t('alert.email_address_format_validation'))
+      redirect_to('/landing#/subscript', :notice => I18n.t('alert.email_address_format_validation'))
     end
   end
   
   def email_address_uniqueness_validation
     to_address = params[:email].to_s
     if Email.where(:to_address => to_address).count > 0
-      redirect_to courses_path
+      redirect_to '/landing#/subscript', :notice => I18n.t('alert.email_already_in_used')
     end
   end
 end

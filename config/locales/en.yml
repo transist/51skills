@@ -41,18 +41,19 @@ en:
     slides:
       slide_1: "<p><span class='light'>Want to create your own </span><span class='big'>web startup<br></span><span class='light'>but don't know how?</span></p>"
       slide_2: "<p><span class='ital'>We offer classes in </span><span class='light'>programming, design and entrepreneurship</span><span class='ital'><br>from people who have done it themselves.</span></p>"
-      slide_3: "<p><span class='light'>Need to improve your skills to get a </span><span class='big'>raise</span><span class='light'><br>or</span><span class='light'><br>better</span><span class='big'>job?</span></p>"
-      slide_4: "<p><span class='italic'>We offer the most current tech and business solutions to help you stay</span><br><span class='light'>ahead of the curve</span></p>" 
+      slide_3: "<p><span class='light'>Need to improve your skills to get a </span><span class='big'>raise</span><span class='light'> or</span><span class='light'><br>better</span><span class='big'>job?</span></p>"
+      slide_4: "<p><span class='ital'>We offer the most current tech and business solutions to help you stay</span><br><span class='light medium'>ahead of the curve</span></p>" 
       slide_5: "<div id='credentials-text'><span id='credentials-text-1'>and boost your </span><span id='credentials-text-2'>CREDENTIALS </span><span id='credentials-text-3'>with recruiters</span></div>"
       slide_6: "<p id='we-believe-text'><span>we believe </span><span class='big'>learning</span><span> and</span><span class='big'> doing</span><span> are the same</span></p>"
       slide_7: "<p id='hands-on-text'><span id='hands-on-text-1'>Our application-based classes provide </span><span id='hands-on-text-2'>hands-on training and trouble shooting </span><span id='hands-on-text-3'>at every step</span></p>"
-      slide_8: "<p id='fast-track-text'><span>We<br></span><span class='big'>fast<br></span><span>track learning by combining the <br></span><span class='big'>best<br></span><span>of online and offline solutions</span></p>"
+      slide_8: "<p id='fast-track-text'><span>We </span><span class='big'>fast track<br></span><span> learning by combining the <br></span><span> best of online and offline solutions</span></p>"
       slide_9: "<p id='only-for-important-text'>So you only come to class for the important stuff</p>"
     subscribe: "Subscribe to get the latest updates on 51Skills course offerings"
     subscribe_word: "subscribe"
   notice:
     sign_in: 'You have successfully signed in!'
     sign_out: 'You have successfully signed out!'
+    check_your_inbox: "Please check your inbox for verification email."
   alert:
     email_required: 'Please enter your email address for verification!'
     email_used: 'The Email Address is Already in Used, You might need signed in with your another account!'
@@ -61,3 +62,4 @@ en:
     access_denied: 'Access Denied.'
     sign_in_required: 'You need to sign in to take this action.'
     email_address_format_validation: "The Email Address you typed in is invalidated. Please try again."
+    email_already_in_used: "Your email adress is already in used."

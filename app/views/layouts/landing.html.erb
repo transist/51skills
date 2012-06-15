@@ -13,7 +13,7 @@
 <body class="impress-not-supported">
   
   <div class='footer'>
-    <%= link_to I18n.t('landing.go_to_the_website'), courses_path, :class => 'button' %>
+    <%= link_to(I18n.t('landing.go_to_the_website'), courses_path, :class => 'button') if false %>
 
     <div class='transist '>
       <span>©2012 <strong>Transist</strong> Inc. All rights reserved.</span>
@@ -65,7 +65,7 @@
      </div>
 
      <div id='subscript' class='step subscript' data-x="50000" data-y='0' data-scale="6">
-       <p class='ital'><%= I18n.t('landing.subscribe')%></p>
+       <p class='ital' id='subscript-text'><%= I18n.t('landing.subscribe')%></p>
        <form action="/subscribe" class="subscript_form" id="new_person" method="post">
          <div class='email'>
            <input id="email" placeholder="email" type="email" name="email" size="30" />
@@ -78,14 +78,35 @@
 
    </div>
   
+  <%= notice_helper %>
   <div class="hint">
       <p><%= I18n.t('landing.hint') %></p>
-      <%= alert_helper %>
   </div>  
   
 
   <%= javascript_include_tag 'impress'%>
-  <script>impress().init();</script>
+  <script>
+  
+  impress().init();
+  
+  fadeHint = function(){ 
+    $(".hint").fadeOut(2000)
+  };
+  
+  //fadeHint();
+  
+  setTimeout(function(){
+    $('.hint').animate({
+      opacity: 0
+    })
+  }, 3000)
+  //setTimeout(function(){ $(".hint").fadeOut(2000); }, 3000);
+  
+  $('.close').click(function(){
+    $('.alert').fadeOut();
+  });
+  
+  </script>
   
    
 </body>

@@ -139,7 +139,7 @@ a:hover {
     position: fixed;
     left: 0;
     right: 0;
-    top: -400px;
+    bottom: 470px;
     
     background: rgba(0,0,0,0.5);
     color: #EEE;
@@ -569,6 +569,10 @@ a.button {
   font-size: 40px;
 }
 
+.medium{
+  font-size: 55px;
+}
+
 .zh-small{
   font-size: 20px;
 }
@@ -597,6 +601,12 @@ a.button {
   -moz-box-shadow: 10px 10px 5px #565656;
   -webkit-box-shadow: 10px 10px 5px #565656;
   box-shadow: 5px 5px 7px #565656;
+  
+}
+
+#subscript-text{
+  color: #515151;
+  margin-top: 80px;
 }
 
 .subscript input[type='email']{
@@ -666,7 +676,7 @@ a.button {
 
 .ital{
   font-style: italic;
-  font-size: 30px;
+  font-size: 35px;
   margin: 0px;
   padding: 0;
 }
@@ -729,4 +739,62 @@ a.button {
   font-style: italic;
   line-height: 1.4;
   
+}
+
+.alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  color: #c09853;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  text-align: center;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  
+}
+
+.alert-heading {
+  color: inherit;
+}
+
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: 18px;
+}
+
+.alert-success {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+
+.close:hover {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
 }

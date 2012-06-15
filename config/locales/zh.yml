@@ -37,6 +37,7 @@ zh:
   notice:
     sign_in: '您已经成功的登入！'
     sign_out: '您已经成功的登出！'
+    check_your_inbox: "请检查你的收件箱以获得验证邮件。"
   alert:
     email_required: '请输入您的email地址，以验证您的身份。'
     email_used: '该email地址已经被使用了，可能需要您使用其他已经签入过的账号登陆！'
@@ -45,6 +46,7 @@ zh:
     access_denied: '拒绝访问、'
     sign_in_required: '请先登入再进行此操作。'
     email_address_format_validation: "您输入的Email地址有误，请重输入"
+    email_already_in_used: "您的Email地址已经订阅过了，谢谢。"
   landing:
     fallback_message: "您正在使用的浏览器<b>不支持</b>51skills所要求的特性，所以你只能看到一个简单版本的演示。</p><p>为了获得最佳的体验效果，请使用最新版本的<b>Chrome</b>，<b>Safari</b> 或者 <b>Firefox</b> 浏览器。"
     hint: "请使用空格键或者方向键来导航。"
@@ -57,7 +59,7 @@ zh:
       slide_5: "<div id='credentials-text'><span class='light zh-medium'>并且加强你的<br></span><span class='light zh-big'>资历<br></span><span class='light zh-medium'>以获得招聘者的认可</span></div>"
       slide_6: "<p id='we-believe-text'><span>我们认为<br></span><span class='big'>学习</span><span>和</span><span class='big'>实践</span><span>其实是同一件事</span></p>"
       slide_7: "<p id='hands-on-text'><span id='hands-on-text-1'>我们基于应用的课程所提供的<br> </span><span id='hands-on-text-2'>实际的培训和问题解答贯穿你<br> </span><span id='hands-on-text-3'>学习的每一步</span></p>"
-      slide_8: "<p id='fast-track-text'>通过结合</span><span class='big'>最好的<br></span><span>线上和线下方案<br></span><span>我们</span><span class='big'>加速</span><span>你的学习过程</p>"
+      slide_8: "<p id='fast-track-text'>通过结合</span><span>最好的线上和线下方案<br></span><span>我们</span><span class='big'>加速</span><span>你的学习过程</p>"
       slide_9: "<p id='only-for-important-text'>让你届时只学习最重要的东西</p>"
     subscribe: "订阅以获得51skills提供的最新信息"
     subscribe_word: "订阅"
