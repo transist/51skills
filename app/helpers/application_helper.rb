@@ -25,6 +25,14 @@ module ApplicationHelper
     link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch_or_unwatch}</span>".html_safe, course_watch_path(course.id), :class => 'btn btn-mini watch_btn', :method => 'post'
   end
   
+  def enroll_btn(course)
+    enroll = I18n.t('enroll')
+    unenroll = I18n.t('unenroll')
+    enroll_or_not = current_user ? (current_user.enrolled_courses.include?(course) ? unenroll : enroll) : enroll
+    
+    link_to "<i class='icon-shopping-cart'></i><span class='enroll'>#{enroll_or_not}</span>".html_safe, course_enroll_path(course.id), :class => 'btn btn-mini btn-success watch_btn', :method => 'post'
+  end
+  
   def watchers_badge(course)
     count = course.watchers.count
     notice = count > 1 ? "#{count} #{I18n.t('people_are_watching_this_course')}" : (count == 1 ? "#{count} #{I18n.t('person_is_watching_this_course')}" : "")
@@ -68,6 +76,12 @@ module ApplicationHelper
   def watchers_name_helper
     names = []
     @course.watchers.limit(5).each {|watcher| names << watcher.name}
+    names.join(", ")
+  end
+  
+  def students_name_helper
+    names = []
+    @course.students.limit(5).each {|student| names << student.name}
     names.join(", ")
   end
   

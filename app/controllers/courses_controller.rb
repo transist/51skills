@@ -77,10 +77,22 @@ class CoursesController < ApplicationController
     redirect_to :back
   end
   
-  protected
-    def collection
-      Course.paginate(:page => params[:page], :per_page => 12)
+  def enroll
+    @course = Course.find params[:course_id]
+    if current_user.enrolled_courses.include?(@course)
+      enrollment = Enrollment.find_by_course_id_and_person_id(@course.id, current_user.id)
+      enrollment.destroy
+    else
+      @course.students << current_user
+      @course.enrollments.find{|enrollment| enrollment.person_id == current_user.id}.notify
     end
+    redirect_to :back
+  end
+  
+  protected
+  def collection
+    Course.paginate(:page => params[:page], :per_page => 12)
+  end
   
 
 end

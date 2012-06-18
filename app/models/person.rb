@@ -2,8 +2,11 @@ class Person < ActiveRecord::Base
 	rolify
   attr_accessible :profile_attributes, :secret, :token, :uid, :username, :email, :mobile, :name
   
-  has_many :watches
+  has_many :watches, :dependent => :destroy
   has_many :watching_courses, :through => :watches, :source => :course
+  
+  has_many :enrollments, :dependent => :destroy
+  has_many :enrolled_courses, :through => :enrollments, :source => :course
   
   has_many :own_courses, :class_name => 'Course', :foreign_key => "owner_id"
   validates :email, :presence => {:message => "Your email is used to save your greeting."}, :unless => :skip_email_validation

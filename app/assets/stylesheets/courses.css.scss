@@ -18,7 +18,7 @@
 .course{
   margin-bottom: 50px;
   padding: 15px;
-  border-top: #EEE 1px solid;
+  border-bottom: #EEE 1px dotted;
 }
 
 .course .summary {
@@ -81,16 +81,42 @@
 }
 
 .course_page .course .watch_box{
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px dotted #eeeeee;
 }
 
-.course_page .course .watch_box .watchers{
-  margin-left: -10px;
-  margin-top: 10px;
+.course_page .course .watch_box .watchers{  
+  margin-bottom: 10px;
+  color: #9C9C9C;
 }
 
 .course_page .course .watch_box .watch_btn{
-  margin-left: -5px;
-  margin-top: 10px;
+
+}
+
+.course_page .course .watch_box .watch_btn .watch{
+  margin-left: 5px;
+
+}
+
+.course_page .course .enroll_box{
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px dotted #eeeeee;
+}
+
+.course_page .course .enroll_box .students{
+  margin-bottom: 10px;
+  color: #9C9C9C;
+}
+
+.course_page .course .enroll_box .enroll_btn{
+
+}
+
+.course_page .course .enroll_box .enroll_btn .enroll{
+  margin-left: 5px;
 }
 
 .course_page .course .actions{

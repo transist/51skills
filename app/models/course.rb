@@ -14,8 +14,12 @@ class Course < ActiveRecord::Base
   
   belongs_to :category
   belongs_to :owner, :class_name => "Person", :foreign_key => "owner_id"
+  
   has_many :watches, :dependent => :destroy
   has_many :watchers, :through => :watches, :source => :person
+  
+  has_many :enrollments, :dependent => :destroy
+  has_many :students, :through => :enrollments, :source => :person
   
   has_many :course_sessions
   

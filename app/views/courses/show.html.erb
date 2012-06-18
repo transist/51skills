@@ -4,8 +4,8 @@
       <div class='image row'>
         <%= image_tag @course.image.url() %>
       </div>
-      <div class='watch_box row'>
-        <div class='watchers row'>
+      <div class='watch_box '>
+        <div class='watchers '>
           <%= watchers_name_helper%>
           <%= @course.watchers.count > 1 ? I18n.t('are_watching_this_course'): (@course.watchers.count == 1 ? I18n.t('is_watching_this_course') : "")%>
         </div>
@@ -13,10 +13,18 @@
           <%= watch_btn(@course)%>
         </div>
       </div>
-      <div class='actions row'>
+      <div class='enroll_box '>
+        <div class='students '>
+          <%= students_name_helper%>
+          <%= @course.students.count > 1 ? I18n.t('are_enrolled_in_this_course'): (@course.students.count == 1 ? I18n.t('is_enrolled_in_this_course') : "")%>
+        </div>
+        <div class='enroll_btn'>
+          <%= enroll_btn(@course)%>
+        </div>
+      </div>
+      <div class='actions'>
         <%= course_admin_action(@course) %>
       </div>
-      <div class="fb-like row" data-send="true" data-width="450" data-show-faces="true"></div>
     </div>
     <div class='span7'>
       <div class='name'>
@@ -38,9 +46,7 @@
       <div class='description span7 light'>
         <h2 class='light'><%= I18n.t('about_this_course')%></h2>
         <div class='light'><%= raw @course.description(I18n.locale)%></div>
-        
       </div>
-      
     </div>
     
   </div>
