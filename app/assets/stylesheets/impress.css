@@ -545,7 +545,7 @@ a.button {
   height: 500px;
   border-radius: 10px;
   font-weight: bold;
-  opacity:0.75;
+  opacity:0.85;
   filter:alpha(opacity=60);
 }
 
