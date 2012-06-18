@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  attr_accessible :description_en, :description_zh, :facebook, :github, :linkedin, :name_en, :name_zh, :summary_en, :summary_zh, :twitter, :weibo, :image, :category_id
+  attr_accessible :description_en, :description_zh, :facebook, :github, :linkedin, :name_en, :name_zh, :summary_en, :summary_zh, :twitter, :weibo, :image, :category_id, :start_date_time, :address
   acts_as_taggable
   acts_as_commentable
   
@@ -32,8 +32,9 @@ class Course < ActiveRecord::Base
   end
   
   def self.segment(phrase)
-    unless phrase.blank?
+    unless SEG_AP_ID.blank? || SEG_KEY.blank? || SEG_PRODUCT_ID.blank?
       client = CnTelecomeSeg::Base.new(SEG_AP_ID, SEG_KEY, SEG_PRODUCT_ID)
+      logger.info client.inspect
       client.segment(phrase)['returnParams']['Msg'].split(/:/).join(' ')
     end
   end

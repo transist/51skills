@@ -4,7 +4,15 @@
       <div class='image row'>
         <%= image_tag @course.image.url() %>
       </div>
-      <div class='watch_box '>
+      <div class='start_date_time row'>
+        <i class="icon-calendar"></i>
+        <span class='start_date_time_text'><%= @course.start_date_time.strftime('%m/%d/%Y %I:%M%p') %></span>
+      </div>
+      <div class='address row'>
+        <i class="icon-magnet"></i>
+        <span class='address_text'><%= @course.address %></span>
+      </div>
+      <div class='watch_box row'>
         <div class='watchers '>
           <%= watchers_name_helper%>
           <%= @course.watchers.count > 1 ? I18n.t('are_watching_this_course'): (@course.watchers.count == 1 ? I18n.t('is_watching_this_course') : "")%>
@@ -13,7 +21,7 @@
           <%= watch_btn(@course)%>
         </div>
       </div>
-      <div class='enroll_box '>
+      <div class='enroll_box row'>
         <div class='students '>
           <%= students_name_helper%>
           <%= @course.students.count > 1 ? I18n.t('are_enrolled_in_this_course'): (@course.students.count == 1 ? I18n.t('is_enrolled_in_this_course') : "")%>

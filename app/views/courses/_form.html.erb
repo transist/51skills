@@ -5,6 +5,12 @@
   
   <%= f.label :name_zh %>
   <%= f.text_field :name_zh %>
+  
+  <%= f.label :start_date_time %>
+  <%= f.datetime_select :start_date_time %>
+  
+  <%= f.label :address %>
+  <%= f.text_area :address, :rows => 2, :class => 'span8'%>
  
   <%= f.label :summary_en %>
   <div id="wysihtml5-toolbar-summary-en" style="display: none;">

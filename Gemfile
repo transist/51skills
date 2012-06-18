@@ -48,6 +48,7 @@ gem 'resque'
 gem 'hirefire'
 gem 'gibbon'
 gem 'uuid'
+gem 'google-api-client'
 
 gem "rspec-rails", :group => [:test, :development]
 

@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
   <%= javascript_tag "var locale = '#{I18n.locale}'; var _c_u_id = #{current_user ? current_user.id : 'null'}" %>
+  <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <div class='container'>
@@ -14,7 +15,7 @@
     <div class='row'>
       <% if @page && @page.sidebar %>
       <div class='span3 column'>
-        <div class='page-header'>
+        <div class='page-header logo_51_skills'>
           <%= link_to "<span class='logo_51'>51</span><span class='logo_skills'>skills</span>".html_safe, '/' %>
           <span class='beta'>beta</span>
         </div>
@@ -97,7 +98,7 @@
         <%= notice_helper %>
         <%= alert_helper %>
         <div class='header row'>
-          <div class='site_name span3'>
+          <div class='site_name logo_51_skills span3'>
             <span class='light'><%= link_to "<span class='logo_51'>51</span><span class='logo_skills'>skills</span>".html_safe, root_path %></span>
             <span class='beta'>beta</span>
           </div>
