@@ -7,8 +7,8 @@
   <%= f.text_field :name_zh %>
   
   <%= f.label :start_date_time %>
-  <input type="checkbox">
-  <%= f.datetime_select :start_date_time %>
+  <%= f.text_field :start_date_time, :placeholder => "Format: 2012-11-23 00:00:00", :class => 'start_date_time_field' %>
+  <span id='start_date_time_picker'></span>
   
   <%= f.label :address %>
   <%= f.text_area :address, :rows => 2, :class => 'span8'%>
@@ -86,6 +86,9 @@
   </div>
 <% end %>
 
+ <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+ <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
 <script>
 
   if($('#main_category_select option:selected').attr('value')){
@@ -110,5 +113,10 @@
   var editor4 = new wysihtml5.Editor("wysihtml5-textarea-description-zh", { // id of textarea element
     toolbar:      "wysihtml5-toolbar-description-zh", // id of toolbar element
     parserRules:  wysihtml5ParserRules // defined in parser rules set 
+  });
+  
+  $( "#start_date_time_picker" ).datepicker({
+    dateFormat : "yy-mm-dd",
+    onSelect: function(dateText, inst) { $('.start_date_time_field').attr('value', dateText + ' 00:00:00') }
   });
 </script>
