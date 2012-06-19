@@ -91,7 +91,7 @@ class CoursesController < ApplicationController
   
   protected
   def collection
-    Course.paginate(:page => params[:page], :per_page => 12)
+    Course.paginate(:page => params[:page], :per_page => 12, :order => 'start_date_time DESC')
   end
   
 

@@ -24,6 +24,8 @@
 //= require wysihtml5
 //= require advanced
 //= require app
+//= require jquery.tipsy
+//= require courses
 
 jQuery(top).trigger('initialize:frame');
 var photo_count = 0;
@@ -82,7 +84,43 @@ var load_sub_categories = function(_category_id){
 $('.btn .watch').live('hover', function(){
   if(!_c_u_id){
     $(this).parent().toggleClass('disabled');
-    $(this).attr('original-title', 'Please sign in first.')
+    notice = '';
+    if(locale == 'zh'){
+      notice = '关注后课程的更新会及时通知您！请先登入再进行此操作。'
+    }else{
+      notice = 'Please sign in. You will be notified about this class after watching.'
+    }
+    $(this).attr('original-title', notice)
+  }else{
+    notice = '';
+    if(locale == 'zh'){
+      notice = '关注后课程的更新会及时通知您！'
+    }else{
+      notice = 'You will be notified about this class after watching.'
+    }
+    $(this).attr('original-title', notice)
+  }
+});
+
+$('.btn .enroll').live('hover', function(){
+  if(!_c_u_id){
+    notice = '';
+    if(locale == 'zh'){
+      notice = '请先登入再进行此操作。'
+    }else{
+      notice = 'Please sign in.'
+    }
+    $(this).parent().toggleClass('disabled');
+    $(this).attr('original-title', notice);
+  }else{
+    notice = '';
+    if(locale == 'zh'){
+      notice = '欢迎加入这个课堂！'
+    }else{
+      notice = 'welcome join this class'
+    }
+    $(this).parent().toggleClass('disabled');
+    $(this).attr('original-title', notice);
   }
 });
 

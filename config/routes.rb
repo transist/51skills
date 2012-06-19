@@ -1,4 +1,8 @@
 Tedx::Application.routes.draw do
+  get "profiles/edit"
+
+  get "profiles/update"
+
   resources :email_templates
 
   get "course_sessions/index"
@@ -44,7 +48,9 @@ Tedx::Application.routes.draw do
   post '/subscribe' => 'home#subscribe'
   get '/subscribe_confirm' => 'home#subscribe_confirm'
   
-  resources :people, :only => [ :show, :edit, :update ]
+  resources :people, :only => [ :show, :edit, :update ] do
+    resources :profiles
+  end
   
   match '/auth/:provider/callback' => 'sessions#create'
   match '/login/:provider' => 'sessions#new', :as => :login

@@ -1,5 +1,6 @@
 <ul class="nav nav-tabs">
   <li class="active"><a href="#">Edit Account</a></li>
+  <li><%= link_to 'Edit Profile', edit_person_profile_path(@user.id) %></li>
 </ul>
 <div class='page-header well'>
   <%= "#{I18n.t('signed_in_with')} #{@user.provider}"%>

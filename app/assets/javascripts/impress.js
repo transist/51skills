@@ -182,7 +182,8 @@
                            ( ua.search(/(iphone)|(ipod)|(android)/) === -1 ) ;
                            
     var browserVersionSupported = ( ua.search(/(chrome)/) != -1 && ua.substring(ua.indexOf('chrome/') + 7, ua.indexOf('chrome/') + 9) > 18 ) || 
-                                  ( ua.search(/(firefox)/) != -1 && ua.substring(ua.indexOf('firefox/') + 7, ua.indexOf('firefox/') + 9) > 10 );
+                                  ( ua.search(/(firefox)/) != -1 && ua.substring(ua.indexOf('firefox/') + 8, ua.indexOf('firefox/') + 10) > 10 ) || 
+                                  ( ua.search(/(safari)/) != -1 && ua.substring(ua.indexOf('version/') + 8, ua.indexOf('version/') + 11) >= 5.1);
                                   
     
     if (!impressSupported || !browserVersionSupported) {
