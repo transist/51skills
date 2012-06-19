@@ -15,9 +15,12 @@
     <div class='row'>
       <% if @page && @page.sidebar %>
       <div class='span3 column'>
-        <div class='page-header logo_51_skills'>
+        <!-- <div class='page-header logo_51_skills'>
           <%= link_to "<span class='logo_51'>51</span><span class='logo_skills'>skills</span>".html_safe, '/' %>
           <span class='beta'>beta</span>
+        </div> -->
+        <div class='page-header'>
+          <%= link_to image_tag('logo_medium.png'), courses_path %>
         </div>
         <ul class='nav nav-pills nav-stacked sidenav'>
           <% Page.all(:conditions => {:depth => 1}, :order => 'lft asc').each do |p| %>
@@ -98,9 +101,8 @@
         <%= notice_helper %>
         <%= alert_helper %>
         <div class='header row'>
-          <div class='site_name logo_51_skills span3'>
-            <span class=''><%= link_to "<span class='logo_51'>51</span><span class='logo_skills'>skills</span>".html_safe, root_path %></span>
-            <span class='beta'>beta</span>
+          <div class='site_name  span3'>
+            <%= link_to image_tag('logo_tiny.png'), courses_path %>
           </div>
           <div class='courses span2'><h6><%= link_to I18n.t('learn'), courses_path %></h6></div>
           <div class='courses span2'><h6><%= link_to I18n.t('teach'), '#' %></h6></div>
