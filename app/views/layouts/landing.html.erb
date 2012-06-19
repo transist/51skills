@@ -18,6 +18,21 @@
     <div class='transist '>
       <span>©2012 <strong>Transist</strong> Inc. All rights reserved.</span>
       <span class='language'><%= zh_or_en_link%></span>
+      <div id="example"></div>
+
+      <script type="text/javascript">
+
+      txt = "<p>Browser CodeName: " + navigator.appCodeName + "</p>";
+      txt+= "<p>Browser Name: " + navigator.appName + "</p>";
+      txt+= "<p>Browser Version: " + navigator.appVersion + "</p>";
+      txt+= "<p>Cookies Enabled: " + navigator.cookieEnabled + "</p>";
+      txt+= "<p>Platform: " + navigator.platform + "</p>";
+      txt+= "<p>User-agent header: " + navigator.userAgent + "</p>";
+      txt+= $.browser.safari + " " + $.browser.version + " " + $.browser.webkit
+
+      document.getElementById("example").innerHTML=txt;
+
+      </script>
     </div>
     
 

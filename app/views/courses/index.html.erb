@@ -13,6 +13,7 @@
       <%= link_to(I18n.t('delete'), course_path(course.id), :class => 'btn btn-mini', :method => 'delete', :confirm => 'Are you sure? It can not be recovered!!') if current_user_admin? %>
       <%= watch_btn(course)%>
       <%= watchers_badge(course) %>
+      <span class='pull-right'><%= link_to("#{I18n.t('more')} >>", course_path(course.id))%></span>
     </div>
   <% end%>
 </div>

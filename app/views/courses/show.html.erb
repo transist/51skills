@@ -4,14 +4,18 @@
       <div class='image row'>
         <%= image_tag @course.image.url() %>
       </div>
+      <% if @course.start_date_time %>
       <div class='start_date_time row'>
         <i class="icon-calendar"></i>
-        <span class='start_date_time_text'><%= @course.start_date_time.strftime('%e %b %Y %H:%m:%S%p') if @course.start_date_time %></span>
+        <span class='start_date_time_text'><%= @course.start_date_time.strftime('%e %b %Y %H:%m:%S%p')  %></span>
       </div>
+      <%end %>
+      <% if @course.address %>
       <div class='address row'>
         <i class="icon-magnet"></i>
         <span class='address_text'><%= @course.address %></span>
       </div>
+      <% end %>
       <div class='watch_box row'>
         <div class='watchers '>
           <%= watchers_name_helper%>
