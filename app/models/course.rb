@@ -1,5 +1,7 @@
 class Course < ActiveRecord::Base
-  attr_accessible :description_en, :description_zh, :facebook, :github, :linkedin, :name_en, :name_zh, :summary_en, :summary_zh, :twitter, :weibo, :image, :category_id, :start_date_time, :address
+  attr_accessible :description_en, :description_zh, :facebook, :github, :linkedin, :name_en, :name_zh, 
+                  :summary_en, :summary_zh, :twitter, :weibo, :image, :category_id, :start_date_time, :address, 
+                  :price, :price_type
   acts_as_taggable
   acts_as_commentable
   
@@ -24,6 +26,16 @@ class Course < ActiveRecord::Base
   has_many :course_sessions
   
   validates_associated :category
+  validate :price, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
+  validates_inclusion_of :price_type, :in => [:cny, :usd]
+  
+  def price_type
+    read_attribute(:price_type).to_sym
+  end
+
+  def price_type= (value)
+    write_attribute(:price_type, value.to_s)
+  end
   
   def update_searchable
     self.searchable_summary_zh = Course.segment(self.summary_zh) unless self.summary_zh == nil

@@ -7,7 +7,7 @@
       <% unless @course.start_date_time.blank? %>
       <div class='start_date_time row'>
         <i class="icon-calendar"></i>
-        <span class='start_date_time_text'><%= @course.start_date_time.strftime('%e %b %Y %H:%M:%S%p')  %></span>
+        <span class='start_date_time_text'><%= @course.start_date_time.strftime('%Y-%m-%e %H:%M:%S%p')  %></span>
       </div>
       <%end %>
       <% unless @course.address.blank? %>
@@ -32,6 +32,7 @@
         </div>
         <div class='enroll_btn'>
           <%= enroll_btn(@course)%>
+          <span class='label label-info price'><%= (@course.price == nil || @course.price = 0) ? "FREE!" : (@course.price.to_s + @course.price_type.to_s) %></span>
         </div>
       </div>
       <div class='actions'>

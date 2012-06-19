@@ -1,9 +1,10 @@
 <ul class="nav nav-tabs">
-  <li><a href="#">Edit Account</a></li>
-  <li class="active"><%= link_to 'Edit Profile', edit_person_profile_path(@profile.id) %></li>
+  <li><%= link_to 'Edit Account', edit_person_path(@person.id) %></li>
+  <li class="active"><%= link_to 'Edit Profile', edit_person_profile_path(@person.id) %></li>
+  <li><%= link_to 'Public Profile', person_path(@person.id) %></li>
 </ul>
 
-<%= form_for :profile, :url => person_profile_path(@person.id), :html => {:class => 'profile_settings', :multipart => true } do |f| %>
+<%= form_for :profile, :url => person_profile_path(@person.id), :html => {:class => 'profile_settings', :multipart => true }, :method => 'put' do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -31,8 +32,8 @@
   </div>
   
   
-  <%= f.file_field :image %>
-
+  <%= f.file_field :avatar %>
+  <br />
   <%= f.submit "Update" %>
 <% end %>
 
