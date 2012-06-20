@@ -59,4 +59,29 @@ class Course < ActiveRecord::Base
     self
   end
   
+  def counting(times)
+    $redis.zincrby("courses_view", times, self.id.to_s)
+  end
+  
+  def count
+    $redis.zrevrank("courses_view", self.id.to_s)
+  end
+  
+  def rank
+    rank = $redis.zrevrank("courses_view", self.id.to_s)
+    if rank
+      rank + 1
+    else
+      nil
+    end
+  end
+  
+  def self.top_10
+    $redis.zrevrange('courses_view', 0, 9).map{|id| Course.find_by_id(id)}
+  end
+  
+  def score
+    $redis.zscore('courses_view', self.id.to_i).to_i
+  end
+  
 end

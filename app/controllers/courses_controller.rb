@@ -63,6 +63,7 @@ class CoursesController < ApplicationController
   
   def show
     @course = Course.find(params[:id])
+    @course.counting(1)
   end
   
   def watch

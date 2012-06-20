@@ -1,8 +1,18 @@
 .admin
   %h4
-    Current Users
+    = "Current Users: #{Person.count}"
   %p.users_count
-    =Person.count
     %h6
-      = "#{with weibo"
-    
+      = "#{Person.where(:provider => 'weibo').count} signed in with weibo"
+    %h6
+      = "#{Person.where(:provider => 'twitter').count} signed in with twitter"
+    %h6
+      = "#{Person.where(:provider => 'facebook').count} signed in with facebook"
+      
+  %h4
+    = "Top 10 Courses View:"
+  %p.courses_view
+    %h6
+      - Course.top_10.each do |course|
+        = "#{course.name(I18n.locale)} hits: #{course.score.to_s}"
+        %br
