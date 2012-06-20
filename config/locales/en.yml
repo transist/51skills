@@ -7,6 +7,7 @@ en:
   edit_pages: "Edit Pages"
   edit_categories: "Edit Categories"
   edit_email_templates: "Edit Email Template"
+  admin_dashboard: "Admin Dashboard"
   login_with_weibo: "Login with Weibo" 
   login_with_twitter: "Login with Twitter"
   login_with_facebook: "Login with Facebook"

@@ -1,6 +1,5 @@
 Tedx::Application.routes.draw do
   get "profiles/edit"
-
   get "profiles/update"
 
   resources :email_templates
@@ -28,6 +27,8 @@ Tedx::Application.routes.draw do
   #resources :photos
 
   Mercury::Engine.routes
+  
+  
   get 'pages' => "pages#index"
   resources :pages do
     member { post :mercury_update }
@@ -41,6 +42,7 @@ Tedx::Application.routes.draw do
     end
   end
   resources :slides
+  
 
   # match '/tedxshanghai-2012' => 'home#stage', :slug => 'tedxshanghai-2012'
   root :to => 'home#index'
@@ -58,9 +60,12 @@ Tedx::Application.routes.draw do
   match '/auth/failure' => 'sessions#failure'
   match '/zh' => 'home#zh', :locale => 'zh'
   match '/en' => 'home#en', :locale => 'en'
+  match '/admin' => 'admin#index'
   
   get '/:id' => "pages#show"
   put '/:id' => "pages#update"
   get '/pages/:id' => "pages#show"
+  
+  
   
 end

@@ -69,7 +69,7 @@
           <li><%= link_to I18n.t('edit_categories'), categories_path %></li>
           <li><%= link_to I18n.t('edit_email_templates'), email_templates_path %></li>
           <li><%= link_to I18n.t('edit'), "/editor" + (request.path == '/' ? '/pages/root' : request.path), id: "edit_link", data: {save_url: (request.path == '/' ? '/pages/root' : mercury_update_page_path(@page))} %></li>
-          
+          <li><%= link_to I18n.t('admin_dashboard'), admin_path %></li>
           <% end %>
         </ul>
         <div class='search'>
