@@ -145,13 +145,14 @@
     </div>
     
     <footer class='footer'>
-      <% if @page && @page.slug.to_s == 'courses' %>
-        <div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
-      <% end %>
-      
+      <%= render :partial => 'layouts/jiathis' %>
+      <br />
       <div class='transist'>
         <span>©2012 <strong>Transist</strong> Inc. All rights reserved.</span>
       </div>
+      
+      
+      
     </footer>
   </div>
 
