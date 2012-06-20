@@ -26,11 +26,13 @@ class Course < ActiveRecord::Base
   has_many :course_sessions
   
   validates_associated :category
-  validate :price, :numericality => {:greater_than_or_equal_to => 0}
+  
+  validate :price, :numericality => {:greater_than_or_equal_to => 0}, :allow_nil => true
   validates_inclusion_of :price_type, :in => [:cny, :usd]
   
   def price_type
-    read_attribute(:price_type).to_sym
+    att = read_attribute(:price_type)
+    att.to_sym if att
   end
 
   def price_type= (value)

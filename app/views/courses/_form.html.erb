@@ -10,7 +10,7 @@
   <%= f.text_field :price %>
   
   <%= f.label :price_type %>
-  <%= f.text_field :price_type %>
+  <%= f.select :price_type, { "CNY" => "cny", "USD" => "usd"}%>
   
   <%= f.label :start_date_time %>
   <%= f.text_field :start_date_time, :placeholder => "Format: 2012-11-23 00:00:00", :class => 'start_date_time_field' %>
