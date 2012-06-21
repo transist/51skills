@@ -507,6 +507,8 @@ a.button {
   font-size: 15px;
   color: #3F3F3F;
   
+  text-shadow: none;
+  
   padding-top: 10px;
   padding-bottom: 10px;
   box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.5);
