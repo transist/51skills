@@ -19,7 +19,7 @@ class PeopleController < ApplicationController
   def update
     @user = Person.find(params[:id])
     if @user.update_attributes(params[:person]) 
-      redirect_to root_path
+      redirect_to courses_path
     else
       render :edit
     end

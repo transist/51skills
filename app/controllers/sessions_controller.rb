@@ -17,17 +17,17 @@ class SessionsController < ApplicationController
     if !user.email || user.email == ''
       redirect_to edit_person_path(user), :alert => I18n.t('alert.email_required')
     else
-      redirect_to :back, :notice => I18n.t('notice.sign_in')
+      redirect_to courses_path, :notice => I18n.t('notice.sign_in')
     end
   end
 
   def destroy
     reset_session
-    redirect_to root_url, :notice => I18n.t('notice.sign_out')
+    redirect_to courses_path, :notice => I18n.t('notice.sign_out')
   end
 
   def failure
-    redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}. Please try to sign in with other account or contact simsicon#gmail.com"
+    redirect_to courses_path, :alert => "Authentication error: #{params[:message].humanize}. Please try to sign in with other account or contact simsicon#gmail.com"
   end
 
 end
