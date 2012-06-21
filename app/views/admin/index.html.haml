@@ -10,9 +10,25 @@
       = "#{Person.where(:provider => 'facebook').count} signed in with facebook"
       
   %h4
-    = "Top 10 Courses View:"
+    = "ALL Time Top 10 Courses View:"
   %p.courses_view
     %h6
-      - Course.top_10.each do |course|
+      - Course.top(10).each do |course|
         = "#{course.name(I18n.locale)} hits: #{course.score.to_s}"
+        %br
+        
+  %h4
+    = "Today's Top 10 Courses View:"
+  %p.courses_view
+    %h6
+      - Course.today_top(10).each do |course|
+        = "#{course.name(I18n.locale)} hits: #{course.daily_score.to_s}"
+        %br
+        
+  %h4
+    = "This Week's Top 10 Courses View:"
+  %p.courses_view
+    %h6
+      - Course.week_top(10).each do |course|
+        = "#{course.name(I18n.locale)} hits: #{course.weekly_score.to_s}"
         %br

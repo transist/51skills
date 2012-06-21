@@ -60,15 +60,17 @@ class Course < ActiveRecord::Base
   end
   
   def counting(times)
-    $redis.zincrby("courses_view", times, self.id.to_s)
+    $redis.zincrby(Course.courses_view_all_time_key, times, self.id.to_s) 
+    $redis.zincrby(Course.courses_view_daily_key, times, self.id.to_s)
+    $redis.zincrby(Course.coursres_view_weekly_key, times, self.id.to_s) 
   end
   
   def count
-    $redis.zrevrank("courses_view", self.id.to_s)
+    $redis.zrevrank(Course.courses_view_all_time_key, self.id.to_s)
   end
   
   def rank
-    rank = $redis.zrevrank("courses_view", self.id.to_s)
+    rank = $redis.zrevrank(Course.courses_view_all_time_key, self.id.to_s)
     if rank
       rank + 1
     else
@@ -76,12 +78,41 @@ class Course < ActiveRecord::Base
     end
   end
   
-  def self.top_10
-    $redis.zrevrange('courses_view', 0, 9).map{|id| Course.find_by_id(id)}
+  def self.top(rank)
+    $redis.zrevrange(Course.courses_view_all_time_key, 0, rank - 1).map{|id| Course.find_by_id(id)}
+  end
+  
+  def self.today_top(rank)
+    $redis.zrevrange(Course.courses_view_daily_key, 0, rank - 1).map{|id| Course.find_by_id(id)}
+  end
+  
+  def self.week_top(rank)
+    $redis.zrevrange(Course.coursres_view_weekly_key, 0, rank - 1).map{|id| Course.find_by_id(id)}
   end
   
   def score
-    $redis.zscore('courses_view', self.id.to_i).to_i
+    $redis.zscore(Course.courses_view_all_time_key, self.id.to_i).to_i
+  end
+  
+  def daily_score
+    $redis.zscore(Course.courses_view_daily_key, self.id.to_i).to_i
+  end
+  
+  def weekly_score
+    $redis.zscore(Course.coursres_view_weekly_key, self.id.to_i).to_i
+  end
+  
+  
+  def self.courses_view_all_time_key
+    "courses_view"
+  end
+  
+  def self.courses_view_daily_key
+    "courses_view_daily_#{Time.now.in_time_zone('Beijing').beginning_of_day.to_i.to_s}"
+  end
+  
+  def self.coursres_view_weekly_key
+    "courses_view_daily_#{Time.now.in_time_zone('Beijing').beginning_of_week.to_i.to_s}"
   end
   
 end
