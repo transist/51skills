@@ -22,4 +22,6 @@ class Category < ActiveRecord::Base
   def sub_category?
     self.depth == 1
   end
+  
+  
 end
