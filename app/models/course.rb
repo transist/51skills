@@ -62,11 +62,10 @@ class Course < ActiveRecord::Base
   def counting(times)
     $redis.zincrby(Course.courses_view_all_time_key, times, self.id.to_s) 
     $redis.zincrby(Course.courses_view_daily_key, times, self.id.to_s)
-    $redis.zincrby(Course.coursres_view_weekly_key, times, self.id.to_s) 
-  end
-  
-  def count
-    $redis.zrevrank(Course.courses_view_all_time_key, self.id.to_s)
+    $redis.zincrby(Course.courses_view_weekly_key, times, self.id.to_s)
+    $redis.zincrby(Course.courses_category_view_all_time_key, times, self.category.id.to_s) 
+    $redis.zincrby(Course.courses_category_view_daily_key, times, self.category.id.to_s)
+    $redis.zincrby(Course.courses_category_view_weekly_key, times, self.category.id.to_s)
   end
   
   def rank
@@ -87,7 +86,7 @@ class Course < ActiveRecord::Base
   end
   
   def self.week_top(rank)
-    $redis.zrevrange(Course.coursres_view_weekly_key, 0, rank - 1).map{|id| Course.find_by_id(id)}
+    $redis.zrevrange(Course.courses_view_weekly_key, 0, rank - 1).map{|id| Course.find_by_id(id)}
   end
   
   def score
@@ -99,7 +98,31 @@ class Course < ActiveRecord::Base
   end
   
   def weekly_score
-    $redis.zscore(Course.coursres_view_weekly_key, self.id.to_i).to_i
+    $redis.zscore(Course.courses_view_weekly_key, self.id.to_i).to_i
+  end
+  
+  def self.courses_category_top(rank)
+    $redis.zrevrange(Course.courses_category_view_all_time_key, 0, rank - 1).map{|id| Category.find_by_id(id)}
+  end
+  
+  def self.courses_category_today_top(rank)
+    $redis.zrevrange(Course.courses_category_view_daily_key, 0, rank - 1).map{|id| Category.find_by_id(id)}
+  end
+  
+  def self.courses_category_week_top(rank)
+    $redis.zrevrange(Course.courses_category_view_weekly_key, 0, rank - 1).map{|id| Category.find_by_id(id)}
+  end
+  
+  def courses_category_score
+    $redis.zscore(Course.courses_category_view_all_time_key, self.id.to_i).to_i
+  end
+  
+  def courses_category_daily_score
+    $redis.zscore(Course.courses_category_view_daily_key, self.id.to_i).to_i
+  end
+  
+  def courses_category_weekly_score
+    $redis.zscore(Course.courses_category_view_weekly_key, self.id.to_i).to_i
   end
   
   
@@ -111,8 +134,20 @@ class Course < ActiveRecord::Base
     "courses_view_daily_#{Time.now.in_time_zone('Beijing').beginning_of_day.to_i.to_s}"
   end
   
-  def self.coursres_view_weekly_key
-    "courses_view_daily_#{Time.now.in_time_zone('Beijing').beginning_of_week.to_i.to_s}"
+  def self.courses_view_weekly_key
+    "courses_view_weekly_#{Time.now.in_time_zone('Beijing').beginning_of_week.to_i.to_s}"
+  end
+  
+  def self.courses_category_view_all_time_key
+    "courses_category_view"
+  end
+  
+  def self.courses_category_view_daily_key
+    "courses_category_view_daily_#{Time.now.in_time_zone('Beijing').beginning_of_day.to_i.to_s}"
+  end
+  
+  def self.courses_category_view_weekly_key
+    "courses_category_view_weekly_#{Time.now.in_time_zone('Beijing').beginning_of_week.to_i.to_s}"
   end
   
 end

@@ -43,6 +43,7 @@ class CategoriesController < ApplicationController
   
   def show
     @category = Category.find params[:id]
+    @category.counting(1) unless current_user_admin?
     if @category.main_category?
       all_courses = []
       @category.children.each do |child|
