@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
     if auth['info'] && !auth['info']['email'].blank? && Person.unique_email(auth['info']['email'])
-      redirect_to root_url, :alert => "#{auth['info']['email']} : #{I18n.t('alert.email_used')}"
+      redirect_to courses_path, :alert => "#{auth['info']['email']} : #{I18n.t('alert.email_used')}"
       return
     end
     provider = params[:provider]
