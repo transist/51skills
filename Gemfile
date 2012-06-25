@@ -57,7 +57,7 @@ group :development do
 end
 
 group :staging do
-  gem 'unicorn'
+  gem 'thin'
   gem 'therubyracer'
   gem 'pg'
 end
@@ -69,7 +69,7 @@ group :test do
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'thin'
   gem 'therubyracer'
   gem 'pg'
 end
