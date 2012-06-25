@@ -5,6 +5,6 @@ class Enrollment < ActiveRecord::Base
   
   def notify
     email = Email.build("Your enrollment has been confirmed!", self.person.email, "enrollment_confirmed", {:name => self.person.name, :course_name => self.course.name(I18n.locale)}, true)
-    Resque.enqueue(Email, email.id) if email.save
+    #Resque.enqueue(Email, email.id) if email.save
   end
 end
