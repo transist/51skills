@@ -1,6 +1,5 @@
 # encoding: UTF-8
 class Email < ActiveRecord::Base
-  extend HerokuAutoScaler::AutoScaling
   attr_accessible :info, :subject, :template_name, :to_address, :code
 
   @queue = :send
