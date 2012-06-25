@@ -57,7 +57,7 @@ class Email < ActiveRecord::Base
     puts params['TextBody']
     puts params['HtmlBody']
     puts params.to_yaml
-    EmailYak::Email.send(params)
+    #EmailYak::Email.send(params)
     true
   rescue Exception => e  
     puts e.message

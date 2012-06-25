@@ -25,7 +25,7 @@ class HomeController < ApplicationController
     #Resque.enqueue(Email, email.id) if email.save
     #email.save
     MC_API.list_subscribe({:id => '3de230d695', :email_address => to_address, :merge_vars => {:GROUPINGS => [{:id => '7085'}]}})
-    redirect_to '/landing#/subscript', :notice => I18n.t('notice.check_your_inbox')
+    redirect_to courses_path, :notice => I18n.t('notice.check_your_inbox')
   end
   
   def subscribe_confirm
@@ -34,7 +34,7 @@ class HomeController < ApplicationController
     if email
       MC_API.list_subscribe({:id => '3de230d695', :email_address => email.to_address, :merge_vars => {:GROUPINGS => [{:id => '7085'}]}})
     end
-    redirect_to '/landing#/subscript', :notice => I18n.t('notice.thanks_confirmation')
+    redirect_to courses_path, :notice => I18n.t('notice.thanks_confirmation')
   end
   
   def stage

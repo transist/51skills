@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
   end
   
   def email_address_complete!
-    logger.info('*' * 80)
     unless email_address_complete?
       redirect_to(edit_person_path(current_user.id), :alert => I18n.t('alert.email_completed')) 
     end
