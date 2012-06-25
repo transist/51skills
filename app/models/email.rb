@@ -43,8 +43,8 @@ class Email < ActiveRecord::Base
      ], 
      "ReplyToAddress"=> "notifications@51skills.simpleyak.com", 
      "FromAddress"=> "notifications@51skills.simpleyak.com", 
-     "TextBody"=> text, 
-     "HtmlBody"=> html,
+     "TextBody"=> text.encode(Encoding::UTF_8), 
+     "HtmlBody"=> html.encode(Encoding::UTF_8),
      "Subject"=> "51skills | " + subject
     }
     puts hash_info
