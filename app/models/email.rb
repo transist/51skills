@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class Email < ActiveRecord::Base
+  extend HerokuAutoScaler::AutoScaling
   attr_accessible :info, :subject, :template_name, :to_address, :code
 
   @queue = :send
@@ -21,11 +22,8 @@ class Email < ActiveRecord::Base
   end
   
   def self.perform(email_id)
-    puts "*" * 80 + 'sending email'
     email = Email.find_by_id(email_id)
     email.send_me if email
-    puts email.inspect if email
-    puts "*" * 80 + 'sended'
   end
   
   def send_me

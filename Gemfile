@@ -45,10 +45,11 @@ gem 'nokogiri'
 gem 'emailyak', :git => 'git://github.com/ballantyne/emailyak.git'
 gem 'premailer'
 gem 'resque'
-gem 'hirefire'
 gem 'gibbon'
 gem 'uuid'
 gem 'google-api-client'
+gem "heroku"
+gem 'resque-scheduler', require: 'resque_scheduler', git: 'git://github.com/bvandenbos/resque-scheduler'
 
 gem "rspec-rails", :group => [:test, :development]
 
