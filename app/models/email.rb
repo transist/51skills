@@ -47,6 +47,7 @@ class Email < ActiveRecord::Base
      "HtmlBody"=> html,
      "Subject"=> "51skills | " + subject
     }
+    puts hash_info
     puts params.to_yaml
     EmailYak::Email.send(params)
     true
@@ -57,7 +58,7 @@ class Email < ActiveRecord::Base
   end
   
   def hash_info
-    eval info
+    eval info.encode(Encoding::UTF_8)
   end
   
   def self.gen_uuid
