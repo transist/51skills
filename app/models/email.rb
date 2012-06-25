@@ -52,8 +52,8 @@ class Email < ActiveRecord::Base
     }
     puts params['TextBody']
     puts params['HtmlBody']
-    params['TextBody'] = param['TextBody'].encode Encoding::UTF_8
-    params['HtmlBody'] = param['HtmlBody'].encode Encoding::UTF_8
+    params['TextBody'] = params['TextBody'].encode Encoding::UTF_8
+    params['HtmlBody'] = params['HtmlBody'].encode Encoding::UTF_8
     puts params['TextBody']
     puts params['HtmlBody']
     puts hash_info
