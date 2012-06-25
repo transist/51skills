@@ -46,8 +46,8 @@ class Email < ActiveRecord::Base
      ], 
      "ReplyToAddress"=> "notifications@51skills.simpleyak.com", 
      "FromAddress"=> "notifications@51skills.simpleyak.com", 
-     "TextBody"=> text.encode(Encoding::UTF_8), 
-     "HtmlBody"=> html.encode(Encoding::UTF_8),
+     "TextBody"=> text,
+     "HtmlBody"=> html,
      "Subject"=> "51skills | " + subject
     }
     puts params['TextBody']
@@ -56,11 +56,6 @@ class Email < ActiveRecord::Base
     params['HtmlBody'] = params['HtmlBody'].encode Encoding::UTF_8
     puts params['TextBody']
     puts params['HtmlBody']
-    puts hash_info
-    puts text.encoding
-    puts html.encoding
-    puts text.encode(Encoding::UTF_8)
-    puts html.encode(Encoding::UTF_8)
     puts params.to_yaml
     EmailYak::Email.send(params)
     true
@@ -71,7 +66,7 @@ class Email < ActiveRecord::Base
   end
   
   def hash_info
-    eval info.encode(Encoding::UTF_8)
+    eval info.encode
   end
   
   def self.gen_uuid
