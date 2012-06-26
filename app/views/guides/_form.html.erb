@@ -11,14 +11,23 @@
     </div>
   <% end %>
   
-  <%= f.label :title%>
-  <%= f.text_field :title %>
+  <%= f.label :title_zh%>
+  <%= f.text_field :title_zh %>
+  
+  <%= f.label :title_en%>
+  <%= f.text_field :title_en %>
 
-  <%= f.label :content %>
-  <div id="wysihtml5-toolbar" style="display: none;">
+  <%= f.label :content_zh %>
+  <div id="wysihtml5-toolbar-zh" style="display: none;">
     <%= render :partial => 'courses/editor_advanced_btns' %>
   </div>
-  <%= f.text_area :content, :rows => 40, :class => 'span8', :id => 'wysihtml5-textarea'%>
+  <%= f.text_area :content_zh, :rows => 40, :class => 'span8', :id => 'wysihtml5-textarea-zh'%>
+  
+  <%= f.label :content_en %>
+  <div id="wysihtml5-toolbar-en" style="display: none;">
+    <%= render :partial => 'courses/editor_advanced_btns' %>
+  </div>
+  <%= f.text_area :content_en, :rows => 40, :class => 'span8', :id => 'wysihtml5-textarea-en'%>
 
   <div class="actions">
     <%= f.submit %>
@@ -29,8 +38,13 @@
 
 <script>
 
-  var editor = new wysihtml5.Editor("wysihtml5-textarea", { // id of textarea element
-    toolbar:      "wysihtml5-toolbar", // id of toolbar element
+  var editor_zh = new wysihtml5.Editor("wysihtml5-textarea-zh", { // id of textarea element
+    toolbar:      "wysihtml5-toolbar-zh", // id of toolbar element
+    parserRules:  wysihtml5ParserRules // defined in parser rules set 
+  });
+  
+  var editor_en = new wysihtml5.Editor("wysihtml5-textarea-en", { // id of textarea element
+    toolbar:      "wysihtml5-toolbar-en", // id of toolbar element
     parserRules:  wysihtml5ParserRules // defined in parser rules set 
   });
   

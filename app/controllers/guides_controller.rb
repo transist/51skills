@@ -4,6 +4,7 @@ class GuidesController < ApplicationController
   # GET /guides.json
   def index
     @guides = Guide.all
+    @page  = Page.find_by_slug('guides')
 
     respond_to do |format|
       format.html # index.html.erb

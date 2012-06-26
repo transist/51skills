@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
-<h6><%= @guide.title%></h6>
-<%=raw @guide.content%>
+<h6><%= @guide.title(I18n.locale)%></h6>
+<%=raw @guide.content(I18n.locale)%>
 
 <%= link_to('Edit', edit_guide_path(@guide), :class => 'btn') if current_user_admin? %>
 <br/>
