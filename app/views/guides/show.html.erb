@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+<h6><%= @guide.title%></h6>
+<%=raw @guide.content%>
+
+<%= link_to('Edit', edit_guide_path(@guide), :class => 'btn') if current_user_admin? %>
+<br/>
+<%= link_to '<< Back', guides_path %>

@@ -1,4 +1,6 @@
 Tedx::Application.routes.draw do
+  resources :guides
+
   get "profiles/edit"
   get "profiles/update"
 

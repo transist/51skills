@@ -1,0 +1,18 @@
+<div class='guides'>
+  <div class='bar'>
+    <div class='title'>51skills Guides</div>
+  </div>
+  
+  
+  <% @guides.each do |guide| %>
+    <div class='guide'>
+      <h4><%= link_to guide.title, guide %></h4>
+    </div>
+  <% end %>
+
+  <br />
+
+  <%= link_to('New Guide', new_guide_path, :class => 'btn') if current_user_admin? %>
+</div>
+
+
