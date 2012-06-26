@@ -26,14 +26,9 @@ class Email < ActiveRecord::Base
   end
   
   def send_me
-    template_hash = EmailTemplate.get_html_hash(template_name)
-    template_html = Document.new(File.read(Rails.root.to_s+"/app/views/email_templates/_template.html.erb")).interpolate(template_hash)
-    template_text = Document.new(File.read(Rails.root.to_s+"/app/views/email_templates/_template.text.erb")).interpolate(template_hash)
-    html = Premailer.new(Document.new(template_html).interpolate(hash_info), {:with_html_string => true}).to_inline_css
-    text = Document.new(template_text).interpolate(hash_info)
-    puts hash_info
-    puts text
-    puts html
+    template = EmailTemplate.find_by_name(template_name)
+    text = Document.new(template.to_text).interpolate(hash_info)
+    html = Document.new(template.to_html).interpolate(hash_info)
     params = {
      "ToAddress"=> to_address, 
      "FromName"=> '51skills', 
@@ -50,14 +45,7 @@ class Email < ActiveRecord::Base
      "HtmlBody"=> html,
      "Subject"=> "51skills | " + subject
     }
-    puts params['TextBody']
-    puts params['HtmlBody']
-    params['TextBody'] = params['TextBody'].encode Encoding::UTF_8
-    params['HtmlBody'] = params['HtmlBody'].encode Encoding::UTF_8
-    puts params['TextBody']
-    puts params['HtmlBody']
-    puts params.to_yaml
-    #EmailYak::Email.send(params)
+    EmailYak::Email.send(params)
     true
   rescue Exception => e  
     puts e.message
@@ -66,7 +54,7 @@ class Email < ActiveRecord::Base
   end
   
   def hash_info
-    eval info.encode
+    eval info
   end
   
   def self.gen_uuid
