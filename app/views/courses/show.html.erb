@@ -68,17 +68,27 @@
 </div>
 
 <div class='course_comments'>
-  <div class='new_comment'>
-    <i class="icon-comment comment_icon"></i>
-    <span class='comment_count'><%= @course.comment_threads.count %> comments</span>
-    <div class='comment_box'>
-      <%= form_for :comment, :url => course_comments_path(@course.id), :html => {:class => 'new_course_comment', :multipart => true } do |f| %>
-        <div id="wysihtml5-toolbar" style="display: none;">
-        </div>
-        <%= f.text_area :body, :rows => 5, :class => 'span10', :id => 'wysihtml5-textarea', :style => 'visibility:hidden;'%>
-        <%= submit_tag (I18n.t('comment')), :class => 'btn btn-mini comment_btn' %>
-      <% end%>
+  <div class='new_comment span12 row'>
+    <div class='left_side span1'>
+      <div class='comment_count'>
+        <i class="icon-comment comment_icon"></i>
+        <p><%= @course.comment_threads.count %> comments</p>
+        <p class='mention'>Have questions or comments about the course? Post it here.</p>
+      </div>
+      
+      
     </div>
+    <div class='right_side span10'>
+      <div class='comment_box'>
+        <%= form_for :comment, :url => course_comments_path(@course.id), :html => {:class => 'new_course_comment', :multipart => true } do |f| %>
+          <div id="wysihtml5-toolbar" style="display: none;">
+          </div>
+          <%= f.text_area :body, :rows => 5, :class => 'span10', :id => 'wysihtml5-textarea', :style => 'visibility:hidden;'%>
+          <%= submit_tag (I18n.t('comment')), :class => 'btn btn-mini comment_btn' %>
+        <% end%>
+      </div>
+    </div>
+    
   </div>
   
   <ul class='comments unstyled'>

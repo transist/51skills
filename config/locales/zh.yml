@@ -6,6 +6,7 @@ zh:
   edit_profile: '修改帐号'
   edit_pages: "修改网页"
   edit_email_templates: "编辑邮件模板"
+  settings: '设定'
   edit_categories: "编辑分类"
   admin_dashboard: "管理员面板"
   login_with_weibo: "用微博来登入" 

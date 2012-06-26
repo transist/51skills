@@ -17,6 +17,7 @@ en:
   signed_in_with: 'Signed in With'
   logout: "Logout"
   edit: 'Edit'
+  settings: 'Settings'
   search: 'Search'
   new: 'New'
   delete: 'Delete'

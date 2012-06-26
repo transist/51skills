@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
   
   def current_user_admin!
     unless current_user_admin?
-      redirect_to root_url, :alert => I18n.t('alert.admin_only')
+      redirect_to courses_path, :alert => I18n.t('alert.admin_only')
     end
   end
 
@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   def correct_user?
     @user = Person.find(params[:id])
     unless current_user == @user
-      redirect_to root_url, :alert => I18n.t('alert.access_denied')
+      redirect_to courses_path, :alert => I18n.t('alert.access_denied')
     end
   end
 

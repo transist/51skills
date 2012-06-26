@@ -4,6 +4,25 @@
 
 .course_comments {
   float: left;
+  width: 100%;
+}
+
+.course_comments .new_comment{
+  
+}
+
+.course_comments .new_comment .left_side{
+  margin-left: -19px;
+  width: 220px;
+}
+
+.course_comments .new_comment .left_side .mention{
+  font-size: 10px;
+  color: #828282;
+}
+
+.course_comments .new_comment .right_side{
+  margin-left: -90px;
 }
 
 .course_comments .comment_box{
@@ -21,21 +40,25 @@
   float: left;
 }
 
-.course_comments .comment_count{
+.course_comments .comment_count p{
   float: left;
   clear: left;
   font-size: 10px;
+  width: 145px;
 }
 
 .course_comments .comments{
   float: left;
   clear: left;
   margin-top: 30px;
+  width: 100%;
 }
 
 .course_comments .comments .comment{
+
   margin-bottom: 8px;
   padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
 }
 
 .course_comments .comments .comment .user_name{
@@ -47,3 +70,4 @@
   font-size: 7pt;
   color: #828282;
 }
+

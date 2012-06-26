@@ -1,7 +1,11 @@
-.profile.row
-  .avatar.span4
-    =image_tag @user.profile.avatar.url(:medium)
-  %h6.name.span4
-    =@user.name
-  .about.span4
-    =raw @user.profile.about
+-if @user.profile
+  .profile.row
+    .avatar.span4
+      =image_tag @user.profile.avatar.url(:medium)
+    %h6.name.span4
+      =@user.name
+    .about.span4
+      =raw @user.profile.about
+-else
+  .p
+    The Profile has not been created yet.
