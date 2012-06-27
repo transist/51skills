@@ -13,7 +13,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'devise'
 gem 'weibo'
 gem 'omniauth'
 gem 'omniauth-weibo'
