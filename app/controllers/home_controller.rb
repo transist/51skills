@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def index
     #@page = Page.find_by_slug('home') || Page.first(:conditions => {:root => true})
     #render '/pages/show'
-    if cookies[:first_time_visit] && false
+    if cookies[:first_time_visit]
       redirect_to courses_path
       return
     else

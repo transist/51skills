@@ -1,4 +1,11 @@
 class Person < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
 	rolify
   attr_accessible :profile_attributes, :secret, :token, :uid, :username, :email, :mobile, :name
   
@@ -15,7 +22,7 @@ class Person < ActiveRecord::Base
   validates :email, :presence => {:message => "Your email is used to save your greeting."}, :unless => :skip_email_validation
   validates :email, :uniqueness => true, :unless => :skip_email_validation
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :unless => :skip_email_validation
-  validates :name, :presence => {:message => "Your name is used to save your greeting."}, :unless => :skip_email_validation
+  #validates :name, :presence => {:message => "Your name is used to save your greeting."}, :unless => :skip_email_validation
 
   def self.create_with_omniauth(auth)
     person = create! do |user|

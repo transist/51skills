@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
   
 
   private
+  def after_sign_in_path_for(resource)
+    courses_path
+  end
+  
+  def after_sign_out_path_for(resource)
+    courses_path
+  end
+  
   def layout_with_mercury
     !params[:mercury_frame] && is_editing? ? 'mercury' : 'application'
   end

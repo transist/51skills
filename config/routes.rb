@@ -1,4 +1,6 @@
 Tedx::Application.routes.draw do
+  devise_for :people
+
   resources :guides
 
   get "profiles/edit"
