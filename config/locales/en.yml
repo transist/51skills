@@ -62,6 +62,7 @@ en:
     sign_out: 'You have successfully signed out!'
     check_your_inbox: "Please check your inbox for verification email."
     thanks_confirmation: "Thanks for your confirmation!"
+    connected: "Your Social Account is successfully connected, you can sign in with it now."    
   alert:
     email_required: 'Please enter your email address for verification!'
     email_used: 'The Email Address is Already in Used, You might need signed in with your another account!'
@@ -71,3 +72,4 @@ en:
     sign_in_required: 'You need to sign in to take this action.'
     email_address_format_validation: "The Email Address you typed in is invalidated. Please try again."
     email_already_in_used: "Your email adress is already in used."
+    provider_in_used: "The account you are trying to connected is already in used by anther account, it could be your another account, please disconnect it first."

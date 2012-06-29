@@ -1,0 +1,16 @@
+zh:
+  devise:
+    sign_in: '登入'
+    sign_out: '登出'
+    sign_up: '注册'
+    email: '电子邮箱'
+    password: '密码'
+    password_confirmation: '密码确认'
+    ok: '好了'
+    forget_your_password: '忘记密码了？'
+    didnt_receive_confimation_instructions: '没有收到确认通知？'
+    didnt_receive_unlock_instructions: '没有收到解锁通知？'
+    sign_in_with_email: '用电子邮件登录'
+    sign_up_with_email: '用电子邮件注册'
+    set_password_to_login_in_as_email: "用邮箱登陆，点击这里设置或修改密码 >>"
+    connect_other_social_accounts: "连接其他账号"

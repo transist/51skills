@@ -340,6 +340,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.6)
     systemu (2.5.1)
     texticle (2.0.3)
       activerecord (~> 3.0)
@@ -429,6 +430,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   spine-rails
+  sqlite3
   texticle (~> 2.0)
   the_sortable_tree
   therubyracer

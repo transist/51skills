@@ -3,9 +3,7 @@
   <li><%= link_to 'Edit Profile', edit_person_profile_path(@user.id) %></li>
   <li><%= link_to 'Public Profile', person_path(@user.id) %></li>
 </ul>
-<div class='page-header well'>
-  <%= "#{I18n.t('signed_in_with')} #{@user.provider}"%>
-</div>
+
 <%= form_for(@user) do |f|%>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -31,3 +29,27 @@
 
   <%= f.submit "Update" %>
 <% end %>
+
+<div class='account_editing'>
+  <%= link_to(I18n.t('devise.set_password_to_login_in_as_email'), '/change_password', :class => 'set_password_to_login_in_as_email alert alert-info') unless @user.email.blank? %>
+
+  <div class='connect_other_social_accounts'>
+    
+    <div class='social_account'>
+      <span class='social_botton span1'><%= image_tag('social/weibo_24.png') %></span>
+      <span class='social_site span1'><%= I18n.t('weibo')%></span>
+      <span class='connect_it span2'><%= connect_social_botton(:weibo) %></span>
+    </div>
+    <div class='social_account'>
+      <span class='social_botton span1'><%= image_tag('social/twitter_24.png') %></span>
+      <span class='social_site span1'><%= I18n.t('twitter')%></span>
+      <span class='connect_it span2'><%= connect_social_botton(:twitter) %></span>
+    </div>
+    <div class='social_account'>
+      <span class='social_botton span1'><%= image_tag('social/facebook_24.png') %></span>
+      <span class='social_site span1'><%= I18n.t('facebook')%></span>
+      <span class='connect_it span2'><%= connect_social_botton(:facebook) %></span>
+    </div>
+  </div>
+</div>
+

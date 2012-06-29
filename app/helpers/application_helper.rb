@@ -74,15 +74,20 @@ module ApplicationHelper
   end
   
   def watchers_name_helper
-    names = []
-    @course.watchers.limit(5).each {|watcher| names << watcher.name}
-    names.join(", ")
+    @course.watchers.limit(5).map {|watcher| watcher.name}.join(", ")
   end
   
   def students_name_helper
-    names = []
-    @course.students.limit(5).each {|student| names << student.name}
-    names.join(", ")
+    @course.students.limit(5).map{|student| student.name}.join(", ")
+  end
+  
+  def connect_social_botton(provider_name)
+    including = @user.providers.map{|p| p.provider}.include?(provider_name.to_s)
+    connect = including ? 'disconnect' : 'connect'
+    method = including ? :delete : :get
+    provider = Provider.find_by_provider_and_person_id(provider_name, @user.id)
+    url = including ? person_provider_path(@user.id, provider.id) : new_person_provider_path(@user.id).to_s + "?provider=#{provider_name}"
+    link_to connect, url, :class => 'btn btn-min social_botton', :method => method
   end
   
 end

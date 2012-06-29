@@ -56,3 +56,17 @@ en:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
+    sign_in: 'Sign in'
+    sign_out: 'Sign out'
+    sign_up: 'Sign up'
+    email: 'Email'
+    password: 'Password'
+    password_confirmation: 'Password Confirmation'
+    ok: 'OK'
+    forget_your_password: 'Forget your password?'
+    didnt_receive_confimation_instructions: "Didn't receive confirmation instructions?"
+    didnt_receive_unlock_instructions: "Didn't receive unlock instructions?"
+    sign_in_with_email: 'Sign in With Email'
+    sign_up_with_email: 'Sign up With Email'
+    set_password_to_login_in_as_email: "Click here to create or change your password to Login in with email >>"
+    connect_other_social_accounts: "Connect other social accounts"

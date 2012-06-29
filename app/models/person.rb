@@ -2,12 +2,10 @@ class Person < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
 	rolify
-  attr_accessible :profile_attributes, :secret, :token, :uid, :username, :email, :mobile, :name
+  attr_accessible :profile_attributes, :secret, :token, :uid, :username, :email, :mobile, :name, :password, :password_confirmation, :remember_me
   
   has_many :watches, :dependent => :destroy
   has_many :watching_courses, :through => :watches, :source => :course
@@ -23,6 +21,7 @@ class Person < ActiveRecord::Base
   validates :email, :uniqueness => true, :unless => :skip_email_validation
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :unless => :skip_email_validation
   #validates :name, :presence => {:message => "Your name is used to save your greeting."}, :unless => :skip_email_validation
+  has_many :providers, :dependent => :destroy
 
   def self.create_with_omniauth(auth)
     person = create! do |user|
@@ -34,37 +33,10 @@ class Person < ActiveRecord::Base
   
   def instance_create_with_omniauth(auth)
     enable_skip_email_validation
-    self.provider = auth['provider']
-    self.uid = auth['uid']
-    case auth['provider']
-    when 'weibo'
-      self.name = auth['info']['name'] || ""
-      self.email = auth['info']['email'] || ""
-      self.mobile = ""
-      self.username = auth['extra']['raw_info']['screen_name'] || ""
-      self.token = auth['extra']['access_token'].token
-      self.secret = auth['extra']['access_token'].secret
-      self.uid = auth['extra']['raw_info']['id']
-      self.profile_attributes = auth['extra'].to_json
-    when 'twitter'
-      self.name = auth['info']['name'] || ""
-      self.email = ""
-      self.mobile = ""
-      self.username = auth['info']['nickname'] || ""
-      self.token = auth['credentials'].token
-      self.secret = auth['credentials'].secret
-      self.uid = auth['uid']
-      self.profile_attributes = auth['extra'].to_json
-    when 'facebook'
-      self.name = auth['info']['nickname']
-      self.email = auth['info']['email']
-      self.mobile = ""
-      self.username = auth['info']['name']
-      self.token = auth['credentials'].token
-      self.secret = ""
-      self.uid = auth['uid']
-      self.profile_attributes = auth['extra'].to_json
-    end
+    provider = Provider.create_provider_with_omniauth(auth)
+    self.email = provider.email
+    self.name = provider.username
+    self.providers << provider
     self
   end
   

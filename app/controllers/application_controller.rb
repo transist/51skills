@@ -39,17 +39,21 @@ class ApplicationController < ActionController::Base
   end
   
   def email_address_complete!
-    unless email_address_complete?
+    unless email_address_complete? || request.env['REQUEST_PATH'] == destroy_person_session_path
       redirect_to(edit_person_path(current_user.id), :alert => I18n.t('alert.email_completed')) 
     end
   end
 
+  # def current_user
+  #   begin
+  #     @current_user ||= Person.find(session[:user_id]) if session[:user_id]
+  #   rescue 
+  #     nil
+  #   end
+  # end
+  
   def current_user
-    begin
-      @current_user ||= Person.find(session[:user_id]) if session[:user_id]
-    rescue 
-      nil
-    end
+    current_person
   end
   
   def current_user_admin?

@@ -36,3 +36,13 @@ Tedx::Application.configure do
   config.assets.debug = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
+
+ActionMailer::Base.smtp_settings = {  
+  :address              => "smtp.gmail.com",  
+  :port                 => 587,  
+  :domain               => "gmail.com",  
+  :user_name            => "51skillzz", #Your user name
+  :password             => "MU%%47n4", # Your password
+  :authentication       => "plain",  
+  :enable_starttls_auto => true  
+}

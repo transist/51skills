@@ -56,8 +56,10 @@ Tedx::Application.routes.draw do
   
   resources :people, :only => [ :show, :edit, :update ] do
     resources :profiles
+    resources :providers, :only => [:new, :create, :destroy]
   end
   
+  match '/change_password' => 'sessions#change_password'
   match '/auth/:provider/callback' => 'sessions#create'
   match '/login/:provider' => 'sessions#new', :as => :login
   match '/logout' => 'sessions#destroy', :as => :logout

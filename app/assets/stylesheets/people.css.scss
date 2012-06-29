@@ -13,4 +13,24 @@
   float: left;
 }
 
+.account_editing .set_password_to_login_in_as_email{
+  float: left;
+}
+
+.account_editing .connect_other_social_accounts{
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+.account_editing .connect_other_social_accounts .social_account{
+  float: left;
+  clear: left;
+  margin-top: 20px;
+}
+
+.account_editing .connect_other_social_accounts .social_account .connect_it{
+  margin-left: 100px;
+}
 

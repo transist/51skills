@@ -54,7 +54,7 @@
     
           <li><%= zh_or_en_link %></li>
 
-          <% if session[:user_id] == nil %>
+          <% unless current_user %>
           
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= I18n.t('sign_in_with')%><b class="caret"></b></a>
@@ -71,11 +71,19 @@
                 <span class='social_botton'><%= link_to image_tag('social/facebook_24.png'), login_path(:facebook) %></span>
                 <span class='social_site'><%= link_to I18n.t('facebook'), login_path(:facebook)%></span>
               </li>
+              <div class='email_authentication'>
+                <li class=''>
+                  <%= link_to I18n.t('devise.sign_in_with_email'), new_person_session_path%>
+                </li>
+                <li class=''>
+                  <%= link_to I18n.t('devise.sign_up'), new_person_registration_path %>
+                </li>
+              </div>
             </ul>
           </li>
           
           <% else %>
-          <li><%= link_to I18n.t('logout'), '/logout' %></li>
+          <li><%= link_to I18n.t('logout'), destroy_person_session_path, :method => :delete %></li>
           <% end %>
           <% if current_user && current_user.admin? && @page && !@page.new_record? %>
           <li><%= link_to I18n.t('edit_pages'), pages_path %></li>
@@ -121,7 +129,7 @@
           <div class='courses span2'><h6><%= link_to I18n.t('teach'), '#' %></h6></div>
           <div class='courses span2'><h6><%= zh_or_en_link %></h6></div>
           
-          <% if session[:user_id] == nil %>
+          <% unless current_user %>
             <ul class='unstyled pull-right' >
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= I18n.t('sign_in_with')%><b class="caret"></b></a>
@@ -138,6 +146,14 @@
                   <span class='social_botton'><%= link_to image_tag('social/facebook_24.png'), login_path(:facebook) %></span>
                   <span class='social_site'><%= link_to I18n.t('facebook'), login_path(:facebook)%></span>
                 </li>
+                <div class='email_authentication'>
+                  <li class=''>
+                    <%= link_to I18n.t('devise.sign_in_with_email'), new_person_session_path%>
+                  </li>
+                  <li class=''>
+                    <%= link_to I18n.t('devise.sign_up'), new_person_registration_path %>
+                  </li>
+                </div>
               </ul>
             </li>
             </ul>
@@ -147,7 +163,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name%><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li ><%= link_to I18n.t('settings'), edit_person_path(current_user.id)%></li>
-                <li ><%= link_to(I18n.t('logout'), '/logout') %></li>
+                <li ><%= link_to(I18n.t('logout'), destroy_person_session_path, :method => :delete) %></li>
               </ul>
             </li>
             </ul>

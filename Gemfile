@@ -53,7 +53,7 @@ gem 'google-api-client'
 gem "rspec-rails", :group => [:test, :development]
 
 group :development do
-  gem 'pg'
+  gem 'sqlite3'
 end
 
 group :staging do

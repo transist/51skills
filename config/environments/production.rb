@@ -64,5 +64,16 @@ Tedx::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => '51skills.com' }
 end
+
+
+ActionMailer::Base.smtp_settings = {  
+  :address              => "smtp.gmail.com",  
+  :port                 => 587,  
+  :domain               => "gmail.com",  
+  :user_name            => "51skillzz", #Your user name
+  :password             => "MU%%47n4", # Your password
+  :authentication       => "plain",  
+  :enable_starttls_auto => true  
+}
