@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :email_address_complete!
   helper_method :current_user
   helper_method :user_signed_in?
-  helper_method :correct_user?
+  helper_method :correct_user_by_id!
   helper_method :is_editing?
   helper_method :current_user_admin?
   helper_method :email_address_complete?
@@ -70,8 +70,15 @@ class ApplicationController < ActionController::Base
     return true if current_user
   end
 
-  def correct_user?
-    @user = Person.find(params[:id])
+  def correct_user_by_id!
+    @user = Person.find_by_id(params[:id])
+    unless current_user == @user
+      redirect_to courses_path, :alert => I18n.t('alert.access_denied')
+    end
+  end
+  
+  def correct_user_by_person_id!
+    @user = Person.find_by_id(params[:person_id])
     unless current_user == @user
       redirect_to courses_path, :alert => I18n.t('alert.access_denied')
     end

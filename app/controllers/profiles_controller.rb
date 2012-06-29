@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_filter :correct_user?
+  before_filter :correct_user_by_id!
   def edit
     @page = create_standard_page
     @person = Person.find params[:person_id]

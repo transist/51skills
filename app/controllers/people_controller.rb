@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   before_filter :authenticate_user!, :except => ['show']
-  before_filter :correct_user?, :except => ['show']
+  before_filter :correct_user_by_id!, :except => ['show']
   before_filter :yield_page, :only => ['index', 'edit', 'update', 'show']
   skip_before_filter :email_address_complete!, :only => [:edit, :update]
   

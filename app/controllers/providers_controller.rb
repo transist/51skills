@@ -1,4 +1,6 @@
 class ProvidersController < ApplicationController
+  before_filter :correct_user_by_person_id!
+  
   def new
     redirect_to "/auth/#{params[:provider]}"
   end
