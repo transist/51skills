@@ -1,5 +1,6 @@
 class CreateProviders < ActiveRecord::Migration
-  def change
+  def up
+    drop_table :providers
     create_table :providers do |t|
       t.string :uid
       t.string :username
@@ -12,5 +13,9 @@ class CreateProviders < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
+  
+  def down
+    drop_table :providers
   end
 end

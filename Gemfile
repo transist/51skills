@@ -54,6 +54,7 @@ gem "rspec-rails", :group => [:test, :development]
 
 group :development do
   gem 'sqlite3'
+  gem 'pg'
 end
 
 group :staging do
