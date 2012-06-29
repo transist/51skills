@@ -40,21 +40,31 @@ zh:
   comment: '评论'
   save: '保存'
   more: '更多'
+  edit_account: "编辑账号"
+  edit_profile: "编辑个人介绍"
+  public_profile: "公共页面"
+  about: '关于'
+  name: "名字"
+  email: "电子邮件"
+  mobile: "移动电话"
+  update: "更新"
   
   notice:
     sign_in: '您已经成功的登入！'
     sign_out: '您已经成功的登出！'
     check_your_inbox: "请检查你的收件箱以获得验证邮件。"
     thanks_confirmation: "感谢您的验证！请期待我们的更新！"
+    connected: "您的账号已经关联起来了，现在起可以用来签入。"  
   alert:
     email_required: '请输入您的email地址，以验证您的身份。'
     email_used: '该email地址已经被使用了，可能需要您使用其他已经签入过的账号登陆！'
     email_completed: '您需要输入您的email地址来完成此步操作！'
     admin_only: '需要管理员权限.'
-    access_denied: '拒绝访问、'
+    access_denied: '拒绝访问'
     sign_in_required: '请先登入再进行此操作。'
     email_address_format_validation: "您输入的Email地址有误，请重输入"
     email_already_in_used: "您的Email地址已经订阅过了，谢谢。"
+    your_action_might_lead_you_cant_login_anymore: "您还没有填邮箱，您的操作被拒绝可能会导致您再也无法登陆！"
   landing:
     fallback_message: "您正在使用的浏览器<b>不支持</b>51skills所要求的特性，所以你只能看到一个简单版本的演示。</p><p>为了获得最佳的体验效果，请使用最新版本的<b>Chrome</b>，<b>Safari</b> 或者 <b>Firefox</b> 浏览器。"
     hint: "请使用空格键或者方向键来导航。"

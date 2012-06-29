@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#">Edit Account</a></li>
-  <li><%= link_to 'Edit Profile', edit_person_profile_path(@user.id) %></li>
-  <li><%= link_to 'Public Profile', person_path(@user.id) %></li>
+  <li class="active"><a href="#"><%= I18n.t('edit_account')%></a></li>
+  <li><%= link_to I18n.t('edit_profile'), edit_person_profile_path(@user.id) %></li>
+  <li><%= link_to I18n.t('public_profile'), person_path(@user.id) %></li>
 </ul>
 
 <%= form_for(@user) do |f|%>
@@ -17,22 +17,20 @@
     </div>
   <% end %>
   
-  <%= f.label :name %>
+  <%= f.label I18n.t('name') %>
   <%= f.text_field :name %>
   <br />
-  <%= f.label :email %>
+  <%= f.label I18n.t('email') %>
   <%= f.email_field :email %>
   <br />
-  <%= f.label :mobile %>
+  <%= f.label I18n.t('mobile') %>
   <%= f.text_field :mobile %>
   <br />
 
-  <%= f.submit "Update" %>
+  <%= f.submit I18n.t('update') %>
 <% end %>
 
 <div class='account_editing'>
-  <%= link_to(I18n.t('devise.set_password_to_login_in_as_email'), '/change_password', :class => 'set_password_to_login_in_as_email alert alert-info') unless @user.email.blank? %>
-
   <div class='connect_other_social_accounts'>
     
     <div class='social_account'>
@@ -51,5 +49,7 @@
       <span class='connect_it span2'><%= connect_social_botton(:facebook) %></span>
     </div>
   </div>
+  
+  <%= link_to(I18n.t('devise.set_password_to_login_in_as_email'), '/change_password', :class => 'set_password_to_login_in_as_email alert alert-info') unless @user.email.blank? %>
 </div>
 

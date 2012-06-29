@@ -14,3 +14,5 @@ zh:
     sign_up_with_email: '用电子邮件注册'
     set_password_to_login_in_as_email: "用邮箱登陆，点击这里设置或修改密码 >>"
     connect_other_social_accounts: "连接其他账号"
+    remember_me: "记得我"
+    send_me_reset_password_instructions: "给我发重置密码的邮件"

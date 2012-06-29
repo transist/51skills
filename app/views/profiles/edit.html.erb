@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
-  <li><%= link_to 'Edit Account', edit_person_path(@person.id) %></li>
-  <li class="active"><%= link_to 'Edit Profile', edit_person_profile_path(@person.id) %></li>
-  <li><%= link_to 'Public Profile', person_path(@person.id) %></li>
+  <li><%= link_to I18n.t('edit_account'), edit_person_path(@person.id) %></li>
+  <li class="active"><%= link_to I18n.t('edit_profile'), edit_person_profile_path(@person.id) %></li>
+  <li><%= link_to I18n.t('public_profile'), person_path(@person.id) %></li>
 </ul>
 
 <%= form_for :profile, :url => person_profile_path(@person.id), :html => {:class => 'profile_settings', :multipart => true }, :method => 'put' do |f| %>
@@ -18,7 +18,7 @@
   <% end %>
   
   
-  <%= f.label :about %>
+  <%= f.label I18n.t('about') %>
   <div id="wysihtml5-toolbar-about" style="display: none;">
     <%= render :partial => 'courses/editor_advanced_btns' %>
   </div>

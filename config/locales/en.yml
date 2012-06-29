@@ -40,6 +40,15 @@ en:
   comment: 'comment'
   save: 'Save'
   more: 'More'
+  edit_account: "Edit Account"
+  edit_profile: "Edit Profile"
+  public_profile: "Public Profile"
+  about: 'About'
+  your_action_might_lead_you_cant_login_anymore: "You don't have email address input yet, your action might lead you can not login anymore."
+  name: "Name"
+  email: "Email"
+  mobile: "Mobile"
+  update: "Update"
   
   landing:
     fallback_message: "Your browser <b>doesn't support the features required</b> by 51skills, so you are presented with a simplified version of this presentation.</p><p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser."

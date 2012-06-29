@@ -70,3 +70,5 @@ en:
     sign_up_with_email: 'Sign up With Email'
     set_password_to_login_in_as_email: "Click here to create or change your password to Login in with email >>"
     connect_other_social_accounts: "Connect other social accounts"
+    remember_me: "remember me"
+    send_me_reset_password_instructions: "Send me reset password instructions"

@@ -1,12 +1,16 @@
-<h2>Forgot your password?</h2>
+<div class='center'>
+  <h2><%= I18n.t('devise.forget_your_password')%></h2>
+  
+  <div class='devise_form'>
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+      <div><%= f.label I18n.t('devise.email') %><br />
+      <%= f.email_field :email %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+      <div><%= f.submit I18n.t('devise.send_me_reset_password_instructions') %></div>
+    <% end %>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+    <%= render :partial => "people/shared/links" %>
+  </div>
+</div>
