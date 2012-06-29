@@ -26,7 +26,6 @@
 //= require app
 //= require jquery.tipsy
 //= require courses
-//= require cycle
 
 jQuery(top).trigger('initialize:frame');
 var photo_count = 0;

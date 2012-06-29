@@ -1,5 +1,5 @@
 Tedx::Application.routes.draw do
-  devise_for :people
+  
 
   resources :guides
 
@@ -53,6 +53,8 @@ Tedx::Application.routes.draw do
   match '/landing' => 'home#landing'
   post '/subscribe' => 'home#subscribe'
   get '/subscribe_confirm' => 'home#subscribe_confirm'
+  
+  devise_for :people
   
   resources :people, :only => [ :show, :edit, :update ] do
     resources :profiles
