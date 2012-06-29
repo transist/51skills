@@ -1,6 +1,5 @@
 class CreateProviders < ActiveRecord::Migration
   def up
-    drop_table :providers
     create_table :providers do |t|
       t.string :uid
       t.string :username
