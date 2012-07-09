@@ -90,6 +90,26 @@ class CoursesController < ApplicationController
     redirect_to :back
   end
   
+  def activate
+    @course = Course.find params[:course_id]
+    @course.activate
+  end
+  
+  def complete
+    @course = Course.find params[:course_id]
+    @course.complete
+  end
+  
+  def cancel
+    @course = Course.find params[:course_id]
+    @course.cancel
+  end
+  
+  def postpone
+    @course = Course.find params[:course_id]
+    @course.postpone
+  end
+  
   protected
   def collection
     Course.paginate(:page => params[:page], :per_page => 6, :order => 'start_date_time ASC')
