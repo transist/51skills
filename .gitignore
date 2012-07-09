@@ -27,3 +27,4 @@ config/database.yml
 /pull*.dat
 /doc/
 /.yardoc/
+/rerun.txt
