@@ -33,7 +33,7 @@
         <div class='enroll_btn'>
           <% unless @course.price == nil %>
             <%= enroll_btn(@course)%>
-            <span class='label label-info price'><%= (@course.price = 0) ? "FREE!" : (@course.price.to_s + @course.price_type.to_s) %></span>
+            <span class='label label-info price'><%= (@course.price == 0) ? "FREE!" : ("#{@course.price.to_s}  #{@course.price_type.to_s}") %></span>
           <% end%>
         </div>
       </div>
