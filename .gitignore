@@ -26,3 +26,4 @@ config/database.yml
 /push*.dat
 /pull*.dat
 /doc/
+/.yardoc/
