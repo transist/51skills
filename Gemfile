@@ -27,7 +27,6 @@ gem 'the_sortable_tree'
 gem 'hashie'
 gem 'bootstrap-sass', '~> 2.0.2'
 gem 'mercury-rails', git: 'git://github.com/ballantyne/mercury.git'
-gem 'capistrano'
 gem 'flickr_fu'
 gem 'cancan'
 gem 'rolify'
@@ -54,13 +53,11 @@ gem 'rspec-rails', group: [:test, :development]
 
 group :development do
   gem 'sqlite3'
-  gem 'pg'
+  gem 'capistrano'
 end
 
 group :staging do
   gem 'thin'
-  gem 'therubyracer'
-  gem 'pg'
 end
 
 group :test do
@@ -71,6 +68,4 @@ end
 
 group :production do
   gem 'thin'
-  gem 'therubyracer'
-  gem 'pg'
 end
