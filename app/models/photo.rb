@@ -11,12 +11,6 @@ class Photo < ActiveRecord::Base
   translation_for :comment
   has_and_belongs_to_many :panes
   
-  def self.search_flickr(q='tedxshanghai')
-    FlickrApi.search(:text => q).each do |photo|
-      puts photo.inspect
-    end
-  end
-  
   def self.search_weibo(q='tedxshanghai')
     WeiboApi.search(q).each do |message|
       
