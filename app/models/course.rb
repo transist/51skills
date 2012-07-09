@@ -30,6 +30,25 @@ class Course < ActiveRecord::Base
   validate :price, :numericality => {:greater_than_or_equal_to => 0}, :allow_nil => true
   validates_inclusion_of :price_type, :in => [:cny, :usd]
   
+  state_machine :state, :initial => :inactive do
+    event :activate do
+      transition [:inactive, :postponed] => :active
+    end
+
+    event :complete do
+      transition :active => :completed
+    end
+
+    event :cancel do
+      transition :active => :canceled
+    end
+    
+    event :postpone do
+      transition :active => :postponed
+    end
+    
+  end
+  
   def price_type
     att = read_attribute(:price_type)
     att.to_sym if att

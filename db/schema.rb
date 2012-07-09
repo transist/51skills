@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120628060111) do
+ActiveRecord::Schema.define(:version => 20120709064425) do
 
   create_table "categories", :force => true do |t|
     t.string    "name_en"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20120628060111) do
     t.string    "twitter"
     t.string    "linkedin"
     t.string    "github"
-    t.timestamp "created_at",                :null => false
-    t.timestamp "updated_at",                :null => false
+    t.timestamp "created_at",                                        :null => false
+    t.timestamp "updated_at",                                        :null => false
     t.string    "image_content_type"
     t.string    "image_file_name"
     t.string    "image_file_size"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20120628060111) do
     t.text      "address"
     t.decimal   "price"
     t.string    "price_type"
+    t.string    "state",                     :default => "inactive"
   end
 
   create_table "email_templates", :force => true do |t|
@@ -156,27 +157,27 @@ ActiveRecord::Schema.define(:version => 20120628060111) do
   end
 
   create_table "people", :force => true do |t|
-    t.string   "uid"
-    t.string   "username"
-    t.string   "token"
-    t.string   "secret"
-    t.string   "provider"
-    t.text     "profile_attributes"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
-    t.string   "email_address"
-    t.string   "mobile"
-    t.string   "name"
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string    "uid"
+    t.string    "username"
+    t.string    "token"
+    t.string    "secret"
+    t.string    "provider"
+    t.text      "profile_attributes"
+    t.timestamp "created_at",                                            :null => false
+    t.timestamp "updated_at",                                            :null => false
+    t.string    "email_address"
+    t.string    "mobile"
+    t.string    "name"
+    t.string    "email",                                 :default => "", :null => false
+    t.string    "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string    "reset_password_token"
+    t.timestamp "reset_password_sent_at"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",                         :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
   end
 
   add_index "people", ["reset_password_token"], :name => "index_people_on_reset_password_token", :unique => true
@@ -207,16 +208,16 @@ ActiveRecord::Schema.define(:version => 20120628060111) do
   end
 
   create_table "providers", :force => true do |t|
-    t.string   "uid"
-    t.string   "username"
-    t.string   "token"
-    t.string   "secret"
-    t.string   "provider"
-    t.text     "profile_attributes"
-    t.string   "email"
-    t.integer  "person_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.string    "uid"
+    t.string    "username"
+    t.string    "token"
+    t.string    "secret"
+    t.string    "provider"
+    t.text      "profile_attributes"
+    t.string    "email"
+    t.integer   "person_id"
+    t.timestamp "created_at",         :null => false
+    t.timestamp "updated_at",         :null => false
   end
 
   create_table "roles", :force => true do |t|

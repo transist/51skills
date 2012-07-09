@@ -16,6 +16,10 @@ Tedx::Application.routes.draw do
     member { get :submit }
     post :watch
     post :enroll
+    post :activate
+    post :postpone
+    post :cancel
+    post :complete
     resources :course_sessions
     resources :comments, :only => ['create', 'destroy']
   end

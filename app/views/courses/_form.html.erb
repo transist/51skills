@@ -89,6 +89,10 @@
   <div class='actions'>
     <hr/>
     <%= submit_tag (@course.new_record? ? I18n.t('create') : I18n.t('save')), :class => 'btn primary' %><span class='loading'><%= image_tag('loading-data.gif', :style => 'display:none;') %></span>
+    
+    <% @course.state_transitions.map{|s| s.event}.each do |e|%>
+      <%= link_to e.to_s, course_path(@course.id) + '/' + e.to_s, method: :post, class: 'btn btn-info' %>
+    <% end%>
   </div>
 <% end %>
 

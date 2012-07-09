@@ -14,6 +14,8 @@ task :migrate_people_data => :environment do
       provider.profile_attributes = person.profile_attributes
       provider.email = person.email_address
       provider.person_id = person.id
+      puts "* " * 80
+      puts provider.inspect
       provider.save
     end
     person.email = person.email_address if person.email.blank?
