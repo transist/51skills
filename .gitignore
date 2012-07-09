@@ -24,3 +24,5 @@ config/database.yml
 *.DS_Store
 # public/assets
 /spec/
+/push*.dat
+/pull*.dat
