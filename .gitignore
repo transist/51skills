@@ -26,3 +26,4 @@ config/database.yml
 /spec/
 /push*.dat
 /pull*.dat
+/doc/

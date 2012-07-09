@@ -48,21 +48,38 @@ gem 'uuid'
 gem 'google-api-client'
 gem 'state_machine'
 
-gem 'rspec-rails', group: [:test, :development]
-
 group :development do
   gem 'sqlite3'
-  gem 'capistrano'
+  gem 'yard', require: nil
+  gem 'rdiscount', require: nil
+end
+
+group :development, :test do
+  gem 'awesome_print', require: 'ap'
+  gem 'factory_girl_rails', require: nil
+  gem 'rspec-rails', require: nil
+  gem 'capybara', require: nil
+  gem 'capybara-webkit', require: nil
+  gem 'capybara-screenshot', require: nil
+  gem 'launchy', require: nil
+  gem 'cucumber-rails', require: nil
+
+  gem 'guard', require: nil
+  gem 'guard-bundler', require: nil
+  gem 'guard-spork', require: nil
+  gem 'guard-rspec', require: nil
+  gem 'guard-cucumber', require: nil
+  gem 'guard-yard', require: nil
+end
+
+group :test do
+  gem 'spork', require: nil
+  gem 'rspec', require: nil
+  gem 'database_cleaner', require: nil
 end
 
 group :staging do
   gem 'thin'
-end
-
-group :test do
-  gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'guard-rspec'
 end
 
 group :production do
