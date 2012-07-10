@@ -93,21 +93,25 @@ class CoursesController < ApplicationController
   def activate
     @course = Course.find params[:course_id]
     @course.activate
+    redirect_to :back
   end
   
   def complete
     @course = Course.find params[:course_id]
     @course.complete
+    redirect_to :back
   end
   
   def cancel
     @course = Course.find params[:course_id]
     @course.cancel
+    redirect_to :back
   end
   
   def postpone
     @course = Course.find params[:course_id]
     @course.postpone
+    redirect_to :back
   end
   
   protected
