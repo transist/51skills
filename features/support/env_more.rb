@@ -1,4 +1,5 @@
 Spork.prefork do
+  require 'factory_girl_rails'
   require 'capybara-screenshot'
   require 'capybara-webkit'
 
@@ -8,12 +9,11 @@ Spork.prefork do
     extend ActionView::Helpers::SanitizeHelper::ClassMethods
     include ActionView::Helpers::SanitizeHelper
     include ActionView::Helpers::NumberHelper
+    include FactoryGirl::Syntax::Methods
   end
 end
 
 Spork.each_run do
-  require 'factory_girl_rails'
-
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f }
