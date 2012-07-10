@@ -96,6 +96,10 @@ class Course < ActiveRecord::Base
     end
   end
   
+  def human_price
+    (self.price == 0) ? "FREE!" : ("#{self.price_type.to_s.upcase} #{self.price.to_s}")
+  end
+  
   def self.top(rank)
     $redis.zrevrange(Course.courses_view_all_time_key, 0, rank - 1).map{|id| Course.find_by_id(id)}
   end
