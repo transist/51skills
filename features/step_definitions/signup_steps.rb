@@ -1,7 +1,7 @@
-Given /^the person don't have any account$/ do
+Given /^the user don't have any account$/ do
 end
 
-When /^the person sign up with Email and desired password$/ do
+When /^the user sign up with Email and desired password$/ do
   visit new_person_registration_path
 
   fill_in 'Email', with: 'rainux@gmail.com'
@@ -11,6 +11,6 @@ When /^the person sign up with Email and desired password$/ do
   click_button 'Sign up'
 end
 
-Then /^the person has their account created$/ do
+Then /^the user has their account created$/ do
   page.should have_content('Welcome! You have signed up successfully.')
 end
