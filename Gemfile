@@ -49,6 +49,7 @@ gem 'google-api-client'
 gem 'state_machine'
 
 group :development do
+  gem 'pry-rails'
   gem 'sqlite3'
   gem 'yard', require: nil
   gem 'rdiscount', require: nil
