@@ -64,6 +64,7 @@ group :development, :test do
   gem 'capybara-screenshot', require: nil
   gem 'launchy', require: nil
   gem 'cucumber-rails', require: nil
+  gem 'quiet_assets'
 
   gem 'guard', require: nil
   gem 'guard-bundler', require: nil
