@@ -23,7 +23,11 @@ class EmailTemplate < ActiveRecord::Base
   end
   
   def to_html
-    html_head + self.html + html_end
+    html_head + self.transform_html_tags + html_end
+  end
+  
+  def transform_html_tags
+    self.html.gsub('{{', '<%=').gsub('}}', '%>')
   end
   
   def to_text

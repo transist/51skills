@@ -6,7 +6,7 @@ class Enrollment < ActiveRecord::Base
   def notify
     email = Email.build("Your enrollment has been confirmed!", 
                         self.person.email, "enrollment_confirmed", 
-                        {:name => self.person.name, 
+                        {:recipient_name => self.person.name, 
                          :course_name => self.course.name(I18n.locale), 
                          :address => self.course.address,
                          :start_date_time => self.course.start_date_time.strftime('%Y-%m-%e %H:%M:%S%p'),
