@@ -94,5 +94,6 @@ end
 
 group :darwin do
   gem 'rb-fsevent', require: nil
-  gem 'growl_notify', require: nil
+  # gem 'growl_notify', require: nil
+  gem 'rb-readline'
 end
