@@ -9,9 +9,8 @@ class Enrollment < ActiveRecord::Base
                         {:name => self.person.name, 
                          :course_name => self.course.name(I18n.locale), 
                          :address => self.course.address,
-                         :start_date_time => self.course.start_date_time.strftime('%Y-%m-%e %H:%M:%S%p')
-                         :price => self.course.human_price}, 
-                        true)
+                         :start_date_time => self.course.start_date_time.strftime('%Y-%m-%e %H:%M:%S%p'),
+                         :price => self.course.human_price}, true)
     Resque.enqueue(Email, email.id) if email.save
   end
 end
