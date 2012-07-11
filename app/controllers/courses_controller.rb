@@ -116,7 +116,8 @@ class CoursesController < ApplicationController
   
   protected
   def collection
-    Course.paginate(:page => params[:page], :per_page => 6, :order => 'start_date_time ASC')
+    state = params[:state] || :active
+    Course.where(:state => state).paginate(:page => params[:page], :per_page => 6, :order => 'start_date_time ASC')
   end
   
 
