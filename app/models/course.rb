@@ -26,6 +26,7 @@ class Course < ActiveRecord::Base
   has_many :course_sessions
   
   validates_associated :category
+  validates_presence_of :category
   
   validate :price, :numericality => {:greater_than_or_equal_to => 0}, :allow_nil => true
   validates_inclusion_of :price_type, :in => [:cny, :usd]
