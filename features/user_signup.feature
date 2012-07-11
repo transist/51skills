@@ -4,6 +4,6 @@ Feature: User signup
   I want to signup to create my account
 
   Scenario: Sign up with Email
-    Given the user don't have any account
-    When the user sign up with Email and desired password
-    Then the user has their account created
+    Given I don't have any account
+    When I sign up with Email and desired password
+    Then I have my account created
