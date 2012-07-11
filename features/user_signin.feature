@@ -1,5 +1,5 @@
 Feature: User signin
-  In order to create stuffs like course on our site
+  In order to watch or enroll courses in the website
   As a existing user
   I should be able to sign in with my account
 
