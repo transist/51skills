@@ -10,3 +10,10 @@ end
 Then /^I should be signed in$/ do
   page.should have_content('Signed in successfully.')
 end
+
+Given /^I am signed in as a user$/ do
+  steps %Q{
+    Given there is a user
+    When I sign in with email and password of the user
+  }
+end

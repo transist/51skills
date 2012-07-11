@@ -71,11 +71,12 @@ class CoursesController < ApplicationController
     if current_user.watching_courses.include?(@course)
       watch = Watch.find_by_course_id_and_person_id(@course.id, current_user.id)
       watch.destroy
+      notice = 'You have unwatched the course successfully.'
     else
       @course.watchers << current_user
-      #TODO notice waht to do
+      notice = 'You have watched the course successfully.'
     end
-    redirect_to :back
+    redirect_to :back, notice: notice
   end
   
   def enroll
