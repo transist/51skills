@@ -5,6 +5,7 @@ The prerequisites are required both for development workstation.
 
 * QT4 development package for capybara-webkit. (libqt4-dev on Ubuntu)
 * node.js for compile CoffeeScript.
+* Redis for resque.
 
 Run Rails server
 ================
