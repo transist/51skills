@@ -30,7 +30,7 @@ module ApplicationHelper
     unenroll = I18n.t('unenroll')
     enroll_or_not = current_user ? (current_user.enrolled_courses.include?(course) ? unenroll : enroll) : enroll
     
-    link_to "<i class='icon-shopping-cart'></i><span class='enroll'>#{enroll_or_not}</span>".html_safe, course_enroll_path(course.id), :class => 'btn btn-mini btn-success watch_btn', :method => 'post'
+    link_to "<i class='icon-shopping-cart'></i><span class='enroll'>#{enroll_or_not}</span>".html_safe, course_enroll_path(course.id), :class => 'btn btn-mini btn-success ', :method => 'post'
   end
   
   def watchers_badge(course)
