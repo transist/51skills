@@ -1,3 +1,9 @@
+<% unless @course.errors.full_messages.empty?%>
+  <ul>
+    <%= @course.errors.full_messages.map{|m| content_tag(:li, m, :class => 'alert alert-error')}.join.html_safe%>
+  </ul>
+<% end%>
+
 <%= form_for @course, :html => {:class => 'new_slide', :multipart => true } do |f| %>
 
   <%= f.label :name_en%>
@@ -92,7 +98,7 @@
     
     <% @course.state_transitions.map{|s| s.event}.each do |e|%>
       <%= link_to e.to_s, course_path(@course.id) + '/' + e.to_s, method: :post, class: 'btn btn-info' %>
-    <% end%>
+    <% end if @course.id%>
   </div>
 <% end %>
 

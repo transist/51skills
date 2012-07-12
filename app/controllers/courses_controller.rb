@@ -23,7 +23,6 @@ class CoursesController < ApplicationController
   end
   
   def results
-    
     if session[:query_params] == params[:q]
       @courses = Course.search(session[:query]).paginate(:page => params[:page], :per_page => 12)
     else
@@ -44,15 +43,18 @@ class CoursesController < ApplicationController
   
   def update    
     @course = Course.find params[:id]
-    @course.update_attributes(params[:course])
+    @course.update_attributes(params[:course].merge({owner_id: current_user.id}))
     redirect_to @course
   end
   
   def create
-    @course = Course.create(params[:course])
-    @course.owner = current_user
-    @course.save
-    redirect_to courses_path
+    @course = Course.new(params[:course].merge({owner_id: current_user.id}))
+    if @course.save
+      redirect_to edit_course_path(@course), :notice => 'The course successfully created!'
+    else
+      render :new
+    end
+    
   end
   
   def destroy
