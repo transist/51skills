@@ -20,7 +20,9 @@ class Person < ActiveRecord::Base
   validates :email, :presence => {:message => "Your email is used to save your greeting."}, :unless => :skip_email_validation
   validates :email, :uniqueness => true, :unless => :skip_email_validation
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :unless => :skip_email_validation
-  #validates :name, :presence => {:message => "Your name is used to save your greeting."}, :unless => :skip_email_validation
+  validates_confirmation_of :password, :unless => :skip_email_validation
+  validates_length_of       :password, :within => 6..128, :allow_blank => true
+
   has_many :providers, :dependent => :destroy
 
   def self.create_with_omniauth(auth)
@@ -36,6 +38,7 @@ class Person < ActiveRecord::Base
     provider = Provider.create_provider_with_omniauth(auth)
     self.email = provider.email
     self.name = provider.username
+    self.password = Devise.friendly_token[0,20]
     self.providers << provider
     self
   end
@@ -58,13 +61,13 @@ class Person < ActiveRecord::Base
     Weibo::Base.new(oauth)
   end
   
-  def disable_skip_email_validation
-    @skip_email_validation = false
-  end
-  
   private
   def skip_email_validation
     @skip_email_validation
+  end
+  
+  def disable_skip_email_validation
+    @skip_email_validation = false
   end
   
   def enable_skip_email_validation
