@@ -1,7 +1,7 @@
 class Course < ActiveRecord::Base
   attr_accessible :description_en, :description_zh, :facebook, :github, :linkedin, :name_en, :name_zh, 
                   :summary_en, :summary_zh, :twitter, :weibo, :image, :category_id, :start_date_time, :address, 
-                  :price, :price_type
+                  :price, :price_type, :owner_id
   acts_as_taggable
   acts_as_commentable
   
