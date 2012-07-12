@@ -7,3 +7,9 @@ Feature: User signup
     Given I don't have any account
     When I sign up with Email and desired password
     Then I have my account created
+    
+  Scenario: Sign up with unmatched password confirmation validations
+    Given I don't have any account
+    When I sign up with Email and unmatched password
+    Then I get an error
+    And The error tells me two passwords should be the same
