@@ -1,4 +1,8 @@
-<%= link_to(I18n.t('new'), new_course_path, :class => 'btn') if current_user_admin?%>
+<% if current_user_admin?%>
+  <%= link_to(I18n.t('new'), new_course_path, :class => 'btn') %>
+  <%= link_to('inactive courses', "#{courses_path}?state=inactive", :class => 'btn btn-info') %>
+<% end%>
+
 
 <div class='courses'>
   <% @courses.each do |course|%>
