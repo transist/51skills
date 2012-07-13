@@ -1,3 +1,3 @@
-Given /^there is a user$/ do
-  @user = create(:person)
+Given /^there is an? (user|admin)$/ do |user_or_admin|
+  @user = create(user_or_admin.to_sym)
 end

@@ -5,8 +5,12 @@ FactoryGirl.define do
     "person#{n}@example.com"
   end
 
-  factory :person do
+  factory :person, aliases: [:user] do
     email
     password 'password'
+  end
+  
+  factory :admin, parent: :person do
+    after(:create) {|person| person.add_role :admin }
   end
 end
