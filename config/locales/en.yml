@@ -21,8 +21,8 @@ en:
   search: 'Search'
   new: 'New'
   delete: 'Delete'
-  watch: 'watch'
-  unwatch: 'unwatch'
+  watch: 'Watch'
+  unwatch: 'Unwatch'
   enroll: 'Enroll'
   unenroll: 'cancel enrollment'
   people_are_watching_this_course: 'people are watching this course.'
@@ -49,6 +49,7 @@ en:
   email: "Email"
   mobile: "Mobile"
   update: "Update"
+  or_sign_in_with: "Or sign in with:"
   
   landing:
     fallback_message: "Your browser <b>doesn't support the features required</b> by 51skills, so you are presented with a simplified version of this presentation.</p><p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser."

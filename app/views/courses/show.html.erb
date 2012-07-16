@@ -18,11 +18,11 @@
       <% end %>
       <div class='watch_box row'>
         <div class='watchers '>
-          <%= watchers_name_helper%>
+          <%= watchers_name_helper %>
           <%= @course.watchers.count > 1 ? I18n.t('are_watching_this_course'): (@course.watchers.count == 1 ? I18n.t('is_watching_this_course') : "")%>
         </div>
         <div class='watch_btn'>
-          <%= watch_btn(@course)%>
+          <%= watch_btn(@course, 'show')%>
         </div>
       </div>
       <div class='enroll_box row'>
@@ -50,6 +50,9 @@
           <span class="label label-main-category"><%= @course.category.parent.name(I18n.locale)%></span>
           <span class="label label-sub-category"><%= @course.category.name(I18n.locale)%></span>
         <% end%>
+      </div>
+      <div class='watch_btn_right'>
+        <%= watch_btn(@course, 'show')%>
       </div>
       <div class='social_links span3'>
         <%= link_to(image_tag('social/twitter_32.png'), @course.twitter, :target => '_blank') unless @course.twitter.blank? %>
@@ -103,10 +106,15 @@
 
 </div>
 
+<%= render :partial => 'auth_modal' %>
+				
+				
 <script>
+
 var editor = new wysihtml5.Editor("wysihtml5-textarea", { // id of textarea element
   toolbar:      "wysihtml5-toolbar", // id of toolbar element
   parserRules:  wysihtml5ParserRules // defined in parser rules set 
 });
 
 </script>
+

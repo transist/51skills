@@ -15,11 +15,13 @@
       <p class='summary'><%= raw course.summary(I18n.locale)%></p>
       <%= link_to(I18n.t('edit'), edit_course_path(course.id), :class => 'btn btn-mini') if current_user_admin? %>
       <%= link_to(I18n.t('delete'), course_path(course.id), :class => 'btn btn-mini', :method => 'delete', :confirm => 'Are you sure? It can not be recovered!!') if current_user_admin? %>
-      <%= watch_btn(course)%>
+      <%= watch_btn(course, 'list')%>
       <%= watchers_badge(course) %>
       <span class='pull-right'><%= link_to("#{I18n.t('more')} >>", course_path(course.id))%></span>
     </div>
   <% end%>
 </div>
+
+<%= render :partial => 'auth_modal' %>
 
 <%= will_paginate @courses %>

@@ -66,6 +66,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @course.counting(1) unless current_user_admin?
+    @person = Person.new
   end
   
   def watch

@@ -186,7 +186,9 @@
   </div>
 
 <%= yield :javascript %>
-
+<% if request.path.include?('editor')%>
+  <%= javascript_include_path 'load_editor' %>
+<% end %>
 </body>
 
 </html>
