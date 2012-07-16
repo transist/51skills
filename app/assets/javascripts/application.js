@@ -21,4 +21,5 @@
 //= require app
 //= require jquery.tipsy
 //= require courses
+//= require underscore
 //= require custom
