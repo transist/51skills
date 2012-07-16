@@ -17,12 +17,17 @@ module ApplicationHelper
     @category && (category.id == @category.id)
   end
   
-  def watch_btn(course)
+  def watch_btn(course, location)
     watch = I18n.t('watch')
     unwatch = I18n.t('unwatch')
     watch_or_unwatch = current_user ? (current_user.watching_courses.include?(course) ? unwatch : watch) : watch
-    
-    link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch_or_unwatch}</span>".html_safe, course_watch_path(course.id), :class => 'btn btn-mini watch_btn', :method => 'post'
+    if location == 'show'
+      link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch_or_unwatch}</span>".html_safe, 
+              course_watch_path(course.id), :class => 'btn btn-large watch_btn', :method => 'post'
+    elsif location == 'list'
+      link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch_or_unwatch}</span>".html_safe, 
+              course_watch_path(course.id), :class => 'btn btn-mini watch_btn', :method => 'post'
+    end
   end
   
   def enroll_btn(course)
@@ -30,7 +35,8 @@ module ApplicationHelper
     unenroll = I18n.t('unenroll')
     enroll_or_not = current_user ? (current_user.enrolled_courses.include?(course) ? unenroll : enroll) : enroll
     
-    link_to "<i class='icon-shopping-cart'></i><span class='enroll'>#{enroll_or_not}</span>".html_safe, course_enroll_path(course.id), :class => 'btn btn-mini btn-success watch_btn', :method => 'post'
+    link_to "<i class='icon-shopping-cart'></i><span class='enroll'>#{enroll_or_not}</span>".html_safe, 
+            course_enroll_path(course.id), :class => 'btn btn-large btn-success enroll_btn', :method => 'post'
   end
   
   def watchers_badge(course)

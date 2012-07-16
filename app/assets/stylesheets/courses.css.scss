@@ -151,3 +151,43 @@
   border-bottom: 1px dotted #969696;
   margin-bottom: 50px;
 }
+
+#auth_modal{
+  width: 500px;
+}
+
+#auth_modal .sign_in_nav{
+  
+}
+
+#auth_modal .sign_in{
+  
+}
+
+#auth_modal .sign_up{
+  
+}
+
+#auth_modal .tab-content{
+  margin-left: 100px;
+}
+
+#auth_modal .social_oauth{
+  margin-top: 5px;
+  margin-left: 20px;
+  clear: none;
+}
+
+#auth_modal .tip{
+  margin-left: 20px;
+  text-align: left;
+}
+
+.watch_btn_right{
+  text-align: right;
+  margin-right: -25px;
+  
+  .watch{
+    margin-left: 5px;
+  }
+}
