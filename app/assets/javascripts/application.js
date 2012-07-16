@@ -10,119 +10,15 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-
 //= require bootstrap
-//= require bootstrap-modal
-//= require mercury
 //= require masonry
-//= require mercury/support/history
-//= require mercury/mercury
-//= require underscore
 //= require wysihtml5
 //= require advanced
 //= require app
 //= require jquery.tipsy
 //= require courses
-
-jQuery(top).trigger('initialize:frame');
-var photo_count = 0;
-
-$('a.upload_photo').live('click', function() {
-  photo_count = photo_count + 1;
-  var html = '<div class="clearfix upload"><label for="slide_'+photo_count+'"><img src="/assets/image_new.gif"/></label><div class="input"><input class="fileInput" name="slide[]" type="file"><a href="#" class="delete_upload">X</a<</div></div>';
-  
-  $("form#new_slide .actions").before(html);
-})
-
-$('a.delete_upload').live('click', function() {
-  $(this).parent().parent().remove();
-})
-
-$('a.toggle_display').live('click', function(){
-  var id = $(this).attr('id');
-  // alert(id)
-  id = id.replace('page_', '');
-  
-  $.ajax({
-    type: 'post',
-    headers: {
-      'X-CSRF-Token': AUTH_TOKEN
-    },
-    complete: function(request){
-      window.location = '/pages';
-    },
-    url: '/pages/'+id+ '/toggle_display'
-  })
-  return false;
-})
-
-var t = function(object, field) {
-  return object[field+"_"+locale];
-} 
-
-$('#main_category_select').live('change', function(e){
-  _category_id = e.target.selectedOptions[0].value;
-  load_sub_categories(_category_id);
-});
-
-var load_sub_categories = function(_category_id){
-  $('.sub-category').find('option').remove()
-
-  $.get('/categories/'+ _category_id +"/sub_categories", function(categories) {
-    var html = '';
-    _.each(categories, function(category){
-      chunk = "<option value='" + category.id + "'>" + t(category, 'name') + "</option>";
-      html = html + chunk;
-    });
-    $('.sub-category').append(html);
-  });
-};
-
-$('.btn .watch').live('hover', function(){
-  if(!_c_u_id){
-    $(this).parent().toggleClass('disabled');
-    notice = '';
-    if(locale == 'zh'){
-      notice = '关注后课程的更新会及时通知您！请先登入再进行此操作。'
-    }else{
-      notice = 'Please sign in. You will be notified about this class after watching.'
-    }
-    $(this).attr('original-title', notice)
-  }else{
-    notice = '';
-    if(locale == 'zh'){
-      notice = '关注后课程的更新会及时通知您！'
-    }else{
-      notice = 'You will be notified about this class after watching.'
-    }
-    $(this).attr('original-title', notice)
-  }
-});
-
-$('.btn .enroll').live('hover', function(){
-  if(!_c_u_id){
-    notice = '';
-    if(locale == 'zh'){
-      notice = '请先登入再进行此操作。'
-    }else{
-      notice = 'Please sign in.'
-    }
-    $(this).parent().toggleClass('disabled');
-    $(this).attr('original-title', notice);
-  }else{
-    notice = '';
-    if(locale == 'zh'){
-      notice = '欢迎加入这个课堂！'
-    }else{
-      notice = 'welcome join this class'
-    }
-    $(this).parent().toggleClass('disabled');
-    $(this).attr('original-title', notice);
-  }
-});
-
-
-
+//= require custom

@@ -48,6 +48,7 @@ zh:
   email: "电子邮件"
   mobile: "移动电话"
   update: "更新"
+  or_sign_in_with: '或者用第三方登陆：'
   
   notice:
     sign_in: '您已经成功的登入！'
