@@ -16,10 +16,11 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require masonry
+//= require underscore
 //= require wysihtml5
 //= require advanced
 //= require app
 //= require jquery.tipsy
-//= require courses
-//= require underscore
 //= require custom
+//= require courses
+

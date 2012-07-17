@@ -31,27 +31,9 @@ $(function() {
     return false;
   })
 
-  var t = function(object, field) {
+  t = function(object, field) {
     return object[field+"_"+locale];
   } 
-
-  $('#main_category_select').live('change', function(e){
-    _category_id = e.target.selectedOptions[0].value;
-    load_sub_categories(_category_id);
-  });
-
-  var load_sub_categories = function(_category_id){
-    $('.sub-category').find('option').remove()
-
-    $.get('/categories/'+ _category_id +"/sub_categories", function(categories) {
-      var html = '';
-      _.each(categories, function(category){
-        chunk = "<option value='" + category.id + "'>" + t(category, 'name') + "</option>";
-        html = html + chunk;
-      });
-      $('.sub-category').append(html);
-    });
-  };
 
   $('.btn .enroll').live('hover', function(){
     if(!_c_u_id){
