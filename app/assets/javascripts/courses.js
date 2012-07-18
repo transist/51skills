@@ -57,7 +57,7 @@ $(function(){
   });  
 
   $('#main_category_select').live('change', function(e){
-    _category_id = e.target.selectedOptions[0].value;
+    _category_id = $(this).val();
     load_sub_categories(_category_id);
   });
 

@@ -4,6 +4,7 @@ Spork.prefork do
   require 'capybara-webkit'
 
   Capybara.javascript_driver = :webkit
+  Capybara.default_wait_time = 5
 
   class Cucumber::Rails::World
     extend ActionView::Helpers::SanitizeHelper::ClassMethods

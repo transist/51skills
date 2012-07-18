@@ -3,6 +3,9 @@ When /^I sign in with email and password of the user$/ do
 
   fill_in 'Email', with: @user.email
   fill_in 'Password', with: @user.password
+  
+  puts @user.email
+  puts @user.password
 
   click_button 'Sign in'
 end
