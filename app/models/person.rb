@@ -61,6 +61,11 @@ class Person < ActiveRecord::Base
     Weibo::Base.new(oauth)
   end
   
+  # For mixpanel identity temporary
+  def identity
+    email || providers.first.username
+  end
+  
   private
   def skip_email_validation
     @skip_email_validation
