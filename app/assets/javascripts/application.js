@@ -23,4 +23,5 @@
 //= require jquery.tipsy
 //= require custom
 //= require courses
+//= require init_wysihtml5
 
