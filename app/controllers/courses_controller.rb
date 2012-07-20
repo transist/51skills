@@ -74,11 +74,12 @@ class CoursesController < ApplicationController
     if current_user.watching_courses.include?(@course)
       watch = Watch.find_by_course_id_and_person_id(@course.id, current_user.id)
       watch.destroy
+      notice = 'You have unwatched the course successfully.'
     else
       @course.watchers << current_user
-      #TODO notice waht to do
+      notice = 'You have watched the course successfully.'
     end
-    redirect_to :back
+    redirect_to :back, notice: notice
   end
   
   def enroll
@@ -86,11 +87,13 @@ class CoursesController < ApplicationController
     if current_user.enrolled_courses.include?(@course)
       enrollment = Enrollment.find_by_course_id_and_person_id(@course.id, current_user.id)
       enrollment.destroy
+      notice = 'You have canceled the enrollment the course successfully.'
     else
       @course.students << current_user
       @course.enrollments.find{|enrollment| enrollment.person_id == current_user.id}.notify
+      notice = 'You have enrolled the course successfully.'
     end
-    redirect_to :back
+    redirect_to :back, notice: notice
   end
   
   def activate

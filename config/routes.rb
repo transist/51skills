@@ -31,9 +31,6 @@ Tedx::Application.routes.draw do
     get 'sub_categories'
   end
 
-  #get "photos" => "photos#index"
-  #resources :photos
-
   Mercury::Engine.routes
   
   

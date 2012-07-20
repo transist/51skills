@@ -49,6 +49,7 @@ zh:
   mobile: "移动电话"
   update: "更新"
   or_sign_in_with: '或者用第三方登陆：'
+  create: '创建'
   
   notice:
     sign_in: '您已经成功的登入！'

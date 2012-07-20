@@ -52,7 +52,7 @@
   <label for="category">Category</label>
   <div class="controls">
     <select id="main_category_select" placeholder="Main Category" name="main_category" class="main-category">
-      <option value=""></option>
+      <option></option>
       <% Category.main_categories.collect do |category| %>
         <% if @course.category && @course.category.parent.id == category.id %>
           <option value='<%= category.id%>' selected='selected'><%= category.name(I18n.locale)%></option>
@@ -90,6 +90,9 @@
   
   
   <%= f.file_field :image %>
+
+  <h6>current state: </h6>
+  <span class='label label-important' id='state'><%= @course.state %></span>
   
   
   <div class='actions'>

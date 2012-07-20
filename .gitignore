@@ -23,4 +23,8 @@ config/database.yml
 .rvmrc
 *.DS_Store
 # public/assets
-/spec/
+/push*.dat
+/pull*.dat
+/doc/
+/.yardoc/
+/rerun.txt
