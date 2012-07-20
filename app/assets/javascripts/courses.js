@@ -12,7 +12,7 @@ $(function(){
       $('.sub-category').append(html);
     });
   };
-
+  
   $('.btn.watch_btn').click(function(e){
     if(_c_u_id == null){
       $('#auth_modal').modal('show');
@@ -61,5 +61,6 @@ $(function(){
     load_sub_categories(_category_id);
   });
 
+  console.log(gon.after_sign_up);
   
 });
