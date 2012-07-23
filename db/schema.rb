@@ -59,17 +59,17 @@ ActiveRecord::Schema.define(:version => 20120709064425) do
   create_table "courses", :force => true do |t|
     t.string   "name_en"
     t.string   "name_zh"
-    t.text     "description_en",            :limit => 255
-    t.text     "description_zh",            :limit => 255
-    t.text     "summary_en",                :limit => 255
-    t.text     "summary_zh",                :limit => 255
+    t.text     "description_en"
+    t.text     "description_zh"
+    t.text     "summary_en"
+    t.text     "summary_zh"
     t.string   "weibo"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "linkedin"
     t.string   "github"
-    t.datetime "created_at",                                                       :null => false
-    t.datetime "updated_at",                                                       :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.string   "image_content_type"
     t.string   "image_file_name"
     t.string   "image_file_size"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20120709064425) do
     t.text     "address"
     t.decimal  "price"
     t.string   "price_type"
-    t.string   "state",                                    :default => "inactive"
+    t.string   "state",                     :default => "inactive"
   end
 
   create_table "email_templates", :force => true do |t|
@@ -132,23 +132,23 @@ ActiveRecord::Schema.define(:version => 20120709064425) do
   create_table "pages", :force => true do |t|
     t.string   "title_en"
     t.string   "title_zh"
-    t.text     "content_en",  :limit => 255
-    t.text     "content_zh",  :limit => 255
+    t.text     "content_en"
+    t.text     "content_zh"
     t.string   "slug"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
-    t.boolean  "deleteable",                 :default => true
-    t.boolean  "root",                       :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "deleteable",  :default => true
+    t.boolean  "root",        :default => false
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
-    t.integer  "depth",                      :default => 1
-    t.boolean  "published",                  :default => false
-    t.boolean  "nav",                        :default => false
-    t.boolean  "include_nav",                :default => true
-    t.boolean  "sidebar",                    :default => true
-    t.boolean  "header",                     :default => true
-    t.boolean  "hidden",                     :default => true
+    t.integer  "depth",       :default => 1
+    t.boolean  "published",   :default => false
+    t.boolean  "nav",         :default => false
+    t.boolean  "include_nav", :default => true
+    t.boolean  "sidebar",     :default => true
+    t.boolean  "header",      :default => true
+    t.boolean  "hidden",      :default => true
   end
 
   create_table "people", :force => true do |t|
