@@ -11,9 +11,7 @@ FactoryGirl.define do
     state :active
   end
 
-  factory :course_with_start_date, parent: :course do
-    t = Time.now.utc
-    t = Time.utc(t.year, t.month, t.day + 2, t.hour, t.min, t.sec)
-    start_date_time { t }
+  factory :scheduled_course, parent: :course do
+    start_date_time { 2.days.since }
   end
 end

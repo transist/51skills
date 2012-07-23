@@ -1,10 +1,9 @@
 Given /^there is an? (inactive |scheduled |)course$/ do |type|
-  if type == "scheduled"
-    @course = create(:course_with_start_date)
+  if type.strip == 'scheduled'
+    @course = create(:scheduled_course)
   else
     @course = create(:course)
   end
-    
 end
 
 When /^I watch the course$/ do
