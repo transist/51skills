@@ -18,6 +18,7 @@ Tedx::Application.routes.draw do
     post :watch
     post :enroll
     post :activate
+    post :schedule
     post :postpone
     post :cancel
     post :complete

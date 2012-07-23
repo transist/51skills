@@ -2,7 +2,7 @@ Feature: Create Course
   In order to show users course information
   As an admin
   I want to create a course
-  
+
   @javascript
   Scenario: create a course
     Given I am signed in as an admin
