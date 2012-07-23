@@ -49,6 +49,7 @@ gem 'google-api-client'
 gem 'state_machine'
 gem 'gon'
 gem 'weibo_2'
+gem 'pay_fu'
 
 group :development do
   gem 'pry-rails'

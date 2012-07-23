@@ -1,5 +1,6 @@
 Tedx::Application.routes.draw do
-  
+
+  mount PayFu::Engine => '/pay_fu', as: 'pay_fu'
 
   resources :guides
 
@@ -12,7 +13,7 @@ Tedx::Application.routes.draw do
 
   post '/search' => 'courses#search'
   get '/search/:q' => 'courses#results'
-  resources :courses do 
+  resources :courses do
     member { get :submit }
     post :watch
     post :enroll
@@ -32,8 +33,8 @@ Tedx::Application.routes.draw do
   end
 
   Mercury::Engine.routes
-  
-  
+
+
   get 'pages' => "pages#index"
   resources :pages do
     member { post :mercury_update }
@@ -47,21 +48,21 @@ Tedx::Application.routes.draw do
     end
   end
   resources :slides
-  
+
 
   # match '/tedxshanghai-2012' => 'home#stage', :slug => 'tedxshanghai-2012'
   root :to => 'courses#index'
   match '/landing' => 'home#landing'
   post '/subscribe' => 'home#subscribe'
   get '/subscribe_confirm' => 'home#subscribe_confirm'
-  
+
   devise_for :people, :controllers => { :registrations => "registrations" }
-  
+
   resources :people, :only => [ :show, :edit, :update ] do
     resources :profiles
     resources :providers, :only => [:new, :create, :destroy]
   end
-  
+
   match '/change_password' => 'sessions#change_password'
   match '/auth/:provider/callback' => 'sessions#create'
   match '/login/:provider' => 'sessions#new', :as => :login
@@ -70,11 +71,8 @@ Tedx::Application.routes.draw do
   match '/zh' => 'home#zh', :locale => 'zh'
   match '/en' => 'home#en', :locale => 'en'
   match '/admin' => 'admin#index'
-  
+
   get '/:id' => "pages#show"
   put '/:id' => "pages#update"
   get '/pages/:id' => "pages#show"
-  
-  
-  
 end
