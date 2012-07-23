@@ -90,8 +90,7 @@ class CoursesController < ApplicationController
       enrollment.destroy
       notice = 'You have canceled the enrollment the course successfully.'
     else
-      @course.students << current_user
-      @course.enrollments.find{|enrollment| enrollment.person_id == current_user.id}.notify
+      current_user.enroll(@course)
       notice = 'You have enrolled the course successfully.'
     end
     redirect_to :back, notice: notice

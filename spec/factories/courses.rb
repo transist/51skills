@@ -8,10 +8,11 @@ FactoryGirl.define do
   end
 
   factory :active_course, parent: :course do
-    state :active
+    after(:create) {|c| c.activate }
   end
 
-  factory :scheduled_course, parent: :course do
+  factory :scheduled_course, parent: :active_course do
     start_date_time { 2.days.since }
+    after(:create) {|c| c.schedule }
   end
 end
