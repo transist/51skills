@@ -37,7 +37,7 @@ class Course < ActiveRecord::Base
     end
 
     event :schedule do
-      transition [:active, :postponed] => :scheduled
+      transition [:active, :postponed] => :scheduled, if: :start_date_time?
     end
 
     event :complete do
