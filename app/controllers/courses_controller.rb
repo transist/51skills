@@ -90,8 +90,11 @@ class CoursesController < ApplicationController
       enrollment.destroy
       notice = 'You have canceled the enrollment the course successfully.'
     else
-      current_user.enroll(@course)
-      notice = 'You have enrolled the course successfully.'
+      if current_user.enroll(@course)
+        notice = 'You have enrolled the course successfully.'
+      else
+        alert = 'You can not enroll the course at this moment.'
+      end
     end
     redirect_to :back, notice: notice
   end
