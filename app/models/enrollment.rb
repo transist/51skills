@@ -1,8 +1,20 @@
 class Enrollment < ActiveRecord::Base
-  attr_accessible :course_id, :person_id
+  include Enumerize
+
+  PAYMENT_METHODS = [:alipay, :paypal].freeze
+
+  attr_accessible :course_id, :person_id, :payment_method
   belongs_to :person
   belongs_to :course
-  
+
+  enumerize :payment_method, in: PAYMENT_METHODS, default: :alipay
+
+  state_machine :state, initial: :unpaid do
+    event :pay do
+      transition unpaid: :paid
+    end
+  end
+
   def notify
     email = Email.build("Your enrollment has been confirmed!", 
                         self.person.email, "enrollment_confirmed", 

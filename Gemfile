@@ -51,6 +51,7 @@ gem 'gon'
 gem 'weibo_2'
 gem 'pay_fu'
 gem 'slim-rails'
+gem 'enumerize'
 
 group :development do
   gem 'pry-rails'
