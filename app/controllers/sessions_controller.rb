@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
+    redirect_to(courses_path, alert: 'Auth by weibo side is broken, please try later.') && return unless auth['extra']['raw_info'].error_code.blank?
     provider_name = params[:provider]
     provider = Provider.find_by_provider_and_uid(provider_name, auth['extra']['raw_info']['id'].to_s)
     person = nil
