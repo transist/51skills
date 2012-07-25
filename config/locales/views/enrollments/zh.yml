@@ -1,0 +1,8 @@
+zh:
+  enrollments:
+    confirm:
+      pay_for_the_course: '为课程付款'
+      price: '课程 <strong>%{course}</strong> 的价格为 %{price}'
+      payment_methods: '您可以使用以下方式付款：'
+      pay: '付款'
+    payment_subject: '为课程 %{course} 付款'

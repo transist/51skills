@@ -1,0 +1,7 @@
+en:
+  enrollments:
+    confirm:
+      pay_for_the_course: 'Pay for the course'
+      price: 'Price of <strong>%{course}</strong> is %{price}'
+      payment_methods: 'You can pay via the following ways:'
+      pay: 'Pay'

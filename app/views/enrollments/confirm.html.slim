@@ -1,11 +1,22 @@
-h2 Pay for the course
+.page-header
 
-h3 Price
-= @enrollment.course.human_price
+  h1= t '.pay_for_the_course'
 
-= form_for @enrollment, url: pay_enrollment_path(@enrollment) do |f|
-  - Enrollment::PAYMENT_METHODS.each do |payment_method|
-    = label_tag do
-      = f.radio_button :payment_method, payment_method
-      = I18n.t payment_method, scope: :payment
-  = f.submit 'Pay!'
+.row
+  .span16.column
+    p.span8== t '.price', \
+      course: @enrollment.course.name(I18n.locale), \
+      price: @enrollment.course.human_price
+
+    p.span8= t '.payment_methods'
+
+    = form_for @enrollment, url: pay_enrollment_path(@enrollment), html: {class: 'span8'} do |f|
+      fieldset
+        .control-group
+          - Enrollment::PAYMENT_METHODS.each do |payment_method|
+            .controls
+              = label_tag nil, nil, class: 'radio' do
+                  = f.radio_button :payment_method, payment_method
+                  = t payment_method, scope: :payment
+      .form-actions
+        = f.submit t('.pay'), class: 'btn btn-large btn-success pull-right'
