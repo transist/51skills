@@ -1,0 +1,11 @@
+h2 Pay for the course
+
+h3 Price
+= @enrollment.course.human_price
+
+= form_for @enrollment, url: pay_enrollment_path(@enrollment) do |f|
+  - Enrollment::PAYMENT_METHODS.each do |payment_method|
+    = label_tag do
+      = f.radio_button :payment_method, payment_method
+      = I18n.t payment_method, scope: :payment
+  = f.submit 'Pay!'

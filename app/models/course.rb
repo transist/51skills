@@ -62,6 +62,15 @@ class Course < ActiveRecord::Base
     write_attribute(:price_type, value.to_s)
   end
 
+  def price_in_cny
+    case price_type
+    when :cny
+      price
+    else
+      raise ArgumentError, 'Unsupported price type'
+    end
+  end
+
   def update_searchable
     self.searchable_summary_zh = Course.segment(self.summary_zh) unless self.summary_zh == nil
     self.searchable_description_zh = Course.segment(self.description_zh) unless self.description_zh == nil

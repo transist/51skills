@@ -25,6 +25,15 @@ Tedx::Application.routes.draw do
     resources :course_sessions
     resources :comments, :only => ['create', 'destroy']
   end
+
+  resources :enrollments, only: [] do
+    member do
+      get :confirm
+      put :pay
+      get :paid
+    end
+  end
+
   resources :categories do
     collection do
       get :manage

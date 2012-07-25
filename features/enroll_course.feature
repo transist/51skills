@@ -7,6 +7,7 @@ Feature: Enroll Course
     Given there is a scheduled course
     And I am signed in as a user
     When I enroll the course
+    And I pay for the course via Alipay
     Then I should see a notice about the course enrolled
 
   Scenario: Disenroll a course

@@ -12,6 +12,11 @@ When /^I disenroll the course$/ do
   click_link 'Disenroll'
 end
 
+When /^I pay for the course via Alipay/ do
+  page.should have_content('Pay for the course')
+  click_button 'Pay!'
+end
+
 Then /^I should see a notice about the course enrolled$/ do
   page.should have_content('You have enrolled the course successfully.')
 end

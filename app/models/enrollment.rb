@@ -25,4 +25,8 @@ class Enrollment < ActiveRecord::Base
                          :price => self.course.human_price}, true)
     Resque.enqueue(Email, email.id) if email.save
   end
+
+  def payment_subject
+    I18n.t :payment_subject, scope: :enrollment, course: course.name(I18n.locale)
+  end
 end

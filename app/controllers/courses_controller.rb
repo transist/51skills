@@ -89,8 +89,9 @@ class CoursesController < ApplicationController
       current_user.disenroll(@course)
       notice = 'You have disenrolled the course successfully.'
     else
-      if current_user.enroll(@course)
-        notice = 'You have enrolled the course successfully.'
+      enrollment = current_user.enroll(@course)
+      if enrollment
+        redirect_to confirm_enrollment_path(enrollment) and return
       else
         alert = 'You can not enroll the course at this moment.'
       end
