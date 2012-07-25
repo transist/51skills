@@ -50,6 +50,7 @@ gem 'state_machine'
 gem 'gon'
 gem 'weibo_2'
 gem 'pay_fu'
+gem 'slim-rails'
 
 group :development do
   gem 'pry-rails'
