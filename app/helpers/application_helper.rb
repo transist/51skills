@@ -32,8 +32,8 @@ module ApplicationHelper
   
   def enroll_btn(course)
     enroll = I18n.t('enroll')
-    unenroll = I18n.t('unenroll')
-    enroll_or_not = current_user ? (current_user.enrolled_courses.include?(course) ? unenroll : enroll) : enroll
+    disenroll = I18n.t('disenroll')
+    enroll_or_not = current_user ? (current_user.enrolled_courses.include?(course) ? disenroll : enroll) : enroll
     
     link_to "<i class='icon-shopping-cart'></i><span class='enroll'>#{enroll_or_not}</span>".html_safe, 
             course_enroll_path(course.id), :class => 'btn btn-large btn-success enroll_btn', :method => 'post'

@@ -19,4 +19,5 @@ Given /^I am signed in as (a user|an admin)$/ do |user_or_admin|
     Given there is #{user_or_admin}
     When I sign in with email and password of the user
   }
+  @current_user = @user
 end

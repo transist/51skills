@@ -24,7 +24,7 @@ en:
   watch: 'Watch'
   unwatch: 'Unwatch'
   enroll: 'Enroll'
-  unenroll: 'cancel enrollment'
+  disenroll: 'Disenroll'
   people_are_watching_this_course: 'people are watching this course.'
   person_is_watching_this_course: 'person is watching this course.'
   are_watching_this_course: 'are watching this course.'

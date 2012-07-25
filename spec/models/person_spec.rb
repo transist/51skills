@@ -32,8 +32,23 @@ describe Person do
 
       expect {
         person.enroll(course).should be_false
+        course.reload.students.should_not include(person)
+      }.to change(Enrollment, :count).by(1)
+    end
+  end
+
+  context '#disenroll' do
+
+    let(:course) { create(:scheduled_course) }
+
+    it 'should remove user from students of course' do
+      person.enroll(course)
+
+      expect {
+        person.disenroll(course)
         course.students.should_not include(person)
-      }.not_to change(Enrollment, :count).by(1)
+        person.enrolled_courses.should_not include(course)
+      }.to change(Enrollment, :count).by(-1)
     end
   end
 end

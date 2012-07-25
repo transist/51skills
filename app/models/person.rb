@@ -76,6 +76,10 @@ class Person < ActiveRecord::Base
     end
   end
 
+  def disenroll(course)
+    course.students.delete(self)
+  end
+
   private
   def skip_email_validation
     @skip_email_validation

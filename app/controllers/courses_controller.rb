@@ -86,9 +86,8 @@ class CoursesController < ApplicationController
   def enroll
     @course = Course.find params[:course_id]
     if current_user.enrolled_courses.include?(@course)
-      enrollment = Enrollment.find_by_course_id_and_person_id(@course.id, current_user.id)
-      enrollment.destroy
-      notice = 'You have canceled the enrollment the course successfully.'
+      current_user.disenroll(@course)
+      notice = 'You have disenrolled the course successfully.'
     else
       if current_user.enroll(@course)
         notice = 'You have enrolled the course successfully.'
