@@ -18,7 +18,8 @@
     %p.courses_view
       %h6
         - Course.top(10).each do |course|
-          = "#{course.name(I18n.locale)} hits: #{course.score.to_s}"
+          - if course
+            = "#{course.name(I18n.locale)} hits: #{course.score.to_s}"
           %br
         
     %h5
@@ -34,14 +35,16 @@
     %p.courses_view
       %h6
         - Course.week_top(10).each do |course|
-          = "#{course.name(I18n.locale)} hits: #{course.weekly_score.to_s}"
+          - if course
+            = "#{course.name(I18n.locale)} hits: #{course.weekly_score.to_s}"
           %br
     %h5
       = "ALL Time Top 10 Courses Category View:"
     %p.courses_categories_view
       %h6
         - Course.courses_category_top(10).each do |category|
-          = "#{category.name(I18n.locale)} hits: #{category.score.to_s}"
+          - if category
+            = "#{category.name(I18n.locale)} hits: #{category.score.to_s}"
           %br
 
     %h5
@@ -49,7 +52,8 @@
     %p.courses_categories_view
       %h6
         - Course.courses_category_today_top(10).each do |category|
-          = "#{category.name(I18n.locale)} hits: #{category.daily_score.to_s}"
+          - if category
+            = "#{category.name(I18n.locale)} hits: #{category.daily_score.to_s}"
           %br
 
     %h5
@@ -57,7 +61,8 @@
     %p.courses_categories_view
       %h6
         - Course.courses_category_week_top(10).each do |category|
-          = "#{category.name(I18n.locale)} hits: #{category.weekly_score.to_s}"
+          - if category
+            = "#{category.name(I18n.locale)} hits: #{category.weekly_score.to_s}"
           %br
         
   .report
@@ -68,7 +73,8 @@
     %p.categories_view
       %h6
         - Category.top(10).each do |category|
-          = "#{category.name(I18n.locale)} hits: #{category.score.to_s}"
+          - if category
+            = "#{category.name(I18n.locale)} hits: #{category.score.to_s}"
           %br
 
     %h5
@@ -76,7 +82,8 @@
     %p.categories_view
       %h6
         - Category.today_top(10).each do |category|
-          = "#{category.name(I18n.locale)} hits: #{category.daily_score.to_s}"
+          - if category
+            = "#{category.name(I18n.locale)} hits: #{category.daily_score.to_s}"
           %br
 
     %h5
@@ -84,6 +91,14 @@
     %p.categories_view
       %h6
         - Category.week_top(10).each do |category|
-          = "#{category.name(I18n.locale)} hits: #{category.weekly_score.to_s}"
+          - if category
+            = "#{category.name(I18n.locale)} hits: #{category.weekly_score.to_s}"
           %br      
+
+  .report
+    %h4
+      Signed up users
+    - Person.all.each do |p| 
+      = "#{p.name} / #{p.email} / #{ p.enrolled_courses.map{|e|e.id}.join(", ")  }"
+      %br
   
