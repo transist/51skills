@@ -69,8 +69,9 @@ class Person < ActiveRecord::Base
   def enroll(course)
     if course.scheduled?
       course.students << self
-      course.enrollments.find{|enrollment| enrollment.person_id == id}.notify
-      true
+      enrollment = course.enrollments.find_by_person_id(id)
+      enrollment.notify
+      enrollment
     else
       false
     end

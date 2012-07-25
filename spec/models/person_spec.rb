@@ -17,14 +17,17 @@ describe Person do
   end
 
   context '#enroll' do
+    let(:course) { create(:scheduled_course) }
 
     it 'should enroll a scheduled course' do
-      course = create(:scheduled_course)
-
       expect {
-        person.enroll(course).should be_true
+        person.enroll(course)
         course.students.should include(person)
       }.to change(Enrollment, :count).by(1)
+    end
+
+    it 'should return the enrollment when success' do
+      person.enroll(course).should == Enrollment.last
     end
 
     it 'should not enroll an active course' do
@@ -33,7 +36,7 @@ describe Person do
       expect {
         person.enroll(course).should be_false
         course.reload.students.should_not include(person)
-      }.to change(Enrollment, :count).by(1)
+      }.not_to change(Enrollment, :count)
     end
   end
 
