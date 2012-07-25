@@ -47,6 +47,7 @@ gem 'gibbon'
 gem 'uuid'
 gem 'google-api-client'
 gem 'state_machine'
+gem 'gon'
 
 group :development do
   gem 'pry-rails'
