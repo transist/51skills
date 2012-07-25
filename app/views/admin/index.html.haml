@@ -98,7 +98,24 @@
   .report
     %h4
       Signed up users
-    - Person.all.each do |p| 
-      = "#{p.name} / #{p.email} / #{ p.enrolled_courses.map{|e|e.id}.join(", ")  }"
+    - Person.all(:include => [:enrolled_courses, :watching_courses]).each do |p| 
+      = "name: #{p.name}  email: #{p.email} enrolled courses id: #{ p.enrolled_courses.map{|e|e.id}.join(", ")} watched courses id: #{ p.watching_courses.map{|e|e.id}.join(", ")}"
       %br
+
+  .report
+    %h4
+      Courses
+    - Course.all.each do |c|
+      = c.name(I18n.locale)
+      %br
+      %h6
+        watch
+      = "#{c.watchers.map{|w| w.email || w.name ||ｗ.id }.join(', ')}"
+      %h6
+        enroll
+      = "#{c.students.map{|s| s.email || s.name ||s.id }.join(', ')}"
+      %br
+      %br
+      %br
+    
   
