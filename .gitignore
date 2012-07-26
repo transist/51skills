@@ -28,4 +28,3 @@ config/database.yml
 /doc/
 /.yardoc/
 /rerun.txt
-/config/pay_fu.yml

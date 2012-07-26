@@ -1,0 +1,35 @@
+development:
+  paypal:
+    mode: "test"
+    email: "pay@transi.st"
+    login: "transist"
+    password: "password"
+    signature: "FAKE_SIGNATURE"
+  alipay:
+    key: "uek6emx1lul0bqpy24qi7drd86rrlqgo"
+    account: "2088701947399296"
+    email: "pay@transi.st"
+
+test:
+  paypal:
+    mode: "test"
+    email: "pay@transi.st"
+    login: "transist"
+    password: "password"
+    signature: "FAKE_SIGNATURE"
+  alipay:
+    key: "uek6emx1lul0bqpy24qi7drd86rrlqgo"
+    account: "2088701947399296"
+    email: "pay@transi.st"
+
+production:
+  paypal:
+    mode: "production"
+    email: "pay@transi.st"
+    login: "transist"
+    password: "password"
+    signature: "FAKE_SIGNATURE"
+  alipay:
+    key: "uek6emx1lul0bqpy24qi7drd86rrlqgo"
+    account: "2088701947399296"
+    email: "pay@transi.st"
