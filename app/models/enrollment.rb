@@ -30,7 +30,11 @@ class Enrollment < ActiveRecord::Base
   end
 
   def payment_subject
-    I18n.t :payment_subject, scope: :enrollment, course: course.name(I18n.locale)
+    I18n.t :payment_subject, scope: :enrollment
+  end
+
+  def payment_body
+    I18n.t :payment_body, scope: :enrollment, course: course.name(I18n.locale)
   end
 
   def state_for(locale)

@@ -87,7 +87,8 @@ zh:
     alipay: '支付宝'
     paypal: 'PayPal'
   enrollment:
-    payment_subject: '为课程 %{course} 付款'
+    payment_subject: '课程费用'
+    payment_body: '课程 %{course} 的费用'
 
   datetime:
     distance_in_words:

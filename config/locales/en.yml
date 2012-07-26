@@ -88,4 +88,5 @@ en:
     alipay: 'Alipay'
     paypal: 'PayPal'
   enrollment:
-    payment_subject: 'Pay for course "%{course}"'
+    payment_subject: 'Course fee'
+    payment_body: 'Fee for course "%{course}"'
