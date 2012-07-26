@@ -1,13 +1,16 @@
+# encoding: UTF-8
 class Enrollment < ActiveRecord::Base
   include Enumerize
 
   PAYMENT_METHODS = [:alipay, :paypal].freeze
+  STATES_TRANSLATIONS = {paid: '已支付', unpaid: '未支付'}.freeze
 
   attr_accessible :course_id, :person_id, :payment_method
   belongs_to :person
   belongs_to :course
 
   enumerize :payment_method, in: PAYMENT_METHODS, default: :alipay
+  
 
   state_machine :state, initial: :unpaid do
     event :pay do
@@ -28,5 +31,14 @@ class Enrollment < ActiveRecord::Base
 
   def payment_subject
     I18n.t :payment_subject, scope: :enrollment, course: course.name(I18n.locale)
+  end
+
+  def state_for(locale)
+    case locale.to_sym
+    when :zh
+      STATES_TRANSLATIONS[self.state.to_sym]
+    when :en
+      self.state
+    end
   end
 end

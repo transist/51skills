@@ -18,7 +18,7 @@ div class='my_enrollments'
           td class='span1'
             - if enrollment.state
               span class="label label-info state"
-                = enrollment.state
+                = enrollment.state_for(I18n.locale)
           td class='span3'
             div class="btn-group"
               = enrollment_btn(enrollment: enrollment)
