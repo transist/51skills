@@ -20,6 +20,4 @@ table class='table table-striped'
               = enrollment.state
         td class='span3'
           div class="btn-group"
-            - if enrollment.state && enrollment.state.to_sym == :unpaid
-              = link_to(I18n.t('enrollments.my_enrollments.complete'), confirm_enrollment_path(enrollment), class: 'btn btn-small btn-info', method: :get) 
-              = link_to(I18n.t('enrollments.my_enrollments.cancel'), cancel_enrollment_path(enrollment), class: 'btn btn-small', method: :delete)
+            = enrollment_btn(enrollment: enrollment)
