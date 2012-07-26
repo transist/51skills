@@ -1,5 +1,6 @@
 zh:
   enrollments:
+    name: '我的报名'
     confirm:
       pay_for_the_course: '为课程付款'
       price: '课程 <strong>%{course}</strong> 的价格为 %{price}'

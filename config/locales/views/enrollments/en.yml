@@ -1,5 +1,13 @@
 en:
   enrollments:
+    my_enrollments:
+      name: 'My Enrollments'
+      course_name: 'Course Name'
+      status: 'Status'
+      actions: 'Actions'
+      complete: 'Complete'
+      cancel: 'Cancel'
+
     confirm:
       pay_for_the_course: 'Pay for the course'
       price: 'Price of <strong>%{course}</strong> is %{price}'

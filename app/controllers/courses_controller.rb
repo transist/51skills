@@ -85,10 +85,7 @@ class CoursesController < ApplicationController
 
   def enroll
     @course = Course.find params[:course_id]
-    if current_user.enrolled_courses.include?(@course)
-      current_user.disenroll(@course)
-      notice = 'You have disenrolled the course successfully.'
-    else
+    unless current_user.enrolled_courses.include?(@course)
       enrollment = current_user.enroll(@course)
       if enrollment
         redirect_to confirm_enrollment_path(enrollment) and return
@@ -96,7 +93,7 @@ class CoursesController < ApplicationController
         alert = 'You can not enroll the course at this moment.'
       end
     end
-    redirect_to :back, notice: notice
+    redirect_to :back, notice: notice, alert: alert
   end
 
   def activate
@@ -132,7 +129,7 @@ class CoursesController < ApplicationController
   protected
   def collection
     state = params[:state] || [:active, :scheduled]
-    Course.where(:state => state).paginate(:page => params[:page], :per_page => 6, :order => 'start_date_time ASC')
+    Course.where(:state => state).paginate(:page => params[:page], :per_page => 6, :order => 'start_date_time DESC')
   end
 
 

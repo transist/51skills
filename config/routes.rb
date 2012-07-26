@@ -26,11 +26,12 @@ Tedx::Application.routes.draw do
     resources :comments, :only => ['create', 'destroy']
   end
 
-  resources :enrollments, only: [] do
+  resources :enrollments, only: [:index] do
     member do
       get :confirm
       put :pay
       get :paid
+      delete :cancel
     end
   end
 

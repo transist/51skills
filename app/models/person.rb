@@ -73,7 +73,7 @@ class Person < ActiveRecord::Base
       enrollment.notify
       enrollment
     else
-      false
+      nil
     end
   end
 

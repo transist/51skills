@@ -1,0 +1,25 @@
+h1 = I18n.t('enrollments.my_enrollments.name')
+
+table class='table table-striped'
+  thead class='row'
+    tr
+      th class='span5'
+        = I18n.t('enrollments.my_enrollments.course_name')
+      th class='span1'
+        = I18n.t('enrollments.my_enrollments.status')
+      th class='span3'
+        = I18n.t('enrollments.my_enrollments.actions')
+  tbody class='row'
+    - @enrollments.each do |enrollment|
+      tr 
+        td class='span5'
+          = link_to enrollment.course.name(I18n.locale), course_path(enrollment.course)
+        td class='span1'
+          - if enrollment.state
+            span class="label label-info"
+              = enrollment.state
+        td class='span3'
+          div class="btn-group"
+            - if enrollment.state && enrollment.state.to_sym == :unpaid
+              = link_to(I18n.t('enrollments.my_enrollments.complete'), confirm_enrollment_path(enrollment), class: 'btn btn-small btn-info', method: :get) 
+              = link_to(I18n.t('enrollments.my_enrollments.cancel'), cancel_enrollment_path(enrollment), class: 'btn btn-small', method: :delete)
