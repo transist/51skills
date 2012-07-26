@@ -1,23 +1,24 @@
-h1 = I18n.t('enrollments.my_enrollments.name')
+div class='my_enrollments'
+  h1 = I18n.t('enrollments.my_enrollments.name')
 
-table class='table table-striped'
-  thead class='row'
-    tr
-      th class='span5'
-        = I18n.t('enrollments.my_enrollments.course_name')
-      th class='span1'
-        = I18n.t('enrollments.my_enrollments.status')
-      th class='span3'
-        = I18n.t('enrollments.my_enrollments.actions')
-  tbody class='row'
-    - @enrollments.each do |enrollment|
-      tr 
-        td class='span5'
-          = link_to enrollment.course.name(I18n.locale), course_path(enrollment.course)
-        td class='span1'
-          - if enrollment.state
-            span class="label label-info"
-              = enrollment.state
-        td class='span3'
-          div class="btn-group"
-            = enrollment_btn(enrollment: enrollment)
+  table class='table table-striped'
+    thead class='row'
+      tr
+        th class='span5'
+          = I18n.t('enrollments.my_enrollments.course_name')
+        th class='span1'
+          = I18n.t('enrollments.my_enrollments.status')
+        th class='span3'
+          = I18n.t('enrollments.my_enrollments.actions')
+    tbody class='row'
+      - @enrollments.each do |enrollment|
+        tr 
+          td class='span5'
+            = link_to enrollment.course.name(I18n.locale), course_path(enrollment.course)
+          td class='span1'
+            - if enrollment.state
+              span class="label label-info state"
+                = enrollment.state
+          td class='span3'
+            div class="btn-group"
+              = enrollment_btn(enrollment: enrollment)

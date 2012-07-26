@@ -1,6 +1,13 @@
 zh:
   enrollments:
-    name: '我的报名'
+    my_enrollments:
+      name: '我的报名'
+      course_name: '课程名称'
+      status: '状态'
+      actions: '操作'
+      complete: '完成'
+      cancel: '取消'
+      pay: '支付'
     confirm:
       pay_for_the_course: '为课程付款'
       price: '课程 <strong>%{course}</strong> 的价格为 %{price}'
