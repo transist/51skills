@@ -63,8 +63,10 @@ end
 group :development, :test do
   gem 'awesome_print', require: 'ap'
   gem 'factory_girl_rails', require: nil
+  gem 'webmock', require: nil
   gem 'rspec-rails', require: nil
   gem 'capybara', require: nil
+  gem 'capybara-mechanize', require: nil
   gem 'capybara-webkit', require: nil
   gem 'capybara-screenshot', require: nil
   gem 'launchy', require: nil

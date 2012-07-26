@@ -1,6 +1,8 @@
 Spork.prefork do
   require 'factory_girl_rails'
   require 'capybara-screenshot'
+  require 'capybara/mechanize/cucumber'
+  require 'webmock/cucumber'
   require 'capybara-webkit'
 
   Capybara.javascript_driver = :webkit
