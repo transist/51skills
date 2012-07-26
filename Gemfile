@@ -49,7 +49,7 @@ gem 'google-api-client'
 gem 'state_machine'
 gem 'gon'
 gem 'weibo_2'
-gem 'pay_fu'
+gem 'pay_fu', git: 'git://github.com/transist/pay_fu.git'
 gem 'slim-rails'
 gem 'enumerize'
 

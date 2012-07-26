@@ -26,6 +26,15 @@ GIT
       cocaine (>= 0.0.2)
       mime-types
 
+GIT
+  remote: git://github.com/transist/pay_fu.git
+  revision: 82cedb2ad79e52884d89a0c98fbfd197d4e82cc9
+  specs:
+    pay_fu (1.0.0)
+      activemerchant
+      activemerchant_patch_for_china
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -302,10 +311,6 @@ GEM
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
     orm_adapter (0.0.7)
-    pay_fu (1.0.0)
-      activemerchant
-      activemerchant_patch_for_china
-      rails
     pg (0.14.0)
     polyglot (0.3.3)
     premailer (1.7.3)
@@ -523,7 +528,7 @@ DEPENDENCIES
   omniauth-twitter
   omniauth-weibo-oauth2
   paperclip!
-  pay_fu
+  pay_fu!
   pg
   premailer
   pry-rails
