@@ -3,6 +3,7 @@ Feature: Enroll Course
   As a user
   I want to enroll course
 
+  @mechanize
   Scenario: Enroll a course
     Given there is a scheduled course
     And I am signed in as a user

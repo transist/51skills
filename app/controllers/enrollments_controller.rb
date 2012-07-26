@@ -26,7 +26,7 @@ class EnrollmentsController < ApplicationController
   end
 
   def paid
-    notice = 'You have enrolled the course successfully.'
+    flash[:notice] = 'You have enrolled the course successfully.'
     redirect_to @enrollment.course
   end
 
