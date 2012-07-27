@@ -67,7 +67,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @course.counting(1) unless current_user_admin?
-    @enrollment = Enrollment.find_by_course_id_and_person_id(@course.id, current_user.id)
+    @enrollment = Enrollment.find_by_course_id_and_person_id(@course.id, current_user.id) if current_user
     @person = Person.new
   end
 
