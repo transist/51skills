@@ -10,17 +10,17 @@ class AlipayTransactionsController < PayFu::AlipayTransactionsController
         PayFu::AlipayTransaction.create(transaction_attributes(notify))
       end
     end
-    render :nothing => true
+    render nothing: true
   end
 
   def transaction_attributes(notify)
     @transaction_attributes ||= {
-      :transaction_id => notify.trade_no,
-      :transaction_type => notify.payment_type,
-      :payment_status => notify.trade_status,
-      :payment_date => notify.notify_time,
-      :gross => notify.total_fee,
-      :raw_data => Rack::Utils.parse_query(notify.raw)
+      transaction_id: notify.trade_no,
+      transaction_type: notify.payment_type,
+      payment_status: notify.trade_status,
+      payment_date: notify.notify_time,
+      gross: notify.total_fee,
+      raw_data: Rack::Utils.parse_query(notify.raw)
     }
   end
 end
