@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
   end
   
   def index
+    
     @courses = collection
   end
 

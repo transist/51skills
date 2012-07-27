@@ -1,4 +1,4 @@
-Given /^there is an? (inactive|scheduled|) course$/ do |type|
+Given /^there is an? (inactive |scheduled |)course$/ do |type|
   if type == "scheduled"
     @course = create(:course_with_start_date)
   else

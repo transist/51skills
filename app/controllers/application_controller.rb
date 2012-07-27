@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :accepted_languages
   before_filter :set_language
   before_filter :email_address_complete!
+  before_filter :assign_var_to_gon
+  
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user_by_id!
@@ -129,6 +131,15 @@ class ApplicationController < ActionController::Base
     @page.header = true
     @page.sidebar = true
     @page
+  end
+  
+  def assign_var_to_gon
+    gon.user_id = current_user.id rescue nil
+    if session[:after_sign_up]
+      session[:after_sign_up] = nil
+      gon.after_sign_up = true
+      gon.user_identity = current_user.identity
+    end
   end
   
 end
