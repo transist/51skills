@@ -31,4 +31,15 @@ Manually run tests
 
     bundle exec rspec && bundle exec cucumber
 
+Deployment
+==========
+
+* Deploy to staging environment:
+
+      rake deploy:staging_migrations
+
+* Deploy to production environment:
+
+      rake deploy:production_migrations
+
 *vim: set tw=78:*
