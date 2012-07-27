@@ -1,6 +1,6 @@
 Tedx::Application.routes.draw do
 
-  mount PayFu::Engine => '/pay_fu', as: 'pay_fu'
+  match '/alipay_transactions/notify' => 'alipay_transactions#notify'
 
   resources :guides
 
