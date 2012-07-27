@@ -27,7 +27,7 @@
       </div>
       <div class='enroll_box row'>
         <div class='students '>
-          <%= students_name_helper%>
+          <%= @course.students.count %>
           <%= @course.students.count > 1 ? I18n.t('are_enrolled_in_this_course'): (@course.students.count == 1 ? I18n.t('is_enrolled_in_this_course') : "")%>
         </div>
         <div class='enroll_btn'>

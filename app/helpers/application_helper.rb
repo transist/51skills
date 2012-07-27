@@ -83,10 +83,6 @@ module ApplicationHelper
     @course.watchers.limit(5).map {|watcher| watcher.name}.join(", ")
   end
   
-  def students_name_helper
-    @course.students.limit(5).map{|student| student.name}.join(", ")
-  end
-  
   def connect_social_botton(provider_name)
     including = @user.providers.map{|p| p.provider}.include?(provider_name.to_s)
     connect = including ? 'disconnect' : 'connect'
