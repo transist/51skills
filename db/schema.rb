@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120725051312) do
+ActiveRecord::Schema.define(:version => 20120727073151) do
 
   create_table "categories", :force => true do |t|
     t.string   "name_en"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(:version => 20120725051312) do
     t.string   "payment_status"
     t.datetime "payment_date"
     t.integer  "gross"
-    t.string   "raw_post"
+    t.text     "raw_post"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
