@@ -20,7 +20,7 @@ class AlipayTransactionsController < PayFu::AlipayTransactionsController
       :payment_status => notify.trade_status,
       :payment_date => notify.notify_time,
       :gross => notify.total_fee,
-      :raw_post => notify.raw
+      :raw_data => Rack::Utils.parse_query(notify.raw)
     }
   end
 end
