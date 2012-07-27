@@ -27,6 +27,15 @@ GIT
       mime-types
 
 GIT
+  remote: git://github.com/softa/activerecord-postgres-hstore.git
+  revision: a211841295882aa3e2c267750037b8bc58da5546
+  specs:
+    activerecord-postgres-hstore (0.4.0)
+      pg
+      rails
+      rake
+
+GIT
   remote: git://github.com/transist/pay_fu.git
   revision: 300db75325c7d1a426d2cfc91c09537cd8015748
   specs:
@@ -485,6 +494,7 @@ PLATFORMS
 
 DEPENDENCIES
   189seg
+  activerecord-postgres-hstore!
   acts-as-taggable-on (~> 2.2.2)
   acts_as_commentable_with_threading
   awesome_nested_set

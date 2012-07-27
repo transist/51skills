@@ -52,6 +52,7 @@ gem 'weibo_2'
 gem 'pay_fu', git: 'git://github.com/transist/pay_fu.git'
 gem 'slim-rails'
 gem 'enumerize'
+gem 'activerecord-postgres-hstore', git: 'git://github.com/softa/activerecord-postgres-hstore.git'
 
 group :development do
   gem 'pry-rails'
