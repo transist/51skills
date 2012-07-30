@@ -4,13 +4,21 @@ Feature: Enroll Course
   I want to enroll course
 
   @mechanize
-  Scenario: Enroll a course
+  Scenario: Enroll a course with payment
     Given there is a scheduled course
     And I am signed in as a user
     When I enroll the course
     And I pay for the course via Alipay
     Then I should see a notice about the course enrolled
     And the status of the enrollment should be paid
+
+  @mechanize
+  Scenario: Enroll a course with incomplete payment
+    Given there is a scheduled course
+    And I am signed in as a user
+    When I enroll the course
+    And I view course page without complete the payment
+    Then I should see payment button and cancel button
 
   Scenario: Disenroll a course
     Given there is a scheduled course
