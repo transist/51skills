@@ -1,6 +1,10 @@
 class AlipayTransaction < PayFu::AlipayTransaction
 
-  attr_accessible :raw_data
+  belongs_to :enrollment
+
+  serialize :raw_data, ActiveRecord::Coders::Hstore
+
+  attr_accessible :enrollment_id, :raw_data
 
   def raw_data
     Hashie::Mash.new(self[:raw_data])

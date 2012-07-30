@@ -47,7 +47,7 @@ class EnrollmentsController < ApplicationController
       amount: @enrollment.course.price_in_cny.to_s,
       body: @enrollment.payment_body,
       out_trade_no: @enrollment.id.to_s,
-      notify_url: pay_fu.alipay_transactions_notify_url,
+      notify_url: alipay_transactions_notify_url,
       return_url: paid_enrollment_url(@enrollment)
     )
   end

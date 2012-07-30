@@ -6,11 +6,11 @@ class Enrollment < ActiveRecord::Base
   STATES_TRANSLATIONS = {paid: '已支付', unpaid: '未支付'}.freeze
 
   attr_accessible :course_id, :person_id, :payment_method
+  has_one :transaction
   belongs_to :person
   belongs_to :course
 
   enumerize :payment_method, in: PAYMENT_METHODS, default: :alipay
-  
 
   state_machine :state, initial: :unpaid do
     event :pay do

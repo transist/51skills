@@ -24,3 +24,8 @@ end
 Then /^I should see a notice about the course disenrolled$/ do
   page.should have_content('You have disenrolled the course successfully.')
 end
+
+Then /^the status of the enrollment should be paid$/ do
+  Enrollment.last.state.should be_paid
+  page.should have_content('Paid')
+end

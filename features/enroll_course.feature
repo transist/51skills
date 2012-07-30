@@ -10,6 +10,7 @@ Feature: Enroll Course
     When I enroll the course
     And I pay for the course via Alipay
     Then I should see a notice about the course enrolled
+    And the status of the enrollment should be paid
 
   Scenario: Disenroll a course
     Given there is a scheduled course
