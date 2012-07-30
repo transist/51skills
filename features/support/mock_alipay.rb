@@ -37,16 +37,18 @@ module AlipayMock
 
   # Mock requests send to Alipay, notify the notify_url with mock data,
   # and then redirect back to return_url.
-  stub_request(:get, %r{https://www.alipay.com/cooperate/gateway.do.*}).
-    to_return(
-      status: 302,
-      headers: lambda {|request|
+  def self.stub!
+    stub_request(:get, %r{https://www.alipay.com/cooperate/gateway.do.*}).
+      to_return(
+        status: 302,
+        headers: lambda {|request|
 
-        params = Hashie::Mash.new(Rack::Utils.parse_query(request.uri.query))
+          params = Hashie::Mash.new(Rack::Utils.parse_query(request.uri.query))
 
-        Capybara.page.driver.post(params.notify_url, sign!(notify_data(params)))
+          Capybara.page.driver.post(params.notify_url, sign!(notify_data(params)))
 
-        { Location: params.return_url }
-      }
-  )
+          { Location: params.return_url }
+        }
+    )
+  end
 end
