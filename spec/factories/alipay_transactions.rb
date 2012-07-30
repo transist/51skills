@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :alipay_transaction do
+    enrollment
   end
 end

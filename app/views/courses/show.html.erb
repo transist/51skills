@@ -32,8 +32,12 @@
         </div>
         <div class='enroll_btn'>
           <% unless @course.price == nil %>
-            <%= enrollment_btn(enrollment: @enrollment, course: @course) %>
-            <%= price_helper(@course) %>
+            <% if @enrollment.try :paid? %>
+              <span class="label label-success paid"><%=t '.paid' %></span>
+            <% else %>
+              <%= enrollment_btn(enrollment: @enrollment, course: @course) %>
+              <%= price_helper(@course) %>
+            <% end %>
           <% end%>
         </div>
       </div>

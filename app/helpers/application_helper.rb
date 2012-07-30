@@ -53,6 +53,8 @@ module ApplicationHelper
       if enrollment.state && enrollment.state.to_sym == :unpaid
         link_to(I18n.t('enrollments.my_enrollments.pay'), confirm_enrollment_path(enrollment), class: 'btn btn-large btn-info', method: :get) +
         link_to(I18n.t('enrollments.my_enrollments.cancel'), cancel_enrollment_path(enrollment), class: 'btn btn-large', method: :delete)
+      elsif enrollment.paid?
+        'Paid'
       end
     end
   end

@@ -18,4 +18,15 @@ describe AlipayTransaction do
       alipay_transaction.reload.raw_data.should == Hashie::Mash.new(hash)
     end
   end
+
+  context '#paid?' do
+    it 'should be paid when #payment_status be TRADE_SUCCESS' do
+      alipay_transaction.payment_status = 'TRADE_SUCCESS'
+      alipay_transaction.should be_paid
+    end
+
+    it 'should not be paid otherwise' do
+      alipay_transaction.should_not be_paid
+    end
+  end
 end
