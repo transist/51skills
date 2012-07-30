@@ -6,15 +6,20 @@ class Enrollment < ActiveRecord::Base
   STATES_TRANSLATIONS = {paid: '已支付', unpaid: '未支付'}.freeze
 
   attr_accessible :course_id, :person_id, :payment_method
-  has_one :transaction
+  has_one :transaction, class_name: 'PayFu::Transaction'
   belongs_to :person
   belongs_to :course
 
+  delegate :free?, to: :course, prefix: true
+
   enumerize :payment_method, in: PAYMENT_METHODS, default: :alipay
+
+  after_create :pay
 
   state_machine :state, initial: :unpaid do
     event :pay do
-      transition unpaid: :paid
+      transition unpaid: :paid, if: :transaction_paid?
+      transition unpaid: :paid, if: :course_free?
     end
   end
 
@@ -44,5 +49,10 @@ class Enrollment < ActiveRecord::Base
     when :en
       self.state
     end
+  end
+
+  private
+  def transaction_paid?
+    reload.transaction.try :paid?
   end
 end

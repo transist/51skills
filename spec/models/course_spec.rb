@@ -25,4 +25,10 @@ describe Course do
       course.should_not be_can_schedule
     end
   end
+
+  describe 'scheduled free course' do
+    let(:course) { create(:scheduled_free_course) }
+    subject { course }
+    its(:price) { should be_zero }
+  end
 end

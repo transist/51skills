@@ -30,6 +30,13 @@ Feature: Enroll Course
     Then I should see a notice about the course enrolled
     And the status of the enrollment should be paid
 
+  Scenario: Enroll a free course
+    Given there is a scheduled free course
+    And I am signed in as a user
+    When I enroll the course
+    Then I should see a notice about the course enrolled
+    And the status of the enrollment should be paid
+
   Scenario: Disenroll a course
     Given there is a scheduled course
     And I am signed in as a user

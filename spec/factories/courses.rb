@@ -18,4 +18,8 @@ FactoryGirl.define do
     start_date_time { 2.days.since }
     after(:create) {|c| c.schedule }
   end
+
+  factory :scheduled_free_course, parent: :scheduled_course do
+    price 0
+  end
 end

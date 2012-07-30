@@ -89,7 +89,11 @@ class CoursesController < ApplicationController
     unless current_user.enrolled_courses.include?(@course)
       enrollment = current_user.enroll(@course)
       if enrollment
-        redirect_to confirm_enrollment_path(enrollment) and return
+        if enrollment.paid?
+          redirect_to :back, notice: 'You have enrolled the course successfully.' and return
+        else
+          redirect_to confirm_enrollment_path(enrollment) and return
+        end
       else
         alert = 'You can not enroll the course at this moment.'
       end
