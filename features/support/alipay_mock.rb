@@ -1,7 +1,29 @@
-module AlipayMock
-  extend WebMock::API
+class AlipayMock
+  include WebMock::API
 
-  def self.sign!(params)
+  # Mock requests send to Alipay, notify the notify_url with mock data,
+  # and then redirect back to return_url.
+  def self.stub!
+    self.new.stub!
+  end
+
+  def stub!
+    stub_request(:get, %r{https://www.alipay.com/cooperate/gateway.do.*}).
+      to_return(
+        status: 302,
+        headers: lambda {|request|
+
+          params = Hashie::Mash.new(Rack::Utils.parse_query(request.uri.query))
+
+          Capybara.page.driver.post(params.notify_url, sign!(notify_data(params)))
+
+          { Location: params.return_url }
+        }
+    )
+  end
+
+  private
+  def sign!(params)
     raw_query_string = params.sort.map {|key, value| "#{key}=#{CGI.unescape(value)}" }.join("&")
     sign = Digest::MD5.hexdigest(raw_query_string + ActiveMerchant::Billing::Integrations::Alipay::KEY)
     params['sign'] = sign
@@ -9,7 +31,7 @@ module AlipayMock
     params
   end
 
-  def self.notify_data(params)
+  def notify_data(params)
     notify_data = {
       "discount" => "0.00",
       "payment_type" => "1",
@@ -25,7 +47,7 @@ module AlipayMock
       "body" => params.body,
       "trade_status" => "TRADE_SUCCESS",
       "is_total_fee_adjust" => "N",
-      "total_fee" => "0.42",
+      "total_fee" => params.total_fee,
       "gmt_payment" => "2012-07-27 15:00:01",
       "seller_email" => params.seller_email,
       "price" => "0.42",
@@ -33,22 +55,5 @@ module AlipayMock
       "notify_id" => "af882e0e6610b7a59ef333b469f6f60008",
       "use_coupon" => "N"
     }
-  end
-
-  # Mock requests send to Alipay, notify the notify_url with mock data,
-  # and then redirect back to return_url.
-  def self.stub!
-    stub_request(:get, %r{https://www.alipay.com/cooperate/gateway.do.*}).
-      to_return(
-        status: 302,
-        headers: lambda {|request|
-
-          params = Hashie::Mash.new(Rack::Utils.parse_query(request.uri.query))
-
-          Capybara.page.driver.post(params.notify_url, sign!(notify_data(params)))
-
-          { Location: params.return_url }
-        }
-    )
   end
 end
