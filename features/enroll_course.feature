@@ -20,6 +20,16 @@ Feature: Enroll Course
     And I view course page without complete the payment
     Then I should see payment button and cancel button
 
+  @mechanize
+  Scenario: Complete an incomplete payment
+    Given there is a scheduled course
+    And I am signed in as a user
+    When I enroll the course
+    And I view course page without complete the payment
+    And I complete the payment
+    Then I should see a notice about the course enrolled
+    And the status of the enrollment should be paid
+
   Scenario: Disenroll a course
     Given there is a scheduled course
     And I am signed in as a user

@@ -21,6 +21,11 @@ When /^I view course page without complete the payment$/ do
   visit course_path(@course)
 end
 
+When /^I complete the payment$/ do
+  click_link 'Pay'
+  click_button 'Pay'
+end
+
 Then /^I should see a notice about the course enrolled$/ do
   page.should have_content('You have enrolled the course successfully.')
 end
