@@ -50,7 +50,7 @@ Tedx::Application.routes.draw do
   
 
   # match '/tedxshanghai-2012' => 'home#stage', :slug => 'tedxshanghai-2012'
-  root :to => 'home#index'
+  root :to => 'courses#index'
   match '/landing' => 'home#landing'
   post '/subscribe' => 'home#subscribe'
   get '/subscribe_confirm' => 'home#subscribe_confirm'
