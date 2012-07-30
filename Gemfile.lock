@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: git://github.com/transist/pay_fu.git
-  revision: 300db75325c7d1a426d2cfc91c09537cd8015748
+  revision: bf7b509abf8433e46a28937f1d4673be761877b8
   specs:
     pay_fu (1.0.0)
       activemerchant
