@@ -55,13 +55,13 @@ gem 'enumerize'
 gem 'activerecord-postgres-hstore', git: 'git://github.com/softa/activerecord-postgres-hstore.git'
 
 group :development do
-  gem 'pry-rails'
   gem 'sqlite3'
   gem 'yard', require: nil
   gem 'rdiscount', require: nil
 end
 
 group :development, :test do
+  gem 'pry-rails'
   gem 'awesome_print', require: 'ap'
   gem 'factory_girl_rails', require: nil
   gem 'webmock', require: nil
