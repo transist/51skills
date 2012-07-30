@@ -8,6 +8,8 @@ Spork.prefork do
   Capybara.javascript_driver = :webkit
   Capybara.default_wait_time = 5
 
+  WebMock.disable_net_connect!(allow_localhost: true)
+
   class Cucumber::Rails::World
     extend ActionView::Helpers::SanitizeHelper::ClassMethods
     include ActionView::Helpers::SanitizeHelper
