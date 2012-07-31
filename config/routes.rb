@@ -17,6 +17,7 @@ Tedx::Application.routes.draw do
     member { get :submit }
     post :watch
     post :enroll
+    post :disenroll
     post :activate
     post :schedule
     post :postpone

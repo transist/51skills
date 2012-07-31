@@ -101,6 +101,16 @@ class CoursesController < ApplicationController
     redirect_to :back, notice: notice, alert: alert
   end
 
+  def disenroll
+    @course = Course.find params[:course_id]
+    if current_user.disenroll(@course)
+      flash[:notice] = 'You have disenrolled the course successfully.'
+    else
+      flash[:alert] = 'You can not disenrol the course.'
+    end
+    redirect_to :back
+  end
+
   def activate
     @course = Course.find params[:course_id]
     @course.activate

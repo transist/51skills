@@ -35,11 +35,4 @@ Feature: Enroll Course
     And I am signed in as a user
     When I enroll the course
     Then I should see a notice about the course enrolled
-    And the status of the enrollment should be paid
-
-  Scenario: Disenroll a course
-    Given there is a scheduled course
-    And I am signed in as a user
-    And I already enrolled the course
-    When I disenroll the course
-    Then I should see a notice about the course disenrolled
+    And the the enrollment can be disenrolled

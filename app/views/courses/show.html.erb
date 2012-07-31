@@ -30,16 +30,12 @@
           <%= @course.students.count %>
           <%= @course.students.count > 1 ? I18n.t('are_enrolled_in_this_course'): (@course.students.count == 1 ? I18n.t('is_enrolled_in_this_course') : "")%>
         </div>
-        <div class='enroll_btn'>
-          <% unless @course.price == nil %>
-            <% if @enrollment.try :paid? %>
-              <span class="label label-success paid"><%=t '.paid' %></span>
-            <% else %>
-              <%= enrollment_btn(enrollment: @enrollment, course: @course) %>
-              <%= price_helper(@course) %>
-            <% end %>
-          <% end%>
-        </div>
+        <% if @course.scheduled? %>
+          <div class='enroll_btn'>
+            <%= enrollment_btn %>
+            <%= price_helper(@course) %>
+          </div>
+        <% end%>
       </div>
       <div class='actions'>
         <%= course_admin_action(@course) %>

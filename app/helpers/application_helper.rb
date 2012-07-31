@@ -3,7 +3,7 @@ module ApplicationHelper
   def editor_path(path)
     "/editor/#{path}"
   end
-  
+
   def chosen_single_select(choices, options={})
     helper_options = {:class => 'chzn-select chosen_single_select', :tabindex => '7'}
     helper_options.merge(options) do |key, oldval, newval|
@@ -12,50 +12,66 @@ module ApplicationHelper
     end
     select("category", "category_id", choices, { :include_blank => true }, helper_options)
   end
-  
+
   def current_category?(category)
     @category && (category.id == @category.id)
   end
-  
+
   def watch_btn(course, location)
     watch = I18n.t('watch')
     unwatch = I18n.t('unwatch')
     watch_or_unwatch = current_user ? (current_user.watching_courses.include?(course) ? unwatch : watch) : watch
     if location == 'show'
-      link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch_or_unwatch}</span>".html_safe, 
+      link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch_or_unwatch}</span>".html_safe,
               course_watch_path(course.id), :class => 'btn btn-large watch_btn', :method => 'post'
     elsif location == 'list'
-      link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch_or_unwatch}</span>".html_safe, 
+      link_to "<i class='icon-eye-open'></i><span class='watch'>#{watch_or_unwatch}</span>".html_safe,
               course_watch_path(course.id), :class => 'btn btn-mini watch_btn', :method => 'post'
     end
   end
-  
+
   def enroll_btn(course)
     enroll = I18n.t('enroll')
     disenroll = I18n.t('disenroll')
     enroll_or_not = current_user ? (current_user.enrolled_courses.include?(course) ? disenroll : enroll) : enroll
-    
-    link_to "<i class='icon-shopping-cart'></i><span class='enroll'>#{enroll_or_not}</span>".html_safe, 
+
+    link_to "<i class='icon-shopping-cart'></i><span class='enroll'>#{enroll_or_not}</span>".html_safe,
             course_enroll_path(course.id), :class => 'btn btn-large btn-success enroll_btn', :method => 'post'
   end
-  
 
-  def enrollment_btn(opts = {})
-    enrollment = opts.delete(:enrollment)
-    course = opts.delete(:course)
-    if enrollment.nil?
-      enroll = I18n.t('enroll')
-      disenroll = I18n.t('disenroll')
-      enroll_or_not = current_user ? (current_user.enrolled_courses.include?(course) ? disenroll : enroll) : enroll
-      link_to "<i class='icon-shopping-cart'></i><span class='enroll'>#{enroll_or_not}</span>".html_safe,
-            course_enroll_path(course.id), :class => 'btn btn-large btn-success enroll_btn', :method => 'post'
-    else
-      if enrollment.state && enrollment.state.to_sym == :unpaid
-        link_to(I18n.t('enrollments.my_enrollments.pay'), confirm_enrollment_path(enrollment), class: 'btn btn-large btn-info', method: :get) +
-        link_to(I18n.t('enrollments.my_enrollments.cancel'), cancel_enrollment_path(enrollment), class: 'btn btn-large', method: :delete)
-      elsif enrollment.paid?
-        'Paid'
+
+  def enrollment_btn
+    if not @enrollment
+      # Enroll button
+      icon_class = @course.free? ? 'icon-ok-sign' : 'icon-shopping-cart'
+      enroll_button = content_tag(:span, nil, class: icon_class)
+      enroll_button << content_tag(:span, class: 'enroll') do
+        t :enroll
       end
+      link_to enroll_button, course_enroll_path(@course.id),
+        class: 'btn btn-large btn-success enroll_btn', method: 'post'
+
+    elsif not @course.free? and @enrollment.unpaid?
+      # Pay button and Cancel button
+        link_to(t('enrollments.my_enrollments.pay'), confirm_enrollment_path(@enrollment),
+          class: 'btn btn-large btn-info', method: :get) +
+        link_to(t('enrollments.my_enrollments.cancel'), cancel_enrollment_path(@enrollment),
+          class: 'btn btn-large', method: :delete)
+
+    elsif not @course.free? and @enrollment.paid?
+      # Paid status
+      content_tag(:span, class: 'label label-success paid') do
+        t 'courses.show.paid'
+      end
+
+    elsif @course.free? and @enrollment.paid?
+      # Disenroll button
+      disenroll_button = content_tag(:i, nil, class: 'icon-remove-sign')
+      disenroll_button << content_tag(:span, class: 'enroll') do
+        t :disenroll
+      end
+      link_to disenroll_button, course_disenroll_path(@course.id),
+        class: 'btn btn-large btn-success enroll_btn', method: 'post'
     end
   end
 
@@ -73,7 +89,7 @@ module ApplicationHelper
       notice
     end unless notice.empty?
   end
-  
+
   def zh_or_en_link
     if I18n.locale == :en
       link_to '中文', '/zh'
@@ -81,10 +97,10 @@ module ApplicationHelper
       link_to 'English', '/en'
     end
   end
-  
+
   def notice_helper
     if notice
-      content_tag :div, :class => 'alert alert-success' do 
+      content_tag :div, :class => 'alert alert-success' do
         s = content_tag 'button', :class => 'close', :data => {:dismiss => 'alert'} do
           "x"
         end
@@ -93,10 +109,10 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def alert_helper
     if alert
-      content_tag :div, :class => 'alert alert-error' do 
+      content_tag :div, :class => 'alert alert-error' do
         s = content_tag 'button', :class => 'close', :data => {:dismiss => 'alert'} do
           "x"
         end
@@ -105,11 +121,11 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def watchers_name_helper
     @course.watchers.limit(5).map {|watcher| watcher.name}.join(", ")
   end
-  
+
   def connect_social_botton(provider_name)
     including = @user.providers.map{|p| p.provider}.include?(provider_name.to_s)
     connect = including ? 'disconnect' : 'connect'
@@ -118,5 +134,5 @@ module ApplicationHelper
     url = including ? person_provider_path(@user.id, provider.id) : new_person_provider_path(@user.id).to_s + "?provider=#{provider_name}"
     link_to connect, url, :class => 'btn btn-min social_botton', :method => method
   end
-  
+
 end
