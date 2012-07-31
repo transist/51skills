@@ -66,7 +66,7 @@ class Person < ActiveRecord::Base
     email || providers.first.username
   end
   
-  private
+  protected
   def skip_email_validation
     @skip_email_validation
   end
