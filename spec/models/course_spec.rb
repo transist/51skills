@@ -31,4 +31,23 @@ describe Course do
     subject { course }
     its(:price) { should be_zero }
   end
+
+  context 'should be schedulable only if price and start_date_time exists' do
+    let(:course) { create(:course, @params) }
+
+    it 'should be schedulable if price and start_date_time exists' do
+      @params = {price: 0, start_date_time: 2.days.since}
+      course.should be_schedulable
+    end
+
+    it 'should not be schedulable if price not exists' do
+      @params = {price: nil, start_date_time: 2.days.since}
+      course.should_not be_schedulable
+    end
+
+    it 'should not be schedulable if start_date_time not exists' do
+      @params = {price: 0, start_date_time: nil}
+      course.should_not be_schedulable
+    end
+  end
 end

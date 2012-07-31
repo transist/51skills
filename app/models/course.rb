@@ -37,7 +37,7 @@ class Course < ActiveRecord::Base
     end
 
     event :schedule do
-      transition [:active, :postponed] => :scheduled, if: :start_date_time?
+      transition [:active, :postponed] => :scheduled, if: :schedulable?
     end
 
     event :complete do
@@ -115,6 +115,10 @@ class Course < ActiveRecord::Base
 
   def free?
     price.zero?
+  end
+
+  def schedulable?
+    price.present? and start_date_time.present?
   end
 
   def self.top(rank)
