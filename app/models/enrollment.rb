@@ -10,7 +10,7 @@ class Enrollment < ActiveRecord::Base
   belongs_to :person
   belongs_to :course
 
-  delegate :free?, to: :course, prefix: true
+  delegate :free?, to: :course
 
   enumerize :payment_method, in: PAYMENT_METHODS, default: :alipay
 
@@ -19,7 +19,7 @@ class Enrollment < ActiveRecord::Base
   state_machine :state, initial: :unpaid do
     event :pay do
       transition unpaid: :paid, if: :transaction_paid?
-      transition unpaid: :paid, if: :course_free?
+      transition unpaid: :paid, if: :free?
     end
   end
 
