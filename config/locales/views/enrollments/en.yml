@@ -1,0 +1,16 @@
+en:
+  enrollments:
+    my_enrollments:
+      name: 'My Enrollments'
+      course_name: 'Course Name'
+      status: 'Status'
+      actions: 'Actions'
+      complete: 'Complete'
+      cancel: 'Cancel'
+      pay: 'Pay'
+
+    confirm:
+      pay_for_the_course: 'Pay for the course'
+      price: 'Price of <strong>%{course}</strong> is %{price}'
+      payment_methods: 'You can pay via the following ways:'
+      pay: 'Pay'

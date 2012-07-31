@@ -83,6 +83,13 @@ zh:
       slide_9: "<p id='only-for-important-text'>让你届时只学习最重要的东西</p>"
     subscribe: "订阅以获得51skills提供的最新信息"
     subscribe_word: "订阅"
+  payment:
+    alipay: '支付宝'
+    paypal: 'PayPal'
+  enrollment:
+    payment_subject: '课程费用'
+    payment_body: '课程 %{course} 的费用'
+
   datetime:
     distance_in_words:
       about_x_hours:
@@ -225,7 +232,7 @@ zh:
         separator: .
         significant: false
         strip_insignificant_zeros: false
-        unit: CN¥
+        unit: ¥
     format:
       delimiter: ! ','
       precision: 3

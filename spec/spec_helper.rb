@@ -14,6 +14,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'factory_girl_rails'
   require 'database_cleaner'
+  require 'webmock/rspec'
 
   require 'capybara/rspec'
   Capybara.javascript_driver = :webkit

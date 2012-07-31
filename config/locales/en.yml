@@ -24,7 +24,7 @@ en:
   watch: 'Watch'
   unwatch: 'Unwatch'
   enroll: 'Enroll'
-  unenroll: 'cancel enrollment'
+  disenroll: 'Disenroll'
   people_are_watching_this_course: 'people are watching this course.'
   person_is_watching_this_course: 'person is watching this course.'
   are_watching_this_course: 'are watching this course.'
@@ -84,3 +84,9 @@ en:
     email_address_format_validation: "The Email Address you typed in is invalidated. Please try again."
     email_already_in_used: "Your email adress is already in used."
     provider_in_used: "The account you are trying to connected is already in used by anther account, it could be your another account, please disconnect it first."
+  payment:
+    alipay: 'Alipay'
+    paypal: 'PayPal'
+  enrollment:
+    payment_subject: 'Course fee'
+    payment_body: 'Fee for course "%{course}"'

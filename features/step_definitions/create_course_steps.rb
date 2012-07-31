@@ -21,7 +21,4 @@ end
 
 Then /^the course state should be changed to active$/ do
   find("#state").should have_content("active")
-  find_link('complete').visible?
-  find_link('cancel').visible?
-  find_link('postpone').visible?
 end

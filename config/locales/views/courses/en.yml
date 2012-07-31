@@ -1,0 +1,5 @@
+en:
+  courses:
+    show:
+      paid: 'Enrolled and Paid'
+      free: 'Free'

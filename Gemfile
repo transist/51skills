@@ -49,19 +49,25 @@ gem 'google-api-client'
 gem 'state_machine'
 gem 'gon'
 gem 'weibo_2'
+gem 'pay_fu', git: 'git://github.com/transist/pay_fu.git'
+gem 'slim-rails'
+gem 'enumerize'
+gem 'activerecord-postgres-hstore', git: 'git://github.com/softa/activerecord-postgres-hstore.git'
 
 group :development do
-  gem 'pry-rails'
   gem 'sqlite3'
   gem 'yard', require: nil
   gem 'rdiscount', require: nil
 end
 
 group :development, :test do
+  gem 'pry-rails'
   gem 'awesome_print', require: 'ap'
   gem 'factory_girl_rails', require: nil
+  gem 'webmock', require: nil
   gem 'rspec-rails', require: nil
   gem 'capybara', require: nil
+  gem 'capybara-mechanize', require: nil
   gem 'capybara-webkit', require: nil
   gem 'capybara-screenshot', require: nil
   gem 'launchy', require: nil

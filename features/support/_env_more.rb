@@ -1,10 +1,14 @@
 Spork.prefork do
   require 'factory_girl_rails'
   require 'capybara-screenshot'
+  require 'capybara/mechanize/cucumber'
+  require 'webmock/cucumber'
   require 'capybara-webkit'
 
   Capybara.javascript_driver = :webkit
   Capybara.default_wait_time = 5
+
+  WebMock.disable_net_connect!(allow_localhost: true)
 
   class Cucumber::Rails::World
     extend ActionView::Helpers::SanitizeHelper::ClassMethods

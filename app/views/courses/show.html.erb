@@ -30,12 +30,12 @@
           <%= @course.students.count %>
           <%= @course.students.count > 1 ? I18n.t('are_enrolled_in_this_course'): (@course.students.count == 1 ? I18n.t('is_enrolled_in_this_course') : "")%>
         </div>
-        <div class='enroll_btn'>
-          <% unless @course.price == nil %>
-            <%= enroll_btn(@course)%>
-            <span class='label label-info price'><%= (@course.price == 0) ? "FREE!" : ("#{@course.price_type.to_s.upcase} #{@course.price.to_s}") %></span>
-          <% end%>
-        </div>
+        <% if @course.scheduled? %>
+          <div class='enroll_btn'>
+            <%= enrollment_btn %>
+            <%= price_helper(@course) %>
+          </div>
+        <% end%>
       </div>
       <div class='actions'>
         <%= course_admin_action(@course) %>

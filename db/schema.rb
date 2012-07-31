@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120709064425) do
+ActiveRecord::Schema.define(:version => 20120727095149) do
 
   create_table "categories", :force => true do |t|
     t.string   "name_en"
@@ -107,8 +107,10 @@ ActiveRecord::Schema.define(:version => 20120709064425) do
   create_table "enrollments", :force => true do |t|
     t.integer  "course_id"
     t.integer  "person_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "payment_method"
+    t.string   "state"
   end
 
   create_table "guides", :force => true do |t|
@@ -149,6 +151,19 @@ ActiveRecord::Schema.define(:version => 20120709064425) do
     t.boolean  "sidebar",     :default => true
     t.boolean  "header",      :default => true
     t.boolean  "hidden",      :default => true
+  end
+
+  create_table "pay_fu_transactions", :force => true do |t|
+    t.string   "type"
+    t.string   "transaction_id"
+    t.string   "transaction_type"
+    t.string   "payment_status"
+    t.datetime "payment_date"
+    t.integer  "gross"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.hstore   "raw_data"
+    t.integer  "enrollment_id"
   end
 
   create_table "people", :force => true do |t|
