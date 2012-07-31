@@ -76,7 +76,7 @@ module ApplicationHelper
   end
 
   def price_helper(course)
-    label = course.price == 0 ? I18n.t('free') : number_to_currency(course.price, :locale => :zh)
+    label = course.free? ? t('courses.show.free') : number_to_currency(course.price, locale: :zh)
     content_tag :span, class: 'label label-info price' do
       label
     end

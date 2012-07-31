@@ -2,3 +2,4 @@ zh:
   courses:
     show:
       paid: '已付款报名'
+      free: '免费'
