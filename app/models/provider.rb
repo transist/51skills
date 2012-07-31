@@ -1,5 +1,5 @@
 class Provider < ActiveRecord::Base
-  attr_accessible :email, :profile_attributes, :provider, :secret, :token, :uid, :username
+  attr_accessible :email, :profile_attributes, :provider, :secret, :token, :uid, :username, :expires_at
   
   belongs_to :person
   
@@ -9,12 +9,13 @@ class Provider < ActiveRecord::Base
     case auth['provider']
     when 'weibo'
       provider.username = auth['info']['name'] || ""
-      provider.email = auth['info']['email'] || ""
-      provider.username = auth['extra']['raw_info']['screen_name'] || ""
-      provider.token = auth['extra']['access_token'].token
-      provider.secret = auth['extra']['access_token'].secret
-      provider.uid = auth['extra']['raw_info']['id']
-      provider.profile_attributes = auth['extra'].to_json
+      provider.email = ""
+      provider.username = auth['info']['nickname'] || ""
+      provider.token = auth['credentials']['token']
+      provider.expires_at = auth['credentials']['expires_at']
+      provider.secret = ''
+      provider.uid = auth['uid']
+      provider.profile_attributes = auth['extra']['raw_info'].to_json
     when 'twitter'
       provider.username = auth['info']['name'] || ""
       provider.email = ""
