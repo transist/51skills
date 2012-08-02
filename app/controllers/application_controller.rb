@@ -19,7 +19,9 @@ class ApplicationController < ActionController::Base
   private
   def store_location_before_signin
     if request.get? && request.path == new_person_session_path or
-      request.path =~ %r{/login/.*}
+      request.path =~ %r{/login/.*} or
+      request.post? && request.url != request.referer
+
       session[:person_return_to] = request.referer
     end
   end

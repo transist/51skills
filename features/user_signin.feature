@@ -15,3 +15,12 @@ Feature: User signin
     When I sign in with email and password of the user
     Then I should be signed in
     And I should be on the course page
+
+  @javascript
+  Scenario: Sign in with email via lightbox
+    Given there is a user
+    And there is a scheduled course
+    When I enroll the course
+    And I sign in with email and password of the user via lightbox
+    Then I should be signed in
+    And I should be on the course page
