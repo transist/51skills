@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_language
   before_filter :email_address_complete!
   before_filter :assign_var_to_gon
-  
+  before_filter :store_location_before_signin
+
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user_by_id!
@@ -13,17 +14,20 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_admin?
   helper_method :email_address_complete?
   layout :layout_with_mercury
-  
+
 
   private
-  def after_sign_in_path_for(resource)
-    courses_path
+  def store_location_before_signin
+    if request.get? && request.path == new_person_session_path or
+      request.path =~ %r{/login/.*}
+      session[:person_return_to] = request.referer
+    end
   end
-  
+
   def after_sign_out_path_for(resource)
     courses_path
   end
-  
+
   def layout_with_mercury
     !params[:mercury_frame] && is_editing? ? 'mercury' : 'application'
   end
@@ -35,33 +39,33 @@ class ApplicationController < ActionController::Base
   def is_editing?
     cookies[:editing] == 'true' && can_edit?
   end
-  
+
   def email_address_complete?
     !current_user || (current_user && !current_user.email.blank?)
   end
-  
+
   def email_address_complete!
     unless email_address_complete? || request.env['REQUEST_PATH'] == destroy_person_session_path
-      redirect_to(edit_person_path(current_user.id), :alert => I18n.t('alert.email_completed')) 
+      redirect_to(edit_person_path(current_user.id), :alert => I18n.t('alert.email_completed'))
     end
   end
 
   # def current_user
   #   begin
   #     @current_user ||= Person.find(session[:user_id]) if session[:user_id]
-  #   rescue 
+  #   rescue
   #     nil
   #   end
   # end
-  
+
   def current_user
     current_person
   end
-  
+
   def current_user_admin?
     current_user && current_user.admin?
   end
-  
+
   def current_user_admin!
     unless current_user_admin?
       redirect_to courses_path, :alert => I18n.t('alert.admin_only')
@@ -78,7 +82,7 @@ class ApplicationController < ActionController::Base
       redirect_to courses_path, :alert => I18n.t('alert.access_denied')
     end
   end
-  
+
   def correct_user_by_person_id!
     @user = Person.find_by_id(params[:person_id])
     unless current_user == @user
@@ -91,7 +95,7 @@ class ApplicationController < ActionController::Base
       redirect_to :back, :alert => I18n.t('alert.sign_in_required')
     end
   end
-  
+
   def accepted_languages
     return [] if request.env["HTTP_ACCEPT_LANGUAGE"].nil?
     accepted = request.env["HTTP_ACCEPT_LANGUAGE"].split(",")
@@ -105,7 +109,7 @@ class ApplicationController < ActionController::Base
     }
     a = accepted.sort { |l1, l2| l1[1] <=> l2[1] }
     if session[:locale] == nil
-      if a[0][0].include?('en') && 
+      if a[0][0].include?('en') &&
         session[:locale] = 'en'
         I18n.locale = 'en'
       else
@@ -114,17 +118,17 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  
+
   def set_language
     if params[:locale]
       session[:locale] = params[:locale]
     end
     if session[:locale] == nil
-      session[:locale] = 'en' 
+      session[:locale] = 'en'
     end
     I18n.locale = session[:locale]
   end
-  
+
   def create_standard_page
     @page = Hashie::Mash.new
     @page.title = '51skills'
@@ -132,7 +136,7 @@ class ApplicationController < ActionController::Base
     @page.sidebar = true
     @page
   end
-  
+
   def assign_var_to_gon
     gon.user_id = current_user.id rescue nil
     if session[:after_sign_up]
@@ -141,5 +145,5 @@ class ApplicationController < ActionController::Base
       gon.user_identity = current_user.identity
     end
   end
-  
+
 end

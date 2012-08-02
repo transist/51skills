@@ -9,3 +9,11 @@ end
 Given /^there is a scheduled free course$/ do
   @course = create(:scheduled_free_course)
 end
+
+Given /^I am on the course page$/ do
+  visit course_path(@course)
+end
+
+Then /^I should be on the course page$/ do
+  page.current_path.should == course_path(@course)
+end
