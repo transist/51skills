@@ -31,9 +31,9 @@
           <%= @course.students.count > 1 ? I18n.t('are_enrolled_in_this_course'): (@course.students.count == 1 ? I18n.t('is_enrolled_in_this_course') : "")%>
         </div>
         <% if @course.scheduled? %>
+          <%= price_helper(@course) %>
           <div class='enroll_btn'>
             <%= enrollment_btn %>
-            <%= price_helper(@course) %>
           </div>
         <% end%>
       </div>
