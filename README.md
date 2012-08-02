@@ -31,6 +31,17 @@ Manually run tests
 
     bundle exec rspec && bundle exec cucumber
 
+Reset database
+==============
+
+Backup your current database:
+
+    pg_dump skillzz_development > db/seeds.sql
+
+Reset your database to backup:
+
+    rake db:reset
+
 Deployment
 ==========
 

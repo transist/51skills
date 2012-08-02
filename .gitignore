@@ -28,3 +28,4 @@ config/database.yml
 /doc/
 /.yardoc/
 /rerun.txt
+/db/seeds.sql
