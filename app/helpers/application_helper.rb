@@ -34,7 +34,8 @@ module ApplicationHelper
     if not @enrollment
       # Enroll button
       icon_class = @course.free? ? 'icon-ok-sign' : 'icon-shopping-cart'
-      enroll_button = content_tag(:span, nil, class: icon_class)
+      icon_class << ' icon-white'
+      enroll_button = content_tag(:i, nil, class: icon_class)
       enroll_button << content_tag(:span, class: 'enroll') do
         t :enroll
       end
@@ -43,10 +44,14 @@ module ApplicationHelper
 
     elsif not @course.free? and @enrollment.unpaid?
       # Pay button and Cancel button
-        link_to(t('enrollments.my_enrollments.pay'), confirm_enrollment_path(@enrollment),
+      content_tag(:div, nil, class: 'btn-group') do
+        pay_button = content_tag(:i, nil, class: 'icon-shopping-cart icon-white') +
+          t('enrollments.my_enrollments.pay')
+        link_to(pay_button, confirm_enrollment_path(@enrollment),
           class: 'btn btn-large btn-info', method: :get) +
         link_to(t('enrollments.my_enrollments.cancel'), cancel_enrollment_path(@enrollment),
           class: 'btn btn-large', method: :delete)
+      end
 
     elsif not @course.free? and @enrollment.paid?
       # Paid status
@@ -56,7 +61,7 @@ module ApplicationHelper
 
     elsif @course.free? and @enrollment.paid?
       # Disenroll button
-      disenroll_button = content_tag(:i, nil, class: 'icon-remove-sign')
+      disenroll_button = content_tag(:i, nil, class: 'icon-remove-sign icon-white')
       disenroll_button << content_tag(:span, class: 'enroll') do
         t :disenroll
       end
