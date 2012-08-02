@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(:version => 20120727095149) do
     t.integer  "gross"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.hstore   "raw_data"
+    t.text     "raw_data"
     t.integer  "enrollment_id"
   end
 
